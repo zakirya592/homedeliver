@@ -7,14 +7,14 @@ import "./Product.css"
 function Product() {
 
     const columns = [
-        { field: 'id', headerName: 'SEQ.', width: 90 },
-        { field: 'RequestNumber', headerName: 'WORK REQUEST#', width: 160 },
-        { field: 'RequestStatus', headerName: 'REQUEST STATUS', width: 160 },
-        { field: 'EmployeeID', headerName: 'REQUEST BY EMP#', width: 160 },
-        { field: 'WorkPriority', headerName: 'PRIORITY', width: 150 },
-        { field: 'RequestDateTime', headerName: 'REQUEST DATE', width: 200 },
-        { field: 'workTypeDesc', headerName: 'WORK TYPE DESC', width: 160 },
-        { field: 'worktradeDesc', headerName: 'WORK TRADE DESC', width: 160 },
+        { field: 'id', headerName: 'SEQ.', width: 90, headerClassName: 'header-red' },
+        { field: 'RequestNumber', headerName: 'WORK REQUEST#', width: 160, headerClassName: 'header-red' },
+        { field: 'RequestStatus', headerName: 'REQUEST STATUS', width: 160, headerClassName: 'header-red' },
+        { field: 'EmployeeID', headerName: 'REQUEST BY EMP#', width: 160, headerClassName: 'header-red' },
+        { field: 'WorkPriority', headerName: 'PRIORITY', width: 150, headerClassName: 'header-red' },
+        { field: 'RequestDateTime', headerName: 'REQUEST DATE', width: 200, headerClassName: 'header-red' },
+        { field: 'workTypeDesc', headerName: 'WORK TYPE DESC', width: 160, headerClassName: 'header-red' },
+        { field: 'worktradeDesc', headerName: 'WORK TRADE DESC', width: 160, headerClassName: 'header-red' },
         // { field: 'ACTIONS', headerName: 'ACTIONS', width: 140, renderCell: ActionButtons },
     ];
 
