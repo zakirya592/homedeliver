@@ -17,3 +17,36 @@ code {
 .inputsection {
   border: 1px solid #00006A;
 }
+.color1 {
+  color: #1E3B8B
+}
+
+.color2 {
+  color: #505D66
+}
+
+.color3 {
+  color: #00006A;
+}
+
+.star {
+  color: #FF0404;
+  font-weight: bold;
+}
+
+.bgupdata {
+  background: #D7F2FD !important;
+}
+
+.bgtime {
+  background: #c9cccccc !important;
+
+}
+
+.pointerss {
+  cursor: pointer !important;
+}
+
+.bordercolor {
+  border: 1px solid #000;
+}

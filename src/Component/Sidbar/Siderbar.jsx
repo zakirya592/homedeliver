@@ -113,7 +113,7 @@ function Siderbar() {
                 {/* User */}
                 <List>
                     {['User'].map((text, index) => (
-                        <ListItem key={text} disablePadding onClick={() => navigate('/Product')}>
+                        <ListItem key={text} disablePadding onClick={() => navigate('/user')}>
                             <ListItemButton>
                                 <ListItemIcon>
                                     {index % 2 === 0 ? <AccountBoxIcon className="sidebaricon my-auto mx-auto" /> : <AccountBoxIcon className="sidebaricon my-auto" />}

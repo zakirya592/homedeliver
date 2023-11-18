@@ -6,3 +6,23 @@
     background-color: #896c91;
     color: white !important;
 }
+.printerpic {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+.printerPic {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 209px;
+    background: #F5F5F5;
+    border: 1px solid #000000;
+    border-radius: 8px;
+}
+.savebtn {
+    background: #1E3B8B;
+    border-radius: 10px;
+    color: white;
+}

@@ -1,8 +1,9 @@
 
 import './App.css';
 import Pagerounter from './Component/Rounter/Pagerounter';
-import Siderbar from './Component/Sidbar/Siderbar';
+import axios from "axios";
 
+axios.defaults.baseURL = "https://cute-blue-squid-toga.cyclic.app";
 function App() {
   return (
     <div className="App">
