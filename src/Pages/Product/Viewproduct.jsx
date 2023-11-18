@@ -8,8 +8,6 @@ import BrowserFolder from "../../img/browsefolder 3.png"
 import "./Product.css"
 import { useNavigate, useParams } from "react-router-dom";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
-import SaveIcon from '@mui/icons-material/Save';
-import Swal from "sweetalert2";
 
 function Viewproduct() {
     const navigate = useNavigate();
@@ -22,7 +20,6 @@ function Viewproduct() {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [imageshow, setimageshow] = useState()
-    const [AssetImage, setAssetImage] = useState()
 
     const getapi = () => {
         axios.get(`/get-item-byid/${userId}`)
@@ -54,7 +51,6 @@ function Viewproduct() {
 
     function handleChangeback(e) {
         setSelectedFile(e.target.files[0]);
-        setAssetImage(e.target.files[0])
     }
 
 
@@ -104,7 +100,7 @@ function Viewproduct() {
                                                 className="lablesection color3 text-start mb-1">
                                                 Item Name *
                                             </label>
-                                            <input className="form-control inputsection py-3" id="FirstName" placeholder='Item Name' types='text'
+                                            <input className="form-control inputsection py-2" id="FirstName" placeholder='Item Name' types='text'
                                                 value={value.itemName}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -118,8 +114,8 @@ function Viewproduct() {
 
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="price" className="form-label text-start labeinput">Price*</label>
-                                            <input className="form-control inputsection py-3" id="price" placeholder='Enter price*' type='number'
+                                            <label htmlFor="price" className="lablesection color3 text-start mb-1">Price*</label>
+                                            <input className="form-control inputsection py-2" id="price" placeholder='Enter price*' type='number'
                                                 value={value.price}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -132,8 +128,8 @@ function Viewproduct() {
                                     </div>
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="category" className="form-label text-start labeinput">Category*</label>
-                                            <input className="form-control inputsection py-3" id="category" placeholder='Enter category*' types='text'
+                                            <label htmlFor="category" className="lablesection color3 text-start mb-1">Category*</label>
+                                            <input className="form-control inputsection py-2" id="category" placeholder='Enter category' types='text'
                                                 value={value.category}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -153,7 +149,7 @@ function Viewproduct() {
                                         </label>
                                         <input
                                             types='text'
-                                            id='category'
+                                            id='Description'
                                             value={value.description}
                                             onChange={e => {
                                                 setvalue(prevValue => ({
@@ -161,7 +157,7 @@ function Viewproduct() {
                                                     description: e.target.value
                                                 }))
                                             }}
-                                            className="form-control inputsection py-3"
+                                            className="form-control inputsection py-2"
                                             placeholder='Enter Description'
                                             required
                                         ></input>

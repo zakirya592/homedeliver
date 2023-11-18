@@ -22,13 +22,13 @@ function Createproduct() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [imageshow, setimageshow] = useState()
     const [AssetImage, setAssetImage] = useState()
+
     function handleChangeback(e) {
         setSelectedFile(e.target.files[0]);
         setAssetImage(e.target.files[0])
     }
 
-    const addtransaction = async () => {
-
+    const addtransaction =() => {
         const formData = new FormData();
         formData.append('itemName', value.itemName);
         formData.append('price', value.price);
@@ -44,14 +44,13 @@ function Createproduct() {
                     'success'
                 )
                 navigate('/Product')
-
             })
             .catch((err) => {
                 console.log(err);
                 const statuss = err.response.data.message
                 Swal.fire(
                     'Error!',
-                    ` ${statuss} `,
+                    ` sdiljfldjfgjdfkl `,
                     'error'
                 )
             });
@@ -104,7 +103,7 @@ function Createproduct() {
                                                 className="lablesection color3 text-start mb-1">
                                                 Item Name *
                                             </label>
-                                            <input className="form-control inputsection py-3" id="FirstName" placeholder='Item Name' types='text'
+                                            <input className="form-control inputsection py-2" id="FirstName" placeholder='Item Name' types='text'
                                                 value={value.itemName}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -118,8 +117,8 @@ function Createproduct() {
 
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="price" className="form-label text-start labeinput">Price*</label>
-                                            <input className="form-control inputsection py-3" id="price" placeholder='Enter price*' type='number'
+                                            <label htmlFor="price" className="lablesection color3 text-start mb-1">Price*</label>
+                                            <input className="form-control inputsection py-2" id="price" placeholder='Enter price*' type='number'
                                                 value={value.price}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -130,10 +129,11 @@ function Createproduct() {
                                             />
                                         </div>
                                     </div>
+
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="category" className="form-label text-start labeinput">Category*</label>
-                                            <input className="form-control inputsection py-3" id="category" placeholder='Enter category*' types='text'
+                                            <label htmlFor="category" className="lablesection color3 text-start mb-1">Category*</label>
+                                            <input className="form-control inputsection py-2" id="category" placeholder='Enter category*' types='text'
                                                 value={value.category}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -161,7 +161,7 @@ function Createproduct() {
                                                     description: e.target.value
                                                 }))
                                             }}
-                                            className="form-control inputsection py-3"
+                                            className="form-control inputsection py-2"
                                             placeholder='Enter Description'
                                             required
                                         ></input>
@@ -172,7 +172,7 @@ function Createproduct() {
                             </div>
                             <div className="d-flex justify-content-between mt-5">
                                 <button type="button" class="border-0 px-3  savebtn py-2" onClick={() => navigate('/Product')}> <ArrowCircleLeftOutlinedIcon className='me-2' />Back</button>
-                                <button type="button" class="border-0 px-3 mx-2  savebtn py-2" onClick={addtransaction}><SaveIcon className='me-2' />SAVE</button>
+                                <button type="button" class="border-0 px-3 mx-2  savebtn py-2 " onClick={addtransaction}><SaveIcon className='me-2' />SAVE</button>
 
                             </div>
                         </div>

@@ -25,4 +25,13 @@
     background: #1E3B8B;
     border-radius: 10px;
     color: white;
+    font-size: 16px;
+}
+.lablesection {
+    /* font-family: 'Inter'; */
+    font-family: 'Roboto', sans-serif !important;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
 }

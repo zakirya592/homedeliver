@@ -30,6 +30,7 @@ function Product() {
                 console.log(err);
             });
     }
+    
     useEffect(() => {
         getapi()
     }, [])
@@ -150,6 +151,7 @@ function Product() {
             description: row.description,
         };
     });
+
     return (
         <>
             <div className="bg mt-4">

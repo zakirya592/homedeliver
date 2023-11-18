@@ -133,7 +133,7 @@ function Updateproduct() {
                                                 className="lablesection color3 text-start mb-1">
                                                 Item Name *
                                             </label>
-                                            <input className="form-control inputsection py-3" id="FirstName" placeholder='Item Name' types='text'
+                                            <input className="form-control inputsection py-2" id="FirstName" placeholder='Enter Item Name' types='text'
                                                 value={value.itemName}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -147,8 +147,8 @@ function Updateproduct() {
 
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="price" className="form-label text-start labeinput">Price*</label>
-                                            <input className="form-control inputsection py-3" id="price" placeholder='Enter price*' type='number'
+                                            <label htmlFor="price" className="lablesection color3 text-start mb-1">Price*</label>
+                                            <input className="form-control inputsection py-2" id="price" placeholder='Enter price' type='number'
                                                 value={value.price}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -161,8 +161,8 @@ function Updateproduct() {
                                     </div>
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="category" className="form-label text-start labeinput">Category*</label>
-                                            <input className="form-control inputsection py-3" id="category" placeholder='Enter category*' types='text'
+                                            <label htmlFor="category" className="lablesection color3 text-start mb-1">Category*</label>
+                                            <input className="form-control inputsection py-2" id="category" placeholder='Enter category' types='text'
                                                 value={value.category}
                                                 onChange={e => {
                                                     setvalue(prevValue => ({
@@ -190,7 +190,7 @@ function Updateproduct() {
                                                     description: e.target.value
                                                 }))
                                             }}
-                                            className="form-control inputsection py-3"
+                                            className="form-control inputsection py-2"
                                             placeholder='Enter Description'
                                             required
                                         ></input>
