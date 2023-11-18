@@ -49,7 +49,7 @@ function Updateproduct() {
     }
     useEffect(() => {
         getapi()
-    }, [])
+    })
 
 
     function handleChangeback(e) {
@@ -106,12 +106,12 @@ function Updateproduct() {
                                 <div className="printerPic my-3 w-100">
                                     <div className="d-flex ">
                                         <div className="">
-                                            <img src={selectedFile ? URL.createObjectURL(selectedFile) : imageshow != null ? imageshow : upload} alt="" className="printerpic" />
+                                            <img src={selectedFile ? URL.createObjectURL(selectedFile) : imageshow != null ? imageshow : upload} alt="userimg" className="printerpic" />
                                         </div>
                                         <div className="mx-4 my-auto">
                                             <div className="row " htmlFor="file-inputs">
                                                 <label htmlFor="file-inputs">
-                                                    <img src={BrowserFolder} />
+                                                    <img src={BrowserFolder} alt="Description of the BrowserFolder" />
                                                 </label>
                                                 <input
                                                     id="file-inputs"

@@ -108,9 +108,8 @@ function Siderbar() {
                             }
                             disablePadding
                             sx={{ display: "block" }}
-                            // onClick={() => navigate('/')} // Navigate to '/dashboard' when clicked
                             onClick={() => {
-                                text == "Dashboard" ? (
+                                text === "Dashboard" ? (
                                     <>
                                         {navigate("/")}
                                         {sessionStorage.setItem("id", "Dashboard")}
@@ -127,13 +126,13 @@ function Siderbar() {
                                 <ListItemIcon>
                                     {index % 2 === 0 ? (
                                         sessionStorage.getItem("id") &&
-                                            sessionStorage.getItem("id") == text ? (
+                                            sessionStorage.getItem("id") === text ? (
                                             <DashboardIcon className="sidebariconactive" />
                                         ) : (
                                             <DashboardCustomizeTwoToneIcon className="sidebaricon" />
                                         )
                                     ) : sessionStorage.getItem("id") &&
-                                        sessionStorage.getItem("id") == text ? (
+                                        sessionStorage.getItem("id") === text ? (
                                         <AccountBoxIcon className="sidebariconactive" />
                                     ) : (
                                         <AccountBoxIcon className="sidebaricon" />
@@ -149,7 +148,6 @@ function Siderbar() {
                     {['Product', 'Blog'].map((text, index) => (
                         <ListItem
                             key={text}
-
                             className={
                                 sessionStorage.getItem("id") &&
                                     sessionStorage.getItem("id") === text
@@ -159,7 +157,7 @@ function Siderbar() {
                             disablePadding
                             sx={{ display: "block" }}
                             onClick={() => {
-                                text == "Product" ? (
+                                text === "Product" ? (
                                     <>
                                         {navigate("/product")}
                                         {sessionStorage.setItem("id", "Product")}
@@ -176,13 +174,13 @@ function Siderbar() {
                                 <ListItemIcon>
                                     {index % 2 === 0 ? (
                                         sessionStorage.getItem("id") &&
-                                            sessionStorage.getItem("id") == text ? (
+                                            sessionStorage.getItem("id") === text ? (
                                             <ProductionQuantityLimitsIcon className="sidebariconactive" />
                                         ) : (
                                             <ProductionQuantityLimitsIcon className="sidebaricon" />
                                         )
                                     ) : sessionStorage.getItem("id") &&
-                                        sessionStorage.getItem("id") == text ? (
+                                        sessionStorage.getItem("id") === text ? (
                                         <DashboardCustomizeTwoToneIcon className="sidebariconactive" />
                                     ) : (
                                         <DashboardCustomizeTwoToneIcon className="sidebaricon" />

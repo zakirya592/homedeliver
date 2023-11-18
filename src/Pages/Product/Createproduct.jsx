@@ -20,7 +20,7 @@ function Createproduct() {
         description: ''
     })
     const [selectedFile, setSelectedFile] = useState(null);
-    const [imageshow, setimageshow] = useState()
+    const imageshow = '';
     const [AssetImage, setAssetImage] = useState()
 
     function handleChangeback(e) {
@@ -47,7 +47,6 @@ function Createproduct() {
             })
             .catch((err) => {
                 console.log(err);
-                const statuss = err.response.data.message
                 Swal.fire(
                     'Error!',
                     ` sdiljfldjfgjdfkl `,
@@ -76,12 +75,12 @@ function Createproduct() {
                                 <div className="printerPic my-3 w-100">
                                     <div className="d-flex ">
                                         <div className="">
-                                            <img src={selectedFile ? URL.createObjectURL(selectedFile) : imageshow != null ? imageshow :upload} alt="" className="printerpic" />
+                                            <img src={selectedFile ? URL.createObjectURL(selectedFile) : imageshow != null ? imageshow : upload} alt="Description of the user" className="printerpic" />
                                         </div>
                                         <div className="mx-4 my-auto">
                                             <div className="row " htmlFor="file-inputs">
                                                 <label htmlFor="file-inputs">
-                                                    <img src={BrowserFolder} />
+                                                    <img src={BrowserFolder} alt="Description of the BrowserFolder" />
                                                 </label>
                                                 <input
                                                     id="file-inputs"
