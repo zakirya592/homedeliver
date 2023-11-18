@@ -15,6 +15,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Swal from "sweetalert2";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function Product() {
     const [getdata, setgetdata] = useState([])
@@ -34,9 +35,9 @@ function Product() {
     }, [])
 
     const columns = [
-        { field: 'id', headerName: 'SEQ.', width: 90, headerClassName: 'header-red' },
+        { field: 'id', headerName: 'SEQ.', width: 100, headerClassName: 'header-red' },
 
-        { field: '_id', headerName: 'ID#', width: 250, headerClassName: 'header-red' },
+        { field: '_id', headerName: 'ID#', width: 260, headerClassName: 'header-red' },
         {
             field: 'combinedItem', headerName: 'item Name #', width: 200, headerClassName: 'header-red',
             renderCell: (params) => (
@@ -46,10 +47,10 @@ function Product() {
                 </div>
             ),
         },
-        { field: 'price', headerName: 'Price #', width: 160, headerClassName: 'header-red' },
-        { field: 'category', headerName: 'Category #', width: 200, headerClassName: 'header-red' },
-        { field: 'description', headerName: 'Description #', width: 250, headerClassName: 'header-red' },
-        { field: 'ACTIONS', headerName: 'ACTIONS', width: 140, renderCell: ActionButtons },
+        { field: 'price', headerName: 'Price #', width: 170, headerClassName: 'header-red' },
+        { field: 'category', headerName: 'Category #', width: 210, headerClassName: 'header-red' },
+        { field: 'description', headerName: 'Description #', width: 260, headerClassName: 'header-red' },
+        { field: 'ACTIONS', headerName: 'ACTIONS', width: 150, renderCell: ActionButtons },
     ];
 
     function ActionButtons(params) {
@@ -159,7 +160,12 @@ function Product() {
 
                         </AppBar>
                         <div style={{ height: 450, width: '83%' }}>
-                            <h5 className='text-start my-4'>Product List</h5>
+                            <div className="d-flex justify-content-between my-4">
+                                <h5 className='text-start my-auto'>Product List</h5>
+                                <button type="button" className="btn btn-outline-primary mx-1 color2 btnwork" onClick={(() => {
+                                    navigate('/Create/Product')
+                                })}><AddCircleOutlineIcon className='me-1' />Create</button>
+                            </div>
                             <DataGrid
                                 rows={filteredRows}
                                 columns={columns}
