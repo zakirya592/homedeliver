@@ -50,7 +50,7 @@ function Product() {
         { field: 'price', headerName: 'Price #', width: 170, headerClassName: 'header-red' },
         { field: 'category', headerName: 'Category #', width: 210, headerClassName: 'header-red' },
         { field: 'description', headerName: 'Description #', width: 260, headerClassName: 'header-red' },
-        { field: 'ACTIONS', headerName: 'ACTIONS', width: 150, renderCell: ActionButtons },
+        { field: 'ACTIONS', headerName: 'ACTIONS', headerClassName: 'header-red', width: 150, renderCell: ActionButtons },
     ];
 
     function ActionButtons(params) {
