@@ -3,3 +3,10 @@
     top: 10% !important;
     font-size: 20px;
 }
+.activeelement{
+    background-color: #a3a2a3;
+    color: white;
+}
+.Customeelement{
+    background-color: transparent;
+}

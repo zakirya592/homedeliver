@@ -93,30 +93,51 @@ function Siderbar() {
                     </Stack>
                 </div>
                 <Toolbar />
-                {/* Dashbord */}
+
+                {/* Dashbord and user*/}
                 <List>
-                    {['Dashboard'].map((text, index) => (
+                    {['Dashboard', 'User'].map((text, index) => (
                         <ListItem
                             key={text}
+
+                            className={
+                                sessionStorage.getItem("id") &&
+                                    sessionStorage.getItem("id") === text
+                                    ? "activeelement"
+                                    : "Customeelement"
+                            }
                             disablePadding
-                            onClick={() => navigate('/')} // Navigate to '/dashboard' when clicked
+                            sx={{ display: "block" }}
+                            // onClick={() => navigate('/')} // Navigate to '/dashboard' when clicked
+                            onClick={() => {
+                                text == "Dashboard" ? (
+                                    <>
+                                        {navigate("/")}
+                                        {sessionStorage.setItem("id", "Dashboard")}
+                                    </>
+                                ) : (
+                                    <>
+                                        {navigate("/User")}
+                                        {sessionStorage.setItem("id", "User")}
+                                    </>
+                                );
+                            }}
                         >
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <DashboardCustomizeTwoToneIcon className="sidebaricon  mx-auto" /> : <DashboardIcon className="sidebaricon" />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                {/* User */}
-                <List>
-                    {['User'].map((text, index) => (
-                        <ListItem key={text} disablePadding onClick={() => navigate('/user')}>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <AccountBoxIcon className="sidebaricon my-auto mx-auto" /> : <AccountBoxIcon className="sidebaricon my-auto" />}
+                                    {index % 2 === 0 ? (
+                                        sessionStorage.getItem("id") &&
+                                            sessionStorage.getItem("id") == text ? (
+                                            <DashboardIcon className="sidebariconactive" />
+                                        ) : (
+                                            <DashboardCustomizeTwoToneIcon className="sidebaricon" />
+                                        )
+                                    ) : sessionStorage.getItem("id") &&
+                                        sessionStorage.getItem("id") == text ? (
+                                        <AccountBoxIcon className="sidebariconactive" />
+                                    ) : (
+                                        <AccountBoxIcon className="sidebaricon" />
+                                    )}
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
                             </ListItemButton>
@@ -125,26 +146,47 @@ function Siderbar() {
                 </List>
                 {/* Product */}
                 <List>
-                    {['Product'].map((text, index) => (
-                        <ListItem key={text} disablePadding
-                            onClick={() => navigate('/product')} // Navigate to '/product' when clicked
+                    {['Product', 'Blog'].map((text, index) => (
+                        <ListItem
+                            key={text}
+
+                            className={
+                                sessionStorage.getItem("id") &&
+                                    sessionStorage.getItem("id") === text
+                                    ? "activeelement"
+                                    : "Customeelement"
+                            }
+                            disablePadding
+                            sx={{ display: "block" }}
+                            onClick={() => {
+                                text == "Product" ? (
+                                    <>
+                                        {navigate("/product")}
+                                        {sessionStorage.setItem("id", "Product")}
+                                    </>
+                                ) : (
+                                    <>
+                                        {navigate("/Blog")}
+                                        {sessionStorage.setItem("id", "Blog")}
+                                    </>
+                                );
+                            }}
                         >
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <ProductionQuantityLimitsIcon className="sidebaricon my-auto mx-auto" /> : <ProductionQuantityLimitsIcon className="sidebaricon my-auto" />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                {/* Blog */}
-                <List>
-                    {['Blog'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <DashboardCustomizeTwoToneIcon className="sidebaricon my-auto mx-auto" /> : <DashboardIcon className="sidebaricon my-auto" />}
+                                    {index % 2 === 0 ? (
+                                        sessionStorage.getItem("id") &&
+                                            sessionStorage.getItem("id") == text ? (
+                                            <ProductionQuantityLimitsIcon className="sidebariconactive" />
+                                        ) : (
+                                            <ProductionQuantityLimitsIcon className="sidebaricon" />
+                                        )
+                                    ) : sessionStorage.getItem("id") &&
+                                        sessionStorage.getItem("id") == text ? (
+                                        <DashboardCustomizeTwoToneIcon className="sidebariconactive" />
+                                    ) : (
+                                        <DashboardCustomizeTwoToneIcon className="sidebaricon" />
+                                    )}
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
                             </ListItemButton>
