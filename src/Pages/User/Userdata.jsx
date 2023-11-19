@@ -23,10 +23,10 @@ function Userdata() {
 
     const columns = [
         { field: 'id', headerName: 'SEQ.', width: 90, headerClassName: 'header-red' },
-        { field: 'Phone', headerName: 'Phone#', width: 160, headerClassName: 'header-red' },
-        { field: 'email', headerName: 'Email#', width: 200, headerClassName: 'header-red' },
-        { field: 'address', headerName: 'Address#', width: 160, headerClassName: 'header-red' },
-        { field: 'WorkPriority', headerName: 'PRIORITY', width: 200, headerClassName: 'header-red' },
+        { field: 'Phone', headerName: 'Phone#', width: 200, headerClassName: 'header-red' },
+        { field: 'email', headerName: 'Email#', width: 230, headerClassName: 'header-red' },
+        { field: 'address', headerName: 'Address#', width: 200, headerClassName: 'header-red' },
+        { field: 'WorkPriority', headerName: 'PRIORITY', width: 220, headerClassName: 'header-red' },
         { field: 'RequestDateTime', headerName: 'REQUEST DATE', width: 200, headerClassName: 'header-red' },
         { field: 'workTypeDesc', headerName: 'WORK TYPE DESC', width: 200, headerClassName: 'header-red' },
         // { field: 'ACTIONS', headerName: 'ACTIONS', width: 140, renderCell: ActionButtons },
@@ -47,14 +47,13 @@ function Userdata() {
     });
     return (
         <>
-            <div className="bg mt-4">
-                <div className="mt-5 p-3">
+            <div className="bg mt-3 p-3">
                     <Box sx={{ display: 'flex' }}>
                         <Siderbar />
                         <AppBar className="fortrans locationfortrans" position="fixed">
 
                         </AppBar>
-                        <div style={{ height: 450, width: '83%' }}>
+                        <div style={{ height: 450, width: '90%' }}>
                             <h5 className='text-start my-4'>User List</h5>
                             <DataGrid
                                 rows={filteredRows}
@@ -68,8 +67,6 @@ function Userdata() {
                                 }} />
                         </div>
                     </Box>
-
-                </div>
             </div>
         </>
     )

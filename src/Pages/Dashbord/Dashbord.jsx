@@ -7,7 +7,7 @@ import "./Dashborrd.css";
 function Dashbord() {
     return (
         <>
-            <div className="bg mt-4">
+            <div className="bg">
                 <div className="mt-5 p-3">
                     <Box sx={{ display: 'flex' }}>
                         <Siderbar />

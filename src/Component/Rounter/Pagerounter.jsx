@@ -7,6 +7,8 @@ import Userdata from '../../Pages/User/Userdata';
 import Createproduct from '../../Pages/Product/Createproduct';
 import Viewproduct from '../../Pages/Product/Viewproduct';
 import Updateproduct from '../../Pages/Product/Updateproduct';
+import Catogrey from '../../Pages/Catogrey/Catogrey';
+import Createcatogrey from '../../Pages/Catogrey/Createcatogrey';
 
 function App() {
     return (
@@ -22,6 +24,9 @@ function App() {
                 <Route path='/update/Product/:userId' element={<Updateproduct />} />
                 {/* ---------Userdata Section----------- */}
                 <Route path='/user' element={<Userdata />} />
+                {/* ---------Catogrey Section----------- */}
+                <Route path='/Create/Catogrey' element={<Createcatogrey />} />
+                <Route path='/Catogrey' element={<Catogrey />} />
             </Routes>
         </BrowserRouter>
     );

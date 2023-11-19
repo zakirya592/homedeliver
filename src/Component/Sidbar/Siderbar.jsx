@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -13,12 +12,8 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DashboardCustomizeTwoToneIcon from '@mui/icons-material/DashboardCustomizeTwoTone';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
-import Badge from '@mui/material/Badge';
-import SearchIcon from '@mui/icons-material/Search';
+ import EmojiFoodBeverageOutlinedIcon from '@mui/icons-material/EmojiFoodBeverageOutlined';
+import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 import "./Sidbar.css"
 import { useNavigate } from 'react-router-dom';
 
@@ -36,37 +31,11 @@ function Siderbar() {
                     width: `calc(100% - ${drawerWidth}px)`,
                     ml: `${drawerWidth}px`,
                     backgroundColor: '#f1ebf7', // Set the background color here
-                    color: 'black'
+                    color: 'black',
+                    display:'none'
                 }}
             >
-                <Toolbar>
-                    <Typography noWrap component="div" className='w-100'>
-
-                        <div className="d-flex justify-content-between">
-                            <div className="emailsection position-relative d-grid my-2">
-                                <input
-                                    types='text'
-                                    id='ordernumber'
-                                    className='rounded inputsection py-1'
-                                    placeholder='Enter '
-                                    required
-                                ></input>
-                                <p
-                                    className='position-absolute text-end serachicon'
-                                >
-                                    <SearchIcon className=' serachicon' />
-                                </p>
-                            </div>
-                            <div className="d-flex my-auto">
-                                <Badge color="secondary" >
-                                    <CircleNotificationsIcon className='my-auto ' />
-                                </Badge>
-                                <Avatar alt="Cindy Baker" className='mx-4' src="/static/images/avatar/3.jpg" />
-                            </div>
-
-                        </div>
-                    </Typography>
-                </Toolbar>
+                
             </AppBar>
             <Drawer
                 sx={{
@@ -86,12 +55,6 @@ function Siderbar() {
                         <p>Log</p>
                     </center>
                 </span>
-                <div className='d-flex justify-content-center mx-3 background1 rounded mt-3'>
-                    <Stack direction="row">
-                        <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                        <p className='my-auto ms-3'>Zakirya</p>
-                    </Stack>
-                </div>
                 <Toolbar />
 
                 {/* Dashbord and user*/}
@@ -145,7 +108,7 @@ function Siderbar() {
                 </List>
                 {/* Product */}
                 <List>
-                    {['Product', 'Blog'].map((text, index) => (
+                    {['Food', 'Catogrey'].map((text, index) => (
                         <ListItem
                             key={text}
                             className={
@@ -157,15 +120,15 @@ function Siderbar() {
                             disablePadding
                             sx={{ display: "block" }}
                             onClick={() => {
-                                text === "Product" ? (
+                                text === "Food" ? (
                                     <>
                                         {navigate("/product")}
-                                        {sessionStorage.setItem("id", "Product")}
+                                        {sessionStorage.setItem("id", "Food")}
                                     </>
                                 ) : (
                                     <>
-                                        {navigate("/Blog")}
-                                        {sessionStorage.setItem("id", "Blog")}
+                                        {navigate("/Catogrey")}
+                                        {sessionStorage.setItem("id", "Catogrey")}
                                     </>
                                 );
                             }}
@@ -175,9 +138,9 @@ function Siderbar() {
                                     {index % 2 === 0 ? (
                                         sessionStorage.getItem("id") &&
                                             sessionStorage.getItem("id") === text ? (
-                                            <ProductionQuantityLimitsIcon className="sidebariconactive" />
+                                            <EmojiFoodBeverageIcon className="sidebariconactive" />
                                         ) : (
-                                            <ProductionQuantityLimitsIcon className="sidebaricon" />
+                                            <EmojiFoodBeverageOutlinedIcon className="sidebaricon" />
                                         )
                                     ) : sessionStorage.getItem("id") &&
                                         sessionStorage.getItem("id") === text ? (

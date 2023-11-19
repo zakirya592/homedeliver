@@ -69,7 +69,7 @@ function Updateproduct() {
         axios.put(`/update-items/${userId}`, formData)
             .then((res) => {
                 Swal.fire(
-                    'Created!',
+                    'Update!',
                     `Product ${userId} has been created successfully`,
                     'success'
                 )
@@ -89,8 +89,7 @@ function Updateproduct() {
 
     return (
         <>
-            <div className="bg mt-4">
-                <div className="mt-5">
+            <div className="bg mt-3">
                     <Box sx={{ display: 'flex' }}>
                         <Siderbar />
                         <AppBar className="fortrans locationfortrans" position="fixed">
@@ -99,7 +98,7 @@ function Updateproduct() {
                         <div className="w-100 p-4" >
 
                             <center>
-                                <h6 className='fw-bolder fs-3 color1 workitoppro mb-4'>Update Product</h6>
+                                <h6 className='fw-bolder fs-3 colorblack workitoppro mb-4'>Update Product</h6>
                             </center>
                             <div className='mt-3'>
 
@@ -130,8 +129,8 @@ function Updateproduct() {
                                         <div className="mb-3 text-start">
                                             <label
                                                 htmlFor="itemName"
-                                                className="lablesection color3 text-start mb-1">
-                                                Item Name *
+                                                className="lablesection colorblack text-start mb-1">
+                                                Item Name<span className='star'>*</span>
                                             </label>
                                             <input className="form-control inputsection py-2" id="FirstName" placeholder='Enter Item Name' types='text'
                                                 value={value.itemName}
@@ -147,7 +146,7 @@ function Updateproduct() {
 
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="price" className="lablesection color3 text-start mb-1">Price*</label>
+                                            <label htmlFor="price" className="lablesection colorblack text-start mb-1">Price</label>
                                             <input className="form-control inputsection py-2" id="price" placeholder='Enter price' type='number'
                                                 value={value.price}
                                                 onChange={e => {
@@ -161,7 +160,7 @@ function Updateproduct() {
                                     </div>
                                     <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                         <div className="mb-3 text-start">
-                                            <label htmlFor="category" className="lablesection color3 text-start mb-1">Category*</label>
+                                            <label htmlFor="category" className="lablesection colorblack text-start mb-1">Category</label>
                                             <input className="form-control inputsection py-2" id="category" placeholder='Enter category' types='text'
                                                 value={value.category}
                                                 onChange={e => {
@@ -177,7 +176,7 @@ function Updateproduct() {
                                     <div className="emailsection position-relative d-grid my-2">
                                         <label
                                             htmlFor="Description"
-                                            className="lablesection color3 text-start mb-1">
+                                            className="lablesection colorblack text-start mb-1">
                                             Description
                                         </label>
                                         <input
@@ -191,7 +190,7 @@ function Updateproduct() {
                                                 }))
                                             }}
                                             className="form-control inputsection py-2"
-                                            placeholder='Enter Description'
+                                            placeholder='Enter your Description'
                                             required
                                         ></input>
 
@@ -206,8 +205,6 @@ function Updateproduct() {
                             </div>
                         </div>
                     </Box>
-
-                </div>
             </div>
         </>
     )

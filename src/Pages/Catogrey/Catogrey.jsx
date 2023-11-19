@@ -4,25 +4,19 @@ import AppBar from '@mui/material/AppBar';
 import Siderbar from '../../Component/Sidbar/Siderbar';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
-import "./Product.css"
 import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Swal from "sweetalert2";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
-function Product() {
+function Catogrey() {
     const [getdata, setgetdata] = useState([])
     const navigate = useNavigate();
 
     const getapi = () => {
-        axios.get(`/get-allitem`)
+        axios.get(`/get-catogray`)
             .then((res) => {
                 setgetdata(res.data.data)
             })
@@ -30,35 +24,29 @@ function Product() {
                 console.log(err);
             });
     }
-    
+
     useEffect(() => {
         getapi()
     }, [])
 
     const columns = [
-        { field: 'id', headerName: 'SEQ.', width: 100, headerClassName: 'header-red' },
-
-        { field: '_id', headerName: 'ID#', width: 260, headerClassName: 'header-red' },
-        {
-            field: 'combinedItem', headerName: 'Item Name', width: 200, headerClassName: 'header-red',
+        { field: 'id', headerName: 'SEQ.', width: 120, headerClassName: 'header-red' },
+        { field: '_id', headerName: 'ID#', width: 280, headerClassName: 'header-red' },
+        { field: 'categoryId', headerName: 'Category ID', width: 220, headerClassName: 'header-red' },
+        {field: 'categoryThumbnail', headerName: 'Category Thumbnail', width: 230, headerClassName: 'header-red',
             renderCell: (params) => (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar src={params.row.image} />
-                    <div style={{ marginLeft: '10px' }}>{params.row.itemName}</div>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Avatar src={params.row.categoryThumbnail} />
                 </div>
             ),
         },
-        { field: 'price', headerName: 'Price', width: 170, headerClassName: 'header-red' },
-        { field: 'category', headerName: 'Category', width: 210, headerClassName: 'header-red' },
-        { field: 'description', headerName: 'Description', width: 260, headerClassName: 'header-red' },
-        { field: 'ACTIONS', headerName: 'ACTIONS', headerClassName: 'header-red', width: 150, renderCell: ActionButtons },
+        { field: 'category', headerName: 'Category', width: 250, headerClassName: 'header-red' },
+        { field: 'ACTIONS', headerName: 'ACTIONS', headerClassName: 'header-red', width: 200, renderCell: ActionButtons },
     ];
 
     function ActionButtons(params) {
-        const [anchorEl, setAnchorEl] = useState(null);
 
-        const Deletedapi = (itemName) => {
-            handleMenuClose();
+        const Deletedapi = (category) => {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success mx-2',
@@ -70,7 +58,7 @@ function Product() {
 
             swalWithBootstrapButtons.fire({
                 title: 'Are you sure?',
-                text: `Do you want to deleting ${itemName} Product!`,
+                text: `Do you want to deleting ${category} Catogrey!`,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!',
@@ -78,65 +66,38 @@ function Product() {
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`/delete-items/${itemName}`)
+                    axios.delete(`/delete-catogray/${category}`)
                         .then((res) => {
                             getapi()
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                `Catogrey  ${category}  has been deleted.`,
+                                'success'
+                            )
                         })
                         .catch((err) => {
                             // Handle delete error
                             console.log('Error deleting', err);
+                            swalWithBootstrapButtons.fire(
+                                'Error!',
+                                `${err.response.data.message}`,
+                                'error'
+                            )
                         });
-                    swalWithBootstrapButtons.fire(
-                        'Deleted!',
-                        `Product  ${itemName}  has been deleted.`,
-                        'success'
-                    )
                 }
             })
 
         };
 
-        const handleMenuOpen = (event) => {
-            setAnchorEl(event.currentTarget);
-        };
-
-        const handleMenuClose = () => {
-            setAnchorEl(null);
-        };
-
         return (
             <div>
-                <Button className='actionBtn' onClick={handleMenuOpen} style={{ color: "black" }}>
-                    <span style={{ paddingRight: '10px' }}>Action</span>
-                    <ArrowDropDownIcon />
-                </Button>
-                <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}
-                >
-                    <MenuItem onClick={(() => {
-                        navigate(`/view/Product/${params.row._id}`)
-                    })}>
-                        <span style={{ paddingRight: '18px' }} >View</span>
-                        <VisibilityIcon />
-                    </MenuItem>
-                    <MenuItem onClick={(() => {
-                        navigate(`/update/Product/${params.row._id}`)
-                    })}>
-                        <span style={{ paddingRight: '3px' }}>Update</span>
-                        <EditIcon />
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => Deletedapi(params.row.itemName)}
-                    >
-                        <span style={{ paddingRight: '10px' }}>Delete</span>
-                        <DeleteIcon />
-                    </MenuItem>
-                </Menu>
+                <MenuItem onClick={() => {
+                    Deletedapi(params.row.category)
+                }}>
+                    <span style={{ paddingRight: '10px' }}>Delete</span>
+                    <DeleteIcon />
+                </MenuItem>
             </div>
-
-
         );
     }
 
@@ -145,10 +106,9 @@ function Product() {
             ...row,
             id: index + 1,
             _id: row._id,
-            combinedItem: `${row.image} ${row.itemName}`,
-            price: row.price,
+            categoryThumbnail: row.categoryThumbnail,
+            categoryId: row.categoryId,
             category: row.category,
-            description: row.description,
         };
     });
 
@@ -163,9 +123,9 @@ function Product() {
                         </AppBar>
                         <div style={{ height: 450, width: '83%' }}>
                             <div className="d-flex justify-content-between my-4">
-                                <h5 className='text-start my-auto'>Product List</h5>
+                                <h5 className='text-start my-auto'>Catogrey List</h5>
                                 <button type="button" className="rounded py-1 px-2 mx-1 color2 btnwork" onClick={(() => {
-                                    navigate('/Create/Product')
+                                    navigate('/Create/Catogrey')
                                 })}><AddCircleOutlineIcon className='me-1' />Create</button>
                             </div>
                             <DataGrid
@@ -174,7 +134,6 @@ function Product() {
                                 checkboxSelection
                                 disableRowSelectionOnClick
                                 disableMultipleSelection
-                                pagination={false}  // Set pagination to false to hide pagination controls
                                 components={{
                                     Footer: () => null, // Render an empty Footer to hide pagination footer
                                 }} />
@@ -187,4 +146,4 @@ function Product() {
     )
 }
 
-export default Product
+export default Catogrey
