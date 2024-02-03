@@ -154,6 +154,54 @@ function Siderbar() {
                         </ListItem>
                     ))}
                 </List>
+
+                <List>
+                    {['PrinterTableData'].map((text, index) => (
+                        <ListItem
+                            key={text}
+                            className={
+                                sessionStorage.getItem("id") &&
+                                    sessionStorage.getItem("id") === text
+                                    ? "activeelement"
+                                    : "Customeelement"
+                            }
+                            disablePadding
+                            sx={{ display: "block" }}
+                            onClick={() => {
+                                text === "PrinterTableData" ? (
+                                    <>
+                                        {navigate("/PrinterTableData")}
+                                        {sessionStorage.setItem("id", "PrinterTableData")}
+                                    </>
+                                ) : (
+                                    <>
+                                        {navigate("/PrinterTableData")}
+                                        {sessionStorage.setItem("id", "PrinterTableData")}
+                                    </>
+                                );
+                            }}
+                        >
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {index % 2 === 0 ? (
+                                        sessionStorage.getItem("id") &&
+                                            sessionStorage.getItem("id") === text ? (
+                                            <EmojiFoodBeverageIcon className="sidebariconactive" />
+                                        ) : (
+                                            <EmojiFoodBeverageOutlinedIcon className="sidebaricon" />
+                                        )
+                                    ) : sessionStorage.getItem("id") &&
+                                        sessionStorage.getItem("id") === text ? (
+                                        <DashboardCustomizeTwoToneIcon className="sidebariconactive" />
+                                    ) : (
+                                        <DashboardCustomizeTwoToneIcon className="sidebaricon" />
+                                    )}
+                                </ListItemIcon>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
             </Drawer>
         </Box>
     );

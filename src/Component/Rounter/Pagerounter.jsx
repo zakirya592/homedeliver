@@ -9,6 +9,8 @@ import Viewproduct from '../../Pages/Product/Viewproduct';
 import Updateproduct from '../../Pages/Product/Updateproduct';
 import Catogrey from '../../Pages/Catogrey/Catogrey';
 import Createcatogrey from '../../Pages/Catogrey/Createcatogrey';
+import PrinterTableData from '../../Pages/PrinterTableData/PrinterTableData';
+import Createtableprint from '../../Pages/PrinterTableData/Createtableprint';
 
 function App() {
     return (
@@ -27,6 +29,8 @@ function App() {
                 {/* ---------Catogrey Section----------- */}
                 <Route path='/Create/Catogrey' element={<Createcatogrey />} />
                 <Route path='/Catogrey' element={<Catogrey />} />
+                <Route path='/PrinterTableData' element={<PrinterTableData />} />
+                <Route path='/Create/Createtableprint' element={<Createtableprint />} />
             </Routes>
         </BrowserRouter>
     );
