@@ -15,6 +15,10 @@ import Menu from '@mui/material/Menu';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PrintIcon from '@mui/icons-material/Print';
 import Swal from "sweetalert2";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+
 
 function PrinterTableData() {
     const [getdata, setgetdata] = useState([])
@@ -360,6 +364,25 @@ ${selectedRow[0].category}
         }
     }
 
+    const handleDownloadPDF = () => {
+        const doc = new jsPDF();
+
+        // Get the columns from the DataGrid component
+        const pdfColumns = columns.map((column) => column.headerName);
+
+        // Get the rows from the DataGrid component
+        const pdfRows = filteredRows.map((row) => columns.map((column) => row[column.field]));
+
+        // Add the table to the PDF document
+        doc.autoTable({
+            head: [pdfColumns],
+            body: pdfRows,
+        });
+
+        // Save the PDF file
+        doc.save('table_data.pdf');
+    };
+
     return (
         <>
             <div className="bg">
@@ -379,6 +402,9 @@ ${selectedRow[0].category}
                                     <button onClick={printerfuunction} className="rounded py-1 px-2 mx-1 color2 btnwork">
                                         <PrintIcon className='me-1' /> Print
                                     </button>
+                                    <button onClick={handleDownloadPDF} className="rounded py-1 px-2 mx-1 color2 btnwork">
+                                        <PictureAsPdfIcon className='me-1' />PDF</button>
+
                                 </div>
 
                             </div>
