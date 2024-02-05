@@ -153,134 +153,162 @@ function PrinterTableData() {
         };
     });
 
-    const handlePrintTable2 = (tableData) => {
+    const [imageshow, setimageshow] = useState()
+    const handlePrintTable2 = (filteredRows) => {
         const printWindow = window.open('', '_blank');
         const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
+        const logsss = 'https://i.ibb.co/bPNS38G/Printer.png'
+        const imageshowss = imageshow; // Replace with your second image URL
 
+        // Create promises to load both images
+        const loadImage1 = new Promise((resolve) => {
+            const img1 = new Image();
+            img1.src = logsss;
+            img1.onload = () => {
+                resolve(img1);
+            };
+        });
+
+        const loadImage2 = new Promise((resolve) => {
+            if (imageshowss) {
+                const img2 = new Image();
+                img2.src = imageshowss;
+                img2.onload = () => {
+                    resolve(img2);
+                };
+            } else {
+                const img2 = new Image();
+                img2.src = null;
+
+                resolve(img2); // Resolve with null if imageshowss is empty
+            }
+        });
+        Promise.all([loadImage1, loadImage2])
+            .then(([img1, img2]) => {
         const tableHtml = `
-        <p style='text-align: center;
-    background: #426d93;
+    <div>
+<img src=${img1.src} alt='logo' width='100%' " style='height: 100%; position: relative'/>
+<p style='position: absolute;
+    top: 15%;
+    left: 9%;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px;
-    color: white;
-    border-radius: 12px;'>WORK REQUEST</p>
-    
-
-       <div style='display: flex;
-    justify-content: space-between'>
-      <table style='display: flex; justify-content: end;'>
-    <tr>
-      <td>
-             <label
-                                                htmlFor="WorkOrderNumber"
-                                                style='font-weight: bold;'
-                                                className="lablesection color3 text-start mb-1" >
-                                         Name:
-                                            </label>
-      </td>
-      <td>
-         <p
-                                                types='text'
-                                                id='ordernumber'
-                                            > </p>
-      </td>
-      </tr>
-
-        <tr >
-      <td>
-             <label
-                                                htmlFor="WorkOrderNumber"
-                                                style='font-weight: bold;margin-top:5px'
-                                                className="lablesection color3 text-start mb-1 " >
-                                          MobileNumber:
-                                            </label>
-      </td>
-      <td>
-        <p
-                                                types='text'
-                                                id='ordernumber'
-                                                style='border-radius: 5px;border:none;'
-                                                
-                                            >
-                                           
-                                            </p>
-      </td>
-      </tr>
-
-      </table>
-
-
-
-      <table style='display: flex; justify-content: end;'>
-
-  <tr>
-      <td>
-             <label
-                                                htmlFor="WorkOrderNumber"
-                                                style='font-weight: bold;'
-                                                className="lablesection color3 text-start mb-1" >
-                                       Work Request Number:
-                                            </label>
-      </td>
-      <td>
-        <input
-                                                types='text'
-                                                id='ordernumber'
-                                                style='border-radius: 5px;border:1px solid #524d4dab;margin:auto'
-                                                
-                                                placeholder=${'Enter Work Order Number'}
-                                                readonly
-                                            ></input>
-      </td>
-      </tr>
-
-        <tr >
-      <td>
-             <label
-                                                htmlFor="WorkOrderNumber"
-                                                style='font-weight: bold;margin-top:5px'
-                                                className="lablesection color3 text-start mb-1 " >
-                                        Employee ID:
-                                            </label>
-      </td>
-      <td>
-        <input
-                                                types='text'
-                                                id='ordernumber'
-                                                style='border-radius: 5px;border:1px solid #524d4dab;margin:auto'
-                                                placeholder=${'Enter Work Order Number'}
-                                                readonly
-                                            ></input>
-      </td>
-      </tr>
-                <tr>
-                
-      <td>
-             <label
-                                                htmlFor="WorkOrderNumber"
-                                                style='font-weight: bold;margin-top:5px border: 1px solid black' >
-                                          Request Status:
-                                            </label>
-      </td>
-      <td>
-       
-      <input
-                                                types='text'
-                                                id='ordernumber'
-                                                style='border-radius: 5px;border:1px solid #524d4dab;'
-                                                placeholder='Enter  assignEmployee'
-                                                readonly
-                                            ></input>
-      </td>
-      </tr>
-
-      </table>
-
-      
-
-      </div>
-
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 15%;
+    right: 13%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 22%;
+    right: 25%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 24%;
+    left: 37%;
+     transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 35%;
+    right: 16%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 36%;
+    left: 32%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 43%;
+    left: 32%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 43%;
+    right: 15%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 51%;
+    right: 15%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 59%;
+    right: 13%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 66%;
+    right: 16%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 79%;
+    left: 51%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 51%;
+    right: 67%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 59%;
+    right: 67%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
+<p style='position: absolute;
+    top: 85%;
+    left: 8%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #140d0d;'>
+${selectedRow[0].category}
+</p>
 
     `;
 
@@ -294,8 +322,6 @@ function PrinterTableData() {
               body {
                 padding: 0;
                 margin: 0;
-              background: url("../../img/Printer.png") no-repeat center center fixed;
-              background-size: cover;
                }
               th {
                 ${headerStyle}
@@ -310,6 +336,7 @@ function PrinterTableData() {
         printWindow.document.write(printContent);
         printWindow.document.close();
         printWindow.print();
+            })
     };
 
     const printerfuunction = () => {
