@@ -11,9 +11,11 @@ import Catogrey from '../../Pages/Catogrey/Catogrey';
 import Createcatogrey from '../../Pages/Catogrey/Createcatogrey';
 import PrinterTableData from '../../Pages/PrinterTableData/PrinterTableData';
 import Createtableprint from '../../Pages/PrinterTableData/Createtableprint';
+import DataTableProvider from '../../Contexts/DataTableContext';
 
 function App() {
     return (
+        <DataTableProvider>
         <BrowserRouter>
 
             <Routes>
@@ -33,6 +35,7 @@ function App() {
                 <Route path='/Create/Createtableprint' element={<Createtableprint />} />
             </Routes>
         </BrowserRouter>
+        </DataTableProvider>
     );
 }
 

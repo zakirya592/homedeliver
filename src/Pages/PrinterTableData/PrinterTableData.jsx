@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Siderbar from '../../Component/Sidbar/Siderbar';
@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import MenuItem from '@mui/material/MenuItem';
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete'; 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
@@ -17,11 +17,17 @@ import PrintIcon from '@mui/icons-material/Print';
 import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
- import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { ShipmentRequestColumns } from '../../Datatablesource';
+import Datatable from '../../Component/DataTable/Datatable';
+import { DataTableContext } from '../../Contexts/DataTableContext';
 
 
 function PrinterTableData() {
     const [getdata, setgetdata] = useState([])
+    const { rowSelectionModel, setRowSelectionModel,
+        tableSelectedRows, setTableSelectedRows, tableSelectedExportRows, setTableSelectedExportRows } = useContext(DataTableContext);
+
     const navigate = useNavigate();
 
     const getapi = () => {
@@ -38,114 +44,6 @@ function PrinterTableData() {
         getapi()
     }, [])
 
-
-    const [selectedRowIds, setSelectedRowIds] = useState([]);
-    const [rowSelectionModel, setRowSelectionModel] = useState([]);
-    const [selectedRow, setSelectedRow] = useState([]);
-
-    const columns = [
-        { field: 'id', headerName: 'SEQ.', width: 120, headerClassName: 'header-red' },
-        { field: '_id', headerName: 'Card No', width: 280, headerClassName: 'header-red' },
-        { field: 'categoryId', headerName: 'Vehical Type', width: 220, headerClassName: 'header-red' },
-        { field: 'categoryThumbnail', headerName: 'Model Year', width: 230, headerClassName: 'header-red' },
-        { field: 'category', headerName: 'Engine HP', width: 250, headerClassName: 'header-red' },
-        // { field: '_id', headerName: 'Origin', width: 280, headerClassName: 'header-red' },
-        // { field: 'categoryId', headerName: 'Weight', width: 220, headerClassName: 'header-red' },
-        // { field: 'categoryThumbnail', headerName: 'Chassis No', width: 230, headerClassName: 'header-red' },
-        // { field: 'category', headerName: 'Importer Or Owner', width: 250, headerClassName: 'header-red' },
-        // { field: '_id', headerName: 'Color', width: 280, headerClassName: 'header-red' },
-        // { field: 'categoryId', headerName: 'Engine No', width: 220, headerClassName: 'header-red' },
-        { field: 'ACTIONS', headerName: 'ACTIONS', headerClassName: 'header-red', width: 200, renderCell: ActionButtons },
-    ];
-
-    function ActionButtons(params) {
-        const [anchorEl, setAnchorEl] = useState(null);
-
-        const handleMenuOpen = (event) => {
-            setAnchorEl(event.currentTarget);
-        };
-
-        const handleMenuClose = () => {
-            setAnchorEl(null);
-        };
-        const Deletedapi = (category) => {
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success mx-2',
-                    cancelButton: 'btn btn-danger mx-2',
-                    // actions: 'mx-3'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: `Do you want to deleting ${category} Catogrey!`,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    axios.delete(`/delete-catogray/${category}`)
-                        .then((res) => {
-                            getapi()
-                            swalWithBootstrapButtons.fire(
-                                'Deleted!',
-                                `Catogrey  ${category}  has been deleted.`,
-                                'success'
-                            )
-                        })
-                        .catch((err) => {
-                            // Handle delete error
-                            console.log('Error deleting', err);
-                            swalWithBootstrapButtons.fire(
-                                'Error!',
-                                `${err.response.data.message}`,
-                                'error'
-                            )
-                        });
-                }
-            })
-
-        };
-
-        return (
-            <div>
-                <Button className='actionBtn' onClick={handleMenuOpen} style={{ color: "black" }}>
-                    <span style={{ paddingRight: '10px' }}>Action</span>
-                    <ArrowDropDownIcon />
-                </Button>
-                <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}
-                >
-                    <MenuItem onClick={(() => {
-                        navigate(`/Preventive/view/${params.row.RequestNumber}`)
-                    })}>
-                        <span style={{ paddingRight: '18px' }} >View</span>
-                        <VisibilityIcon />
-                    </MenuItem>
-                    <MenuItem
-                        onClick={(() => {
-                            navigate(`/Preventive/update/${params.row.RequestNumber}`)
-                        })}>
-                        <span style={{ paddingRight: '3px' }}>Update</span>
-                        <EditIcon />
-                    </MenuItem>
-                    <MenuItem onClick={() => {
-                        Deletedapi(params.row.RequestNumber)
-                    }}>
-                        <span style={{ paddingRight: '10px' }}>Delete</span>
-                        <DeleteIcon />
-                    </MenuItem>
-                </Menu>
-            </div>
-        );
-    }
-
     const filteredRows = getdata && getdata.map((row, index) => {
         return {
             ...row,
@@ -158,7 +56,7 @@ function PrinterTableData() {
     });
 
     const [imageshow, setimageshow] = useState()
-    const handlePrintTable2 = (filteredRows) => {
+    const handlePrintTable2 = (tableSelectedRows) => {
         const printWindow = window.open('', '_blank');
         const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
         const logsss = 'https://i.ibb.co/bPNS38G/Printer.png'
@@ -189,7 +87,7 @@ function PrinterTableData() {
         });
         Promise.all([loadImage1, loadImage2])
             .then(([img1, img2]) => {
-        const tableHtml = `
+                const tableHtml = `
     <div>
 <img src=${img1.src} alt='logo' width='100%' " style='height: 100%; position: relative'/>
 <p style='position: absolute;
@@ -198,7 +96,7 @@ function PrinterTableData() {
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 15%;
@@ -206,7 +104,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 22%;
@@ -214,7 +112,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 24%;
@@ -223,7 +121,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 35%;
@@ -231,7 +129,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 36%;
@@ -239,7 +137,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 43%;
@@ -247,7 +145,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 43%;
@@ -255,7 +153,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 51%;
@@ -263,7 +161,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 59%;
@@ -271,7 +169,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 66%;
@@ -279,7 +177,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 79%;
@@ -287,7 +185,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 51%;
@@ -295,7 +193,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 59%;
@@ -303,7 +201,7 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 <p style='position: absolute;
     top: 85%;
@@ -311,13 +209,13 @@ ${selectedRow[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${selectedRow[0].category}
+${tableSelectedRows[0].category}
 </p>
 
     `;
 
 
-        const printContent = `
+                const printContent = `
       <html>
         <head>
           <title>DataGrid Table</title>
@@ -337,18 +235,27 @@ ${selectedRow[0].category}
       </html>
     `;
 
-        printWindow.document.write(printContent);
-        printWindow.document.close();
-        printWindow.print();
+                printWindow.document.write(printContent);
+                printWindow.document.close();
+                printWindow.print();
             })
     };
 
-    const printerfuunction = () => {
-        if (selectedRow.length === 1) {
-            console.log('Its ok', selectedRow[0].category);
+    const handleRowClickInParent = (item) => {
+        if (!item || item?.length === 0) {
+            // setTableSelectedRows(data)
+            setTableSelectedExportRows(item)
+            console.log(item);
+            return
+        }
+    }
+
+    const printerfuunction = (selectedRow) => {
+        console.log(tableSelectedRows);
+        if (tableSelectedRows.length === 1) {
             handlePrintTable2(filteredRows)
         }
-        else if (selectedRow.length > 1) {
+        else if (tableSelectedRows.length > 1) {
             Swal.fire(
                 'Error!',
                 'Select only one row to print the data',
@@ -368,10 +275,10 @@ ${selectedRow[0].category}
         const doc = new jsPDF();
 
         // Get the columns from the DataGrid component
-        const pdfColumns = columns.map((column) => column.headerName);
+        const pdfColumns = ShipmentRequestColumns.map((column) => column.headerName);
 
         // Get the rows from the DataGrid component
-        const pdfRows = filteredRows.map((row) => columns.map((column) => row[column.field]));
+        const pdfRows = getdata.map((row) => ShipmentRequestColumns.map((column) => row[column.field]));
 
         // Add the table to the PDF document
         doc.autoTable({
@@ -381,6 +288,10 @@ ${selectedRow[0].category}
 
         // Save the PDF file
         doc.save('table_data.pdf');
+    };
+
+    const handleView = (row) => {
+        console.log(row);
     };
 
     return (
@@ -408,26 +319,43 @@ ${selectedRow[0].category}
                                 </div>
 
                             </div>
-                            <DataGrid
-                                rows={filteredRows}
-                                columns={columns}
+                            <Datatable
+                                data={getdata}
+                                columnsName={ShipmentRequestColumns}
                                 checkboxSelection
                                 disableRowSelectionOnClick
                                 disableMultipleSelection
-                                // selectionModel={[selectedRow]} // Set the selectionModel with the selected row ID
-                                // onCellClick={handleCellClick}
-                                selectionModel={selectedRowIds}
-                                onSelectionModelChange={(selection) => setSelectedRowIds(selection)}
-                                rowSelectionModel={rowSelectionModel}
-                                onRowSelectionModelChange={(newRowSelectionModel) => {
-                                    setRowSelectionModel(newRowSelectionModel); // Set the state with selected row ids
-                                    const selectedRows = filteredRows.filter((row) => newRowSelectionModel.includes(row.id));
-                                    setSelectedRow(selectedRows); // Set the state with selected row data objects
-                                    console.log(selectedRows);
-                                }}
-                                components={{
-                                    Footer: () => null, // Render an empty Footer to hide pagination footer
-                                }}
+                                uniqueId="customerListId"
+                                handleRowClickInParent={handleRowClickInParent}
+                                dropDownOptions={[
+                                    {
+                                      label: 'View',
+                                      icon: (
+                                        <VisibilityIcon
+                                          fontSize="small"
+                                          color="action"
+                                          style={{ color: "rgb(37 99 235)" }}
+                                        />
+                                      ),
+                                      action: handleView,
+                                    },
+                                    ,
+                                    {
+                                        label: 'Update',
+                                        icon: <EditIcon fontSize="small" style={{ color: 'rgb(37 99 235)' }} />
+                                        ,
+                                        // action: handleDelete,
+                                    }
+                                    ,
+                                    {
+                                        label: 'Delete',
+                                        icon: <DeleteIcon fontSize="small" style={{ color: '#FF0032' }} />
+                                        ,
+                                        // action: handleDelete,
+                                    }
+                                   
+
+                                ]}
                             />
                         </div>
                     </Box>
