@@ -2,16 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Siderbar from '../../Component/Sidbar/Siderbar';
-import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete'; 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PrintIcon from '@mui/icons-material/Print';
 import Swal from "sweetalert2";
@@ -25,8 +20,7 @@ import { DataTableContext } from '../../Contexts/DataTableContext';
 
 function PrinterTableData() {
     const [getdata, setgetdata] = useState([])
-    const { rowSelectionModel, setRowSelectionModel,
-        tableSelectedRows, setTableSelectedRows, tableSelectedExportRows, setTableSelectedExportRows } = useContext(DataTableContext);
+    const {  tableSelectedRows, setTableSelectedExportRows } = useContext(DataTableContext);
 
     const navigate = useNavigate();
 
@@ -43,17 +37,6 @@ function PrinterTableData() {
     useEffect(() => {
         getapi()
     }, [])
-
-    const filteredRows = getdata && getdata.map((row, index) => {
-        return {
-            ...row,
-            id: index + 1,
-            _id: row._id,
-            categoryThumbnail: row.categoryThumbnail,
-            categoryId: row.categoryId,
-            category: row.category,
-        };
-    });
 
     const [imageshow, setimageshow] = useState()
     const handlePrintTable2 = (tableSelectedRows) => {
@@ -245,7 +228,6 @@ ${tableSelectedRows[0].category}
         if (!item || item?.length === 0) {
             // setTableSelectedRows(data)
             setTableSelectedExportRows(item)
-            console.log(item);
             return
         }
     }
@@ -253,7 +235,7 @@ ${tableSelectedRows[0].category}
     const printerfuunction = (selectedRow) => {
         console.log(tableSelectedRows);
         if (tableSelectedRows.length === 1) {
-            handlePrintTable2(filteredRows)
+            handlePrintTable2(tableSelectedRows)
         }
         else if (tableSelectedRows.length > 1) {
             Swal.fire(

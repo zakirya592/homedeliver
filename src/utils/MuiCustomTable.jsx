@@ -4,8 +4,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import { alpha, styled } from '@mui/material/styles';
 import { gridClasses } from '@mui/x-data-grid';
 
-const ODD_OPACITY = 0.2;
-const EVEN_OPACITY = 0.5;
 
 function customCheckbox(theme) {
     return {

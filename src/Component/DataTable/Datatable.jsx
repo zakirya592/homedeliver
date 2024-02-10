@@ -19,10 +19,9 @@ const Datatable = ({
     getFilteredOptions,
     showToolbarSlot,
 }) => {
-    const navigate = useNavigate();
     const [selectedRow, setSelectedRow] = useState([]);
     const [record, setRecord] = useState([]);
-    const { rowSelectionModel, setRowSelectionModel, tableSelectedRows, setTableSelectedRows, setTableSelectedExportRows } = useContext(DataTableContext);
+    const { rowSelectionModel, setRowSelectionModel, setTableSelectedRows, setTableSelectedExportRows } = useContext(DataTableContext);
 
     const handleRowClick = (item) => {
         if (item && item._id && item._id.includes(uniqueId)) {
@@ -48,7 +47,7 @@ const Datatable = ({
         {
             field: "action",
             headerName: 'Actions',
-            width: uniqueId === "customerListId" ? 200 : 150,
+            width: 200,
             renderCell: (params) => (
                 <ActionDropdown
                     row={params.row}
@@ -63,7 +62,7 @@ const Datatable = ({
         <>
             <div
                 className="datatable"
-                style = {{ overflowX: "auto" }}
+                style = {{width:'100%' ,overflowX: "auto" }}
             >
                 <MuiCustomTable
                     secondaryColor={secondaryColor ? secondaryColor : null}
@@ -78,15 +77,9 @@ const Datatable = ({
                     }}
                     slots={{ toolbar: showToolbarSlot !== false ? GridToolbar : undefined }}
                     rows={record}
-                    columns={
-                        actionColumnVisibility !== false
-                            ? [
-                                ...idColumn.slice(0, 1),
-                                ...actionColumn,
-                                ...idColumn.slice(1),
-                                ...columnsName,
-                            ]
-                            : [...idColumn, ...columnsName]
+                    columns={actionColumnVisibility !== false
+                        ? [...idColumn, ...columnsName, ...actionColumn]
+                        : [...idColumn, ...columnsName]
                     }
                     pageSize={30}
                     pageSizeOptions={[50, 100, { value: -1, label: "All" }]}

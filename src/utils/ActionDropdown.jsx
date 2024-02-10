@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Menu, MenuItem, ListItemIcon, Box } from '@mui/material';
+import { Button, Menu, MenuItem, ListItemIcon } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
@@ -22,7 +22,7 @@ const ActionDropdown = ({ row, dropDownOptions, getFilteredOptions }) => {
         <div>
             <Button
                 sx={{
-                    padding: '3px 10px',
+                    padding: '3px 10px'
                 }}
                 id="actions-menu-button"
                 aria-controls="actions-menu"
@@ -44,6 +44,10 @@ const ActionDropdown = ({ row, dropDownOptions, getFilteredOptions }) => {
                     onClose={handleClose}
                     MenuListProps={{
                         'aria-labelledby': 'actions-menu-button',
+                    }}
+                    sx={{
+                        padding: '3px 10px',
+                        marginLeft: '30px'
                     }}
                 >
                     {filteredOptions.map((option, index) => (

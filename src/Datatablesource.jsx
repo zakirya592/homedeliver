@@ -33,12 +33,6 @@ export const ShipmentRequestColumns = [
         field: "qrcode",
         headerName: 'QR Code',
         renderCell: (params) => <QRCodeCell value={params.row.barcode} />,
-        // width: 50, // Adjust this width as needed
-    },
-    {
-        field: 'category',
-        headerName: 'Engine HP',
-        // width: 250,
-        headerClassName: 'header-red'
+        width: 200, // Adjust this width as needed
     },
 ];
