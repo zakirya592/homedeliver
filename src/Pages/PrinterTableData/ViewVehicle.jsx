@@ -52,7 +52,7 @@ function ViewVehicle() {
         getapi()
     }, [])
     const QRCodeCell = props => {
-        const url = `https://wild-erin-panther-hose.cyclic.app/get-mirsal/${value.CardNo}`;
+        const url = `https://mirsal2newdubaitradeae.com/${value.CardNo}`;
         return <QRCode value={url} size={100} />;
     };
     

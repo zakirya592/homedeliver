@@ -6,6 +6,7 @@ import Createtableprint from '../../Pages/PrinterTableData/Createtableprint';
 import DataTableProvider from '../../Contexts/DataTableContext';
 import UpdataVehicle from '../../Pages/PrinterTableData/UpdataVehicle';
 import ViewVehicle from '../../Pages/PrinterTableData/ViewVehicle';
+import VehicleDetailsqrcode from '../../Pages/PrinterTableData/VehicleDetailsqrcode';
 
 function App() {
     return (
@@ -17,6 +18,8 @@ function App() {
                     <Route path='/Create/Createtableprint' element={<Createtableprint />} />
                     <Route path='/Update/VehicleCard/:userId' element={<UpdataVehicle />} />
                     <Route path='/view/VehicleCard/:userId' element={<ViewVehicle />} />
+                    
+                    <Route path='/VehicleDetailsqrcode' element={<VehicleDetailsqrcode />} />
 
             </Routes>
         </BrowserRouter>
