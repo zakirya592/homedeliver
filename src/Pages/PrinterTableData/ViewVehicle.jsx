@@ -24,7 +24,6 @@ function ViewVehicle() {
     const getapi = () => {
         axios.get(`/get-mirsal/${userId}`)
             .then((res) => {
-
                 setvalue((prevValue) => ({
                     ...prevValue,
                     CardNo: res.data.data.cardno || '',
@@ -53,9 +52,10 @@ function ViewVehicle() {
         getapi()
     }, [])
     const QRCodeCell = props => {
-        const url = `${value.CardNo}`;
+        const url = `https://wild-erin-panther-hose.cyclic.app/get-mirsal/${value.CardNo}`;
         return <QRCode value={url} size={100} />;
     };
+    
 
     return (
         <>
