@@ -17,24 +17,36 @@ function Createtableprint() {
         EngineHP: '', Origin: '', weight: '',
         chassisNo: '', importerorowner: '', color: '',
         Declaration: '', EngineNo: '', Comments: '',
-        Datetime: '',
+        Datetime: '', Load:''
     })
 
     const addtransaction = () => {
-        const formData = new FormData();
-        formData.append('CardNo', value.CardNo);
-        formData.append('VehicalType', value.VehicalType);
-        formData.append('Comments', value.Comments);
-        formData.append('ModelYear', value.ModelYear);
 
-        axios.post(`/add-items`, formData)
+        axios.post(`/add-mirsal`, {
+            "cardno": value.CardNo,
+            "vehicltype": value.VehicalType,
+            "modelyear": value.ModelYear,
+            "enginehp":value.EngineHP,
+            "origin": value.Origin,
+            "Date":value.Datetime,
+            "load": value.Load,
+            "weight": value.weight,
+            "importer_or_owner":value.importerorowner,
+            "chassisno": value.chassisNo,
+            "declearationno":value.Declaration,
+            "color": value.color,
+            "enginno": value.EngineNo,
+            "comments": value.Comments,
+            "qrcode": value.CardNo
+
+        })
             .then((res) => {
                 Swal.fire(
                     'Created!',
                     `PrinterTableData ${value.CardNo} has been created successfully`,
                     'success'
                 )
-                navigate('/PrinterTableData')
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err);
@@ -233,6 +245,24 @@ function Createtableprint() {
 
                                     </div>
                                 </div>
+
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                    <div className="mb-3 text-start">
+                                        <label htmlFor="Load" className="lablesection colorblack text-start mb-1">Load</label>
+
+                                        <input className="form-control inputsection py-2" id="Load" placeholder='Enter Load ' type='text'
+                                            value={value.Load}
+                                            onChange={e => {
+                                                setvalue(prevValue => ({
+                                                    ...prevValue,
+                                                    Load: e.target.value
+                                                }))
+                                            }}
+                                        />
+
+                                    </div>
+                                </div>
+
 
                                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">

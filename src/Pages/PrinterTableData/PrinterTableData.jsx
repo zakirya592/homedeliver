@@ -25,9 +25,10 @@ function PrinterTableData() {
     const navigate = useNavigate();
 
     const getapi = () => {
-        axios.get(`/get-catogray`)
+        axios.get(`/get-mirsal`)
             .then((res) => {
                 setgetdata(res.data.data)
+                console.log(res.data.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -79,7 +80,7 @@ function PrinterTableData() {
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].cardno}
 </p>
 <p style='position: absolute;
     top: 15%;
@@ -87,7 +88,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].Date}
 </p>
 <p style='position: absolute;
     top: 22%;
@@ -95,7 +96,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].vehicltype}
 </p>
 <p style='position: absolute;
     top: 24%;
@@ -104,7 +105,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].load}
 </p>
 <p style='position: absolute;
     top: 35%;
@@ -112,7 +113,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].modelyear}
 </p>
 <p style='position: absolute;
     top: 36%;
@@ -120,7 +121,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].enginehp}
 </p>
 <p style='position: absolute;
     top: 43%;
@@ -128,7 +129,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].weight}
 </p>
 <p style='position: absolute;
     top: 43%;
@@ -136,7 +137,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].origin}
 </p>
 <p style='position: absolute;
     top: 51%;
@@ -144,7 +145,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].chassisno}
 </p>
 <p style='position: absolute;
     top: 59%;
@@ -152,7 +153,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].color}
 </p>
 <p style='position: absolute;
     top: 66%;
@@ -160,7 +161,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].enginno}
 </p>
 <p style='position: absolute;
     top: 79%;
@@ -168,7 +169,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].comments}
 </p>
 <p style='position: absolute;
     top: 51%;
@@ -176,7 +177,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].declearationno}
 </p>
 <p style='position: absolute;
     top: 59%;
@@ -184,7 +185,7 @@ ${tableSelectedRows[0].category}
     font-size: 16px;
     font-weight: bold;
     color: #140d0d;'>
-${tableSelectedRows[0].category}
+${tableSelectedRows[0].importer_or_owner} comment
 </p>
 <p style='position: absolute;
     top: 85%;

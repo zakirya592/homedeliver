@@ -12,20 +12,57 @@ export const ShipmentRequestColumns = [
         width: 120,
     },
     {
-        field: '_id',
+        field: 'cardno',
         headerName: 'Card No',
         width: 280,
         headerClassName: 'header-red'
     },
     {
-        field: 'categoryId',
+        field: 'vehicltype',
         headerName: 'Vehical Type',
         width: 220,
         headerClassName: 'header-red'
     },
     {
-        field: 'categoryThumbnail',
+        field: 'modelyear',
         headerName: 'Model Year',
+        width: 250,
+        headerClassName: 'header-red'
+    }
+    ,
+    {
+        field: 'chassisno',
+        headerName: 'Chassis No',
+        width: 280,
+        headerClassName: 'header-red'
+    },
+    {
+        field: 'enginno',
+        headerName: 'Engine No',
+        width: 220,
+        headerClassName: 'header-red'
+    },
+    {
+        field: 'color',
+        headerName: 'Color',
+        width: 250,
+        headerClassName: 'header-red'
+    },
+    {
+        field: 'origin',
+        headerName: 'Origin',
+        width: 250,
+        headerClassName: 'header-red'
+    },
+    {
+        field: 'weight',
+        headerName: 'Weight',
+        width: 250,
+        headerClassName: 'header-red'
+    },
+    {
+        field: 'Date',
+        headerName: 'Date',
         width: 250,
         headerClassName: 'header-red'
     },
