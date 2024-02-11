@@ -53,3 +53,92 @@ code {
 .bordercolor {
   border: 1px solid #000;
 }
+.backgroundopen {
+  background-color: rgb(196, 206, 203);
+}
+
+.cancelledgrey {
+  background-color: gray;
+}
+
+.Inactiveuser {
+  background-color: rgb(170, 112, 112);
+}
+
+.Paddingbackground {
+  background-color: rgb(192, 192, 125);
+}
+.css-gl260s-MuiDataGrid-columnHeadersInner {
+  background: rgb(231 153 8) !important;
+  color: white !important;
+}
+
+.header-red {
+  background-color: rgb(231 153 8);
+  color: white !important;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.printerpic {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.printerPic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 209px;
+  background: #F5F5F5;
+  border: 1px solid #000000;
+  border-radius: 8px;
+}
+
+.savebtn {
+  background: rgb(231 153 8);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+.savebtn:hover {
+  background-color: darkkhaki;
+}
+
+.lablesection {
+  /* font-family: 'Inter'; */
+  font-family: 'Roboto', sans-serif !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+/* Add a default style */
+.form-control {
+  border: 1px solid #ced4da;
+}
+
+/* Add a style for when the input is focused */
+.form-control:focus {
+  border: 1px solid rgb(231 153 8);
+  box-shadow: none;
+}
+
+.btnwork {
+  border: 1px solid rgb(231 153 8);
+  background-color: transparent;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.btnwork:hover {
+  background-color: rgb(231 153 8);
+  color: rgb(255, 255, 255);
+}

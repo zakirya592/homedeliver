@@ -79,7 +79,7 @@ function Siderbar() {
                                     </>
                                 ) : (
                                     <>
-                                        {navigate("/User")}
+                                        {navigate("/")}
                                         {sessionStorage.setItem("id", "User")}
                                     </>
                                 );
@@ -170,7 +170,7 @@ function Siderbar() {
                             onClick={() => {
                                 text === "PrinterTableData" ? (
                                     <>
-                                        {navigate("/PrinterTableData")}
+                                        {navigate("/")}
                                         {sessionStorage.setItem("id", "PrinterTableData")}
                                     </>
                                 ) : (
