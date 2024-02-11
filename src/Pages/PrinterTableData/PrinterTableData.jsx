@@ -25,13 +25,10 @@ function PrinterTableData() {
     const navigate = useNavigate()
 
     const getapi = () => {
-        axios
-            .get(`/get-mirsal`)
-            .then(res => {
+        axios.get(`/get-mirsal`).then(res => {
                 setgetdata(res.data.data)
                 console.log(res.data.data)
-            })
-            .catch(err => {
+            }).catch(err => {
                 console.log(err)
             })
     }
@@ -42,7 +39,7 @@ function PrinterTableData() {
 
     const handlePrintTable2 = tableSelectedRows => {
         const printWindow = window.open('', '_blank')
-        const headerStyle ='font-weight: bold; background:#3d41cf, color:white ;padding: 5px'
+        const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px'
         const logsss = 'https://i.ibb.co/bPNS38G/Printer.png'
         const imageshowss = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(tableSelectedRows[0].cardno)}&size=80x80` // Replace with your second image URL
         // Create promises to load both images
