@@ -62,7 +62,7 @@ const Datatable = ({
         <>
             <div
                 className="datatable"
-                style = {{width:'100%' ,overflowX: "auto" }}
+                style = {{width:'100%' ,overflowX: "auto" ,height:'500px'}}
             >
                 <MuiCustomTable
                     secondaryColor={secondaryColor ? secondaryColor : null}

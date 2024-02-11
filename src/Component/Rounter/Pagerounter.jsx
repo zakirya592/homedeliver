@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrinterTableData from '../../Pages/PrinterTableData/PrinterTableData';
 import Createtableprint from '../../Pages/PrinterTableData/Createtableprint';
 import DataTableProvider from '../../Contexts/DataTableContext';
+import UpdataVehicle from '../../Pages/PrinterTableData/UpdataVehicle';
+import ViewVehicle from '../../Pages/PrinterTableData/ViewVehicle';
 
 function App() {
     return (
@@ -12,7 +14,10 @@ function App() {
 
             <Routes>
                 <Route path='/' element={<PrinterTableData />} />
-                <Route path='/Create/Createtableprint' element={<Createtableprint />} />
+                    <Route path='/Create/Createtableprint' element={<Createtableprint />} />
+                    <Route path='/Update/VehicleCard/:userId' element={<UpdataVehicle />} />
+                    <Route path='/view/VehicleCard/:userId' element={<ViewVehicle />} />
+
             </Routes>
         </BrowserRouter>
         </DataTableProvider>

@@ -1,16 +1,12 @@
 
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
-    const url = `https://gs1ksa.org/?gtin=${props.value}`;
+    const url = `${props.value}`;
     return <QRCode value={url} size={40} />;
 };
 
 export const ShipmentRequestColumns = [
-    {
-        field: 'id',
-        headerName: 'SEQ',
-        width: 120,
-    },
+ 
     {
         field: 'cardno',
         headerName: 'Card No',
@@ -69,7 +65,7 @@ export const ShipmentRequestColumns = [
      {
         field: "qrcode",
         headerName: 'QR Code',
-        renderCell: (params) => <QRCodeCell value={params.row.barcode} />,
+        renderCell: (params) => <QRCodeCell value={params.row.qrcode} />,
         width: 200, // Adjust this width as needed
     },
 ];

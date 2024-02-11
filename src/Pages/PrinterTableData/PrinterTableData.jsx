@@ -20,8 +20,8 @@ import { DataTableContext } from '../../Contexts/DataTableContext';
 
 function PrinterTableData() {
     const [getdata, setgetdata] = useState([])
-    const {  tableSelectedRows, setTableSelectedExportRows } = useContext(DataTableContext);
-
+    const { tableSelectedRows, setTableSelectedExportRows } = useContext(DataTableContext);
+    const [imageshow, setimageshow] = useState()
     const navigate = useNavigate();
 
     const getapi = () => {
@@ -39,7 +39,6 @@ function PrinterTableData() {
         getapi()
     }, [])
 
-    const [imageshow, setimageshow] = useState()
     const handlePrintTable2 = (tableSelectedRows) => {
         const printWindow = window.open('', '_blank');
         const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
@@ -274,7 +273,52 @@ ${tableSelectedRows[0].category}
     };
 
     const handleView = (row) => {
-        console.log(row);
+        navigate(`/view/VehicleCard/${row.cardno}`) 
+    };
+
+    const handleUpdate = (row) => {
+        navigate(`/Update/VehicleCard/${row.cardno}`)
+    };
+
+    const handleDelete = (row) => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-2',
+                cancelButton: 'btn btn-danger mx-2',
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: `You want to delete this ${row.cardno} Card Number`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/delete-mirsal/${row.cardno}`)
+                    .then((res) => {
+                        getapi()
+                        swalWithBootstrapButtons.fire(
+                            'Deleted!',
+                            `Card Number ${row.cardno} has been deleted.`,
+                            'success'
+                        )
+                        getapi()
+                    })
+                    .catch((err) => {
+                        console.log('Error deleting', err);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                        })
+                    });
+            }
+        })
     };
 
     return (
@@ -288,7 +332,7 @@ ${tableSelectedRows[0].category}
                         </AppBar>
                         <div style={{ height: 450, width: '83%', background: `url("../../img/Printer.png")`, backgroundSize: 'cover' }}>
                             <div className="d-flex justify-content-between my-4">
-                                <h5 className='text-start my-auto'>PrinterTableData List</h5>
+                                <h5 className='text-start my-auto'>vehicle List</h5>
                                 <div>
                                     <button type="button" className="rounded py-1 px-2 mx-1 color2 btnwork" onClick={(() => {
                                         navigate('/Create/Createtableprint')
@@ -327,14 +371,14 @@ ${tableSelectedRows[0].category}
                                         label: 'Update',
                                         icon: <EditIcon fontSize="small" style={{ color: 'rgb(37 99 235)' }} />
                                         ,
-                                        // action: handleDelete,
+                                        action: handleUpdate,
                                     }
                                     ,
                                     {
                                         label: 'Delete',
                                         icon: <DeleteIcon fontSize="small" style={{ color: '#FF0032' }} />
                                         ,
-                                        // action: handleDelete,
+                                        action: handleDelete,
                                     }
                                    
 
