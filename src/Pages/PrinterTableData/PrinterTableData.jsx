@@ -260,17 +260,31 @@ ${tableSelectedRows[0].category}
         const pdfColumns = ShipmentRequestColumns.map((column) => column.headerName);
 
         // Get the rows from the DataGrid component
-        const pdfRows = getdata.map((row) => ShipmentRequestColumns.map((column) => row[column.field]));
+        const pdfRows = tableSelectedRows.flatMap((row) =>
+            ShipmentRequestColumns.map((column) => [
+                column.headerName,
+                row[column.field],
+            ])
+        );
 
-        // Add the table to the PDF document
+        const columnStyles = {
+            0: { // First column
+                width: '100%', // Set width to 100%
+            },
+            1: { // First column
+                width: '12%', // Set width to 100%
+            },
+        };
         doc.autoTable({
-            head: [pdfColumns],
             body: pdfRows,
+            columnStyles: columnStyles,
         });
 
         // Save the PDF file
         doc.save('table_data.pdf');
     };
+
+
 
     const handleView = (row) => {
         navigate(`/view/VehicleCard/${row.cardno}`) 
