@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const VehicleDetailsqrcode = () => {
+  let { cardNo } = useParams();
+      const [value, setvalue] = useState({
+        image: '',
+        CardNo: '', VehicalType: '', ModelYear: '',
+        EngineHP: '', Origin: '', weight: '',
+        chassisNo: '', importerorowner: '', color: '',
+        Declaration: '', EngineNo: '', Comments: '',
+        Datetime: '', Load: '', qrcode: ""
+    })
+        const getapi = () => {
+        axios.get(`/get-mirsal/${cardNo}`)
+            .then((res) => {
+              console.log(res);
+                setvalue((prevValue) => ({
+                    ...prevValue,
+                    CardNo: res.data.data.cardno || '',
+                    VehicalType: res.data.data.vehicltype || '',
+                    ModelYear: res.data.data.modelyear || '',
+                    EngineHP: res.data.data.enginehp || '',
+                    weight: res.data.data.weight || '',
+                    chassisNo: res.data.data.chassisno || '',
+                    importerorowner: res.data.data.importer_or_owner || '',
+                    color: res.data.data.color || '',
+                    Declaration: res.data.data.declearationno || '',
+                    EngineNo: res.data.data.enginno || '',
+                    Comments: res.data.data.comments || '',
+                    Datetime: res.data.data.Date || '',
+                    Load: res.data.data.load || '',
+                    Origin: res.data.data.origin || '',
+                }));
+
+            }).catch((err) => {
+                console.log(err);
+            });
+    }
+
+    useEffect(() => {
+        getapi()
+    }, [])
   return (
     <div className="container text-start">
       <div className="border border-secondary mt-4 rounded bg-light">
@@ -14,7 +55,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">VCC No :</p>
-              <p className="col-6">12312312</p>
+              <p className="col-6">{value.CardNo}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -26,37 +67,37 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">VCC Generation Date:</p>
-              <p className="col-6">12/1230/123</p>
+              <p className="col-6">{value.Datetime}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Chassis No:</p>
-              <p className="col-6">457869nbvcx</p>
+              <p className="col-6">{value.chassisNo}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Engine Number:</p>
-              <p className="col-6">Cancelled</p>
+              <p className="col-6">{value.EngineNo}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Years of Build:</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.ModelYear}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Vehicle Drive:</p>
-              <p className="col-6">LLeft hand</p>
+              <p className="col-6">Left hand</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Country of Origin:</p>
-              <p className="col-6">Pakistan</p>
+              <p className="col-6">{value.Origin}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -80,7 +121,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Vehicle Model :</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.ModelYear}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -92,13 +133,13 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Vehicle Type :</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.VehicalType}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Vehicle Color :</p>
-              <p className="col-6">Cancelled</p>
+              <p className="col-6">{value.color}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -116,7 +157,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Declaration Date :</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.Declaration}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -128,7 +169,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Owner Name :</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.importerorowner}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
