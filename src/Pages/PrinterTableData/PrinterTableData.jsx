@@ -327,7 +327,7 @@ ${tableSelectedRows[0].importer_or_owner} comment
             <div className='bg'>
                 <div className='mt-3 p-3'>
                     <Box sx={{ display: 'flex' }}>
-                        <Siderbar />
+                        {/* <Siderbar /> */}
                         <AppBar
                             className='fortrans locationfortrans'
                             position='fixed'
@@ -335,13 +335,13 @@ ${tableSelectedRows[0].importer_or_owner} comment
                         <div
                             style={{
                                 height: 450,
-                                width: '83%',
+                                width: '100%',
                                 background: `url("../../img/Printer.png")`,
                                 backgroundSize: 'cover'
                             }}
                         >
                             <div className='d-flex justify-content-between my-4'>
-                                <h5 className='text-start my-auto'>vehicle wertyuiopList</h5>
+                                <h5 className='text-start my-auto'>vehicle List</h5>
                                 <div>
                                     <button
                                         type='button'
