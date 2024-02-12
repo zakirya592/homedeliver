@@ -101,7 +101,7 @@ function UpdataVehicle() {
         <>
             <div className="bg mt-3">
                 <Box sx={{ display: 'flex' }}>
-                    <Siderbar />
+                    {/* <Siderbar /> */}
                     <AppBar className="fortrans locationfortrans" position="fixed">
 
                     </AppBar>
