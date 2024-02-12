@@ -17,11 +17,10 @@ function Createtableprint() {
         EngineHP: '', Origin: '', weight: '',
         chassisNo: '', importerorowner: '', color: '',
         Declaration: '', EngineNo: '', Comments: '',
-        Datetime: '', Load:''
+        Datetime: new Date().toISOString().split('T')[0], Load:''
     })
 
     const addtransaction = () => {
-
         axios.post(`/add-mirsal`, {
             "cardno": value.CardNo,
             "vehicltype": value.VehicalType,
@@ -70,7 +69,7 @@ function Createtableprint() {
                     <div className="w-100 p-4" >
 
                         <center>
-                            <h6 className='fw-bolder fs-3 workitoppro mb-4'>Create</h6>
+                            <h6 className='fw-bolder fs-3 workitoppro mb-4 text-start mx-3'>Create</h6>
                         </center>
                         <div className='mt-3'>
 
@@ -323,8 +322,8 @@ function Createtableprint() {
 
                         </div>
                         <div className="d-flex justify-content-between mt-5">
-                            <button type="button" class="border-0 px-3  savebtn py-2" onClick={() => navigate('/PrinterTableData')}> <ArrowCircleLeftOutlinedIcon className='me-2' />Back</button>
-                            <button type="button" class="border-0 px-3 mx-2  savebtn py-2 " onClick={addtransaction}><SaveIcon className='me-2' />SAVE</button>
+                            <button type="button" className="border-0 px-3  savebtn py-2" onClick={() => navigate('/PrinterTableData')}> <ArrowCircleLeftOutlinedIcon className='me-2' />Back</button>
+                            <button type="button" className="border-0 px-3 mx-2  savebtn py-2 " onClick={addtransaction}><SaveIcon className='me-2' />SAVE</button>
 
                         </div>
                     </div>

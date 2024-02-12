@@ -19,7 +19,7 @@ function App() {
                     <Route path='/Update/VehicleCard/:userId' element={<UpdataVehicle />} />
                     <Route path='/view/VehicleCard/:userId' element={<ViewVehicle />} />
                     
-                    <Route path='/VehicleDetailsqrcode' element={<VehicleDetailsqrcode />} />
+                    <Route path='/VehicleDetail/:cardNo' element={<VehicleDetailsqrcode />} />
 
             </Routes>
         </BrowserRouter>

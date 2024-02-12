@@ -2,7 +2,6 @@
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
     const url = `${props.cardno}`;
-    console.log(url);
     return <QRCode value={url} size={40} />;
 };
 
