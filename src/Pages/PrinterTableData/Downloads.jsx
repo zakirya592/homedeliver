@@ -4,7 +4,16 @@ import jsPDF from "jspdf";
 
 const handlePrintTable2 = (tableSelectedRows) =>
 {
-  const doc = new jsPDF();
+  const pdfWidth = 8.26; // in inches
+  const pdfHeight = 6.04; // in inches
+
+  // Create a new jsPDF instance with custom dimensions
+  const doc = new jsPDF({
+    orientation: 'landscape',
+    unit: 'in',
+    format: [pdfWidth, pdfHeight]
+  });
+  
   const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
   const logsss = 'https://i.ibb.co/bPNS38G/Printer.png';
   const imageshowss = 0;
@@ -41,19 +50,6 @@ const handlePrintTable2 = (tableSelectedRows) =>
 
     const tableHtml = `
       <div>
-        <p style='position: absolute;
-          top: 15%;
-          left: 9%;
-          font-size: 10px;
-          color: #140d0d;'>
-          111111111111111
-        </p>
-        <p style='position: absolute;
-          font-size: 16px;
-          font-weight: bold;
-          color: red'>
-          2222222222222222222222 comment
-        </p>
       </div>
     `;
 
