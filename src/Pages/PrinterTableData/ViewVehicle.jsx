@@ -52,11 +52,10 @@ function ViewVehicle() {
         getapi()
     }, [])
     const QRCodeCell = props => {
-        const url = `https://mirsal2newdubaitradeae.com`;
+        const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.value}`;
         return <QRCode value={url} size={100} />;
     };
     
-
     return (
       <>
         <div className="bg mt-3">

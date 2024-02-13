@@ -53,6 +53,11 @@ const handlePrintTable2 = (tableSelectedRows) =>
         <p style="font-size: 0.2px;  margin-top:0.2px ; margin-left:0.5px; position: absolute">EIssa</p>
           <p style="font-size: 0.2px;  margin-top:0.2px ; margin-left:6.4px; position: absolute">EIssa2</p>
           
+
+            <img style="height: 0.8px; width: 0.8px; margin-top: 5px; margin-left: 0.65px; position: absolute;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJEAAACRCAAAAADmswX/AAABHElEQVR42u3aSRKDMAwEQP7/6eQD2IzwEki1rynkvqi0OMfnaecgIiIiIiIiIiIi+k/RcX2an41HISJaKmonw/XF9ShERFtF/Zv6t6dRiIieK2p+S0T0VlGaiUREDxKl3mbjtLljIyKaMdOWMmzLlE1ENGMP2c+mX2xGiYhu9UdnWdKvImmGERFtEDWjjmziJ1URIqJBUT9qqT8qzQVERGtFAeHs11J2EhFtFQUBg716sIQnItoqqs+0qWi88yciui+qbxDTXmjo7YiIaIaolGGlButuXSMimiYqvfeXco2I6A2iYKZNH5qIiB4kCrxrXkWJiBb0R2lRKZUSIqK1ovQ/WqX1zOptDRHRjD3kkkNERERERERERET0ftEXXunWZ07H080AAAAASUVORK5CYII=" alt="">
+
+
+            
       </div>
     `;
 

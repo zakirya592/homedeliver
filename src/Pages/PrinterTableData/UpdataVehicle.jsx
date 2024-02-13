@@ -53,10 +53,10 @@ function UpdataVehicle() {
         useEffect(() => {
             getapi()
         }, [])
-    const QRCodeCell = props => {
-        const url = `${value.CardNo}`;
-        return <QRCode value={url} size={100} />;
-    };
+   const QRCodeCell = (props) => {
+     const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${value.CardNo}`;
+     return <QRCode value={url} size={100} />;
+   };
         
 
     const addtransaction = () => {

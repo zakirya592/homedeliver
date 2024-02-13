@@ -16,6 +16,7 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf'
 import { ShipmentRequestColumns } from '../../Datatablesource'
 import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
+import QRCode from "qrcode.react";
 
 function PrinterTableData()
 {
@@ -90,7 +91,10 @@ const handlePrintTable2 = (tableSelectedRows) => {
       resolve(null);
     }
   });
-
+ const QRCodeCell = (props) => {
+   const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${tableSelectedRows[0].cardno}`;
+   return <QRCode value={url} size={100} />;
+ };
   Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
     doc.addImage(
       img1,
@@ -118,6 +122,7 @@ const handlePrintTable2 = (tableSelectedRows) => {
            <p style="font-size: 0.15px;  margin-top:2.3px ; margin-left:1px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
            <p style="font-size: 0.15px;  margin-top:2.8px ; margin-left:1px; position: absolute ">${tableSelectedRows[0].declearationno}</p>
         <img style="height: 0.8px; width: 0.8px; margin-top: 5px; margin-left: 0.65px; position: absolute;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJEAAACRCAAAAADmswX/AAABHElEQVR42u3aSRKDMAwEQP7/6eQD2IzwEki1rynkvqi0OMfnaecgIiIiIiIiIiIi+k/RcX2an41HISJaKmonw/XF9ShERFtF/Zv6t6dRiIieK2p+S0T0VlGaiUREDxKl3mbjtLljIyKaMdOWMmzLlE1ENGMP2c+mX2xGiYhu9UdnWdKvImmGERFtEDWjjmziJ1URIqJBUT9qqT8qzQVERGtFAeHs11J2EhFtFQUBg716sIQnItoqqs+0qWi88yciui+qbxDTXmjo7YiIaIaolGGlButuXSMimiYqvfeXco2I6A2iYKZNH5qIiB4kCrxrXkWJiBb0R2lRKZUSIqK1ovQ/WqX1zOptDRHRjD3kkkNERERERERERET0ftEXXunWZ07H080AAAAASUVORK5CYII=" alt="">
+
       </div>
     `;
 
@@ -352,14 +357,14 @@ const handlePrintTable2 = (tableSelectedRows) => {
                                 backgroundSize: "cover",
                             }}
                         >
-                            <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
-                                <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
+                            <div className=" justify-content-between my-4 my-sm-2 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
+                                <h5 className="text-lg-start my-auto text-sm-center d-none d-md-flex">
                                     vehicle List
                                 </h5>
-                                <div className=" d-flex justify-content-md-start justify-content-sm-between">
+                                <div className="d-flex justify-content-md-start justify-content-sm-between">
                                     <button
                                         type="button"
-                                        className="rounded py-1 px-2  mx-1 color2 btnwork"
+                                        className="rounded py-1 px-2 mx-1 color2 btnwork"
                                         onClick={() =>
                                         {
                                             navigate("/Create/Createtableprint");
@@ -376,7 +381,7 @@ const handlePrintTable2 = (tableSelectedRows) => {
                                     </button> */}
                                     <button
                                         onClick={printerfuunction}
-                                        className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
+                                        className="rounded py-1 px-2 mx-lg-1 color2 btnwork"
                                     >
                                         <PictureAsPdfIcon className="me-1" />
                                         PDF
