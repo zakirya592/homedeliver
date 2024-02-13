@@ -228,55 +228,114 @@ ${tableSelectedRows[0].importer_or_owner} comment
 
 
 
-    const handleDownloadPDF = (tableSelectedRows) => {
-        const doc = new jsPDF({
-            orientation: "landscape",
-            unit: "in",
-            format: [6.04, 8.26],
-        });
+const handleDownloadPDF = (tableSelectedRows) => {
+  const doc = new jsPDF({
+    orientation: "landscape",
+    unit: "in",
+    format: [6.04, 8.26],
+  });
 
-        // Add background image
-        const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
-        doc.addImage(backgroundImage, 0, 0, 8.26, 6.04);
-        const rowData = [
-            [tableSelectedRows[0].cardno, tableSelectedRows[0].Date],
-            //    [tableSelectedRows[0].vehicltype, tableSelectedRows[0].load],
-            [tableSelectedRows[0].load, tableSelectedRows[0].vehicltype],
-            [tableSelectedRows[0].modelyear, tableSelectedRows[0].enginehp],
-            [tableSelectedRows[0].weight],
-            [tableSelectedRows[0].origin],
-            [tableSelectedRows[0].chassisno],
-            [tableSelectedRows[0].color],
-            [tableSelectedRows[0].enginno],
-            [tableSelectedRows[0].declearationno],
-            [tableSelectedRows[0].importer_or_owner],
-            [tableSelectedRows[0].comments],
-            [tableSelectedRows[0].cardno],
-        ];
-        doc.autoTable({
-          body: rowData,
-          // columnStyles: columnStyles,
-          // styles: styles,
+  // Add background image
+  const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
+  doc.addImage(backgroundImage, 0, 0, 8.26, 6.04);
 
-          startY: 1,
-          margin: { top: 15 },
-          theme: "plain",
-          styles: {
-            halign: "left",
-            valign: "center",
-            fontSize: 11,
-            fillColor: null,
-            textColor: null,
-            background: null,
-            margin: "60",
-            tableWidth: 180,
-          },
-          useCss: true,
-        });
+  const htmlss = [
+    [
+      tableSelectedRows[0].load,
+      "       ",
+      "       ",
+      "       ",
+      "       ",
+      "       ",
+      tableSelectedRows[0].Date,
+    ],
+    { height: 20 },
+    [
+      "  ",
+      "  ",
+      tableSelectedRows[0].load,
+      "   ",
+      "   ",
+      "   ",
+      tableSelectedRows[0].vehicltype,
+      "",
+    ],
+    [],
+    [
+      "  ",
+      "  ",
+      tableSelectedRows[0].enginehp,
+      "   ",
+      "   ",
+      "   ",
+      tableSelectedRows[0].modelyear,
+      "",
+    ],
+    [],
+    [
+      "  ",
+      "  ",
+      tableSelectedRows[0].weight,
+      "   ",
+      "   ",
+      "   ",
+      tableSelectedRows[0].origin,
+      "",
+    ],
+    [
+      " ",
+      tableSelectedRows[0].importer_or_owner,
+      "   ",
+      "   ",
+      "   ",
+      tableSelectedRows[0].chassisno,
+      "",
+    ],
+    [],
+    [
+      "  ",
+      tableSelectedRows[0].declearationno,
+      "   ",
+      "   ",
+      "   ",
+      "   ",
+      tableSelectedRows[0].color,
+      "",
+    ],
+    ["  ", "   ", "   ", "   ", "   ", "   ", tableSelectedRows[0].enginno, ""],
+    [],
+    [],
+  ];
 
-        // Save the PDF file
-        doc.save("table_data.pdf");
-    };
+  doc.autoTable({
+    body: htmlss,
+    startY: 1,
+    margin: { top: 12 },
+    theme: "plain",
+    styles: {
+      halign: "left",
+      valign: "middle",
+      fontSize: 11,
+      fillColor: null,
+      textColor: null,
+      background: null,
+      tableWidth: "auto",
+    },
+    didParseCell: function (data) {
+      if (data.row.index === 2) {
+        // Adjust margin-top for the third row
+        data.cell.styles.cellPadding = { top: -50 }; // Adjust margin-top as needed
+      }
+    },
+    useCss: true,
+    useHtml: true,
+  });
+
+  // Save the PDF file
+  doc.save("table_data.pdf");
+};
+
+
 
 
 
@@ -344,101 +403,101 @@ ${tableSelectedRows[0].importer_or_owner} comment
     }
 
     return (
-      <>
-        <div className="bg">
-          <div className="mt-3 p-3">
-            <Box sx={{ display: "flex" }}>
-              {/* <Siderbar /> */}
-              <AppBar
-                className="fortrans locationfortrans"
-                position="fixed"
-              ></AppBar>
-              <div
-                style={{
-                  height: 450,
-                  width: "100%",
-                  background: `url("../../img/Printer.png")`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
-                  <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
-                    vehicle List
-                  </h5>
-                  <div className=" d-flex justify-content-md-start justify-content-sm-between">
-                    <button
-                      type="button"
-                      className="rounded py-1 px-2  mx-1 color2 btnwork"
-                      onClick={() => {
-                        navigate("/Create/Createtableprint");
-                      }}
-                    >
-                      <AddCircleOutlineIcon className="me-1" />
-                      Create
-                    </button>
-                    {/* <button
+        <>
+            <div className="bg">
+                <div className="mt-3 p-3">
+                    <Box sx={{ display: "flex" }}>
+                        {/* <Siderbar /> */}
+                        <AppBar
+                            className="fortrans locationfortrans"
+                            position="fixed"
+                        ></AppBar>
+                        <div
+                            style={{
+                                height: 450,
+                                width: "100%",
+                                background: `url("../../img/Printer.png")`,
+                                backgroundSize: "cover",
+                            }}
+                        >
+                            <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
+                                <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
+                                    vehicle List
+                                </h5>
+                                <div className=" d-flex justify-content-md-start justify-content-sm-between">
+                                    <button
+                                        type="button"
+                                        className="rounded py-1 px-2  mx-1 color2 btnwork"
+                                        onClick={() => {
+                                            navigate("/Create/Createtableprint");
+                                        }}
+                                    >
+                                        <AddCircleOutlineIcon className="me-1" />
+                                        Create
+                                    </button>
+                                    {/* <button
                                         onClick={printerfuunction}
                                         className='rounded py-1 px-2 mx-1 color2 btnwork'
                                     >
                                         <PrintIcon className='me-1' /> Print
                                     </button> */}
-                    <button
-                      onClick={printerfuunction}
-                      className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
-                    >
-                      <PictureAsPdfIcon className="me-1" />
-                      PDF
-                    </button>
-                  </div>
+                                    <button
+                                        onClick={printerfuunction}
+                                        className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
+                                    >
+                                        <PictureAsPdfIcon className="me-1" />
+                                        PDF
+                                    </button>
+                                </div>
+                            </div>
+                            <Datatable
+                                data={getdata}
+                                columnsName={ShipmentRequestColumns}
+                                checkboxSelection
+                                disableRowSelectionOnClick
+                                disableMultipleSelection
+                                uniqueId="customerListId"
+                                handleRowClickInParent={handleRowClickInParent}
+                                dropDownOptions={[
+                                    {
+                                        label: "View",
+                                        icon: (
+                                            <VisibilityIcon
+                                                fontSize="small"
+                                                color="action"
+                                                style={{ color: "rgb(37 99 235)" }}
+                                            />
+                                        ),
+                                        action: handleView,
+                                    },
+                                    ,
+                                    {
+                                        label: "Update",
+                                        icon: (
+                                            <EditIcon
+                                                fontSize="small"
+                                                style={{ color: "rgb(37 99 235)" }}
+                                            />
+                                        ),
+                                        action: handleUpdate,
+                                    },
+                                    {
+                                        label: "Delete",
+                                        icon: (
+                                            <DeleteIcon
+                                                fontSize="small"
+                                                style={{ color: "#FF0032" }}
+                                            />
+                                        ),
+                                        action: handleDelete,
+                                    },
+                                ]}
+                            />
+                        </div>
+                    </Box>
                 </div>
-                <Datatable
-                  data={getdata}
-                  columnsName={ShipmentRequestColumns}
-                  checkboxSelection
-                  disableRowSelectionOnClick
-                  disableMultipleSelection
-                  uniqueId="customerListId"
-                  handleRowClickInParent={handleRowClickInParent}
-                  dropDownOptions={[
-                    {
-                      label: "View",
-                      icon: (
-                        <VisibilityIcon
-                          fontSize="small"
-                          color="action"
-                          style={{ color: "rgb(37 99 235)" }}
-                        />
-                      ),
-                      action: handleView,
-                    },
-                    ,
-                    {
-                      label: "Update",
-                      icon: (
-                        <EditIcon
-                          fontSize="small"
-                          style={{ color: "rgb(37 99 235)" }}
-                        />
-                      ),
-                      action: handleUpdate,
-                    },
-                    {
-                      label: "Delete",
-                      icon: (
-                        <DeleteIcon
-                          fontSize="small"
-                          style={{ color: "#FF0032" }}
-                        />
-                      ),
-                      action: handleDelete,
-                    },
-                  ]}
-                />
-              </div>
-            </Box>
-          </div>
-        </div>
-      </>
+            </div>
+        </>
     );
 }
 
