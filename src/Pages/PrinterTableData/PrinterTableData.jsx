@@ -251,41 +251,105 @@ ${tableSelectedRows[0].importer_or_owner} comment
         // Add background image
         const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
         doc.addImage(backgroundImage, 0, 0, 8.26, 6.04);
-        const rowData = [
-            [tableSelectedRows[0].cardno, tableSelectedRows[0].Date],
-            //    [tableSelectedRows[0].vehicltype, tableSelectedRows[0].load],
-            [tableSelectedRows[0].load, tableSelectedRows[0].vehicltype],
-            [tableSelectedRows[0].modelyear, tableSelectedRows[0].enginehp],
-            [tableSelectedRows[0].weight],
-            [tableSelectedRows[0].origin],
-            [tableSelectedRows[0].chassisno],
-            [tableSelectedRows[0].color],
-            [tableSelectedRows[0].enginno],
-            [tableSelectedRows[0].declearationno],
-            [tableSelectedRows[0].importer_or_owner],
-            [tableSelectedRows[0].comments],
-            [tableSelectedRows[0].cardno],
-        ];
-        doc.autoTable({
-            body: rowData,
-            // columnStyles: columnStyles,
-            // styles: styles,
 
+        const htmlss = [
+            [
+                tableSelectedRows[0].load,
+                "       ",
+                "       ",
+                "       ",
+                "       ",
+                "       ",
+                tableSelectedRows[0].Date,
+            ],
+            { height: 20 },
+            [
+                "  ",
+                "  ",
+                tableSelectedRows[0].load,
+                "   ",
+                "   ",
+                "   ",
+                tableSelectedRows[0].vehicltype,
+                "",
+            ],
+            [],
+            [
+                "  ",
+                "  ",
+                tableSelectedRows[0].enginehp,
+                "   ",
+                "   ",
+                "   ",
+                tableSelectedRows[0].modelyear,
+                "",
+            ],
+            [],
+            [
+                "  ",
+                "  ",
+                tableSelectedRows[0].weight,
+                "   ",
+                "   ",
+                "   ",
+                tableSelectedRows[0].origin,
+                "",
+            ],
+            [
+                " ",
+                tableSelectedRows[0].importer_or_owner,
+                "   ",
+                "   ",
+                "   ",
+                tableSelectedRows[0].chassisno,
+                "",
+            ],
+            [],
+            [
+                "  ",
+                tableSelectedRows[0].declearationno,
+                "   ",
+                "   ",
+                "   ",
+                "   ",
+                tableSelectedRows[0].color,
+                "",
+            ],
+            ["  ", "   ", "   ", "   ", "   ", "   ", tableSelectedRows[0].enginno, ""],
+            [],
+            [],
+        ];
+
+        doc.autoTable({
+            body: htmlss,
             startY: 1,
-            margin: { top: 15 },
+            margin: { top: 12 },
             theme: "plain",
             styles: {
                 halign: "left",
-                valign: "center",
+                valign: "middle",
                 fontSize: 11,
                 fillColor: null,
                 textColor: null,
                 background: null,
-                margin: "60",
-                tableWidth: 180,
+                tableWidth: "auto",
+            },
+            didParseCell: function (data)
+            {
+                if (data.row.index === 2) {
+                    // Adjust margin-top for the third row
+                    data.cell.styles.cellMargin = { top: -50 }; // Adjust margin-top as needed
+                    console.log('to check it', data.cell.styles);
+                }
             },
             useCss: true,
+            useHtml: true,
         });
+
+        // Save the PDF file
+        doc.save("table_data.pdf");
+    };
+
 
 
 
@@ -460,4 +524,4 @@ ${tableSelectedRows[0].importer_or_owner} comment
     );
 }
 
-    export default PrinterTableData;
+export default PrinterTableData

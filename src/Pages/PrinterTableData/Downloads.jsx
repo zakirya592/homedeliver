@@ -2,36 +2,42 @@ import React from "react";
 import generatePDF, { Resolution, Margin } from "react-to-pdf";
 import jsPDF from "jspdf";
 
-const handlePrintTable2 = tableSelectedRows => {
-    const doc = new jsPDF();
-    const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
-    const logsss = 'https://i.ibb.co/bPNS38G/Printer.png';
-    // const imageshowss = https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(tableSelectedRows[0].cardno)}&size=80x80;
-const imageshowss = 0
-    const loadImage1 = new Promise(resolve => {
-        const img1 = new Image();
-        img1.crossOrigin = "Anonymous";
-        img1.src = logsss;
-        img1.onload = () => {
-            resolve(img1);
-        };
-    });
+const handlePrintTable2 = tableSelectedRows =>
+{
+  const doc = new jsPDF();
+  const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px';
+  const logsss = 'https://i.ibb.co/bPNS38G/Printer.png';
+  // const imageshowss = https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(tableSelectedRows[0].cardno)}&size=80x80;
+  const imageshowss = 0
+  const loadImage1 = new Promise(resolve =>
+  {
+    const img1 = new Image();
+    img1.crossOrigin = "Anonymous";
+    img1.src = logsss;
+    img1.onload = () =>
+    {
+      resolve(img1);
+    };
+  });
 
-    const loadImage2 = new Promise(resolve => {
-        if (imageshowss) {
-            const img2 = new Image();
-            img2.crossOrigin = "Anonymous";
-            img2.src = imageshowss;
-            img2.onload = () => {
-                resolve(img2);
-            };
-        } else {
-            resolve(null);
-        }
-    });
+  const loadImage2 = new Promise(resolve =>
+  {
+    if (imageshowss) {
+      const img2 = new Image();
+      img2.crossOrigin = "Anonymous";
+      img2.src = imageshowss;
+      img2.onload = () =>
+      {
+        resolve(img2);
+      };
+    } else {
+      resolve(null);
+    }
+  });
 
-    Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
-        const tableHtml = `
+  Promise.all([loadImage1, loadImage2]).then(([img1, img2]) =>
+  {
+    const tableHtml = `
             <div style="background: 'red'; background-size: cover; background-position: center; height: 100vh;">
                 <p style='position: absolute;
                     top: 15%;
@@ -57,7 +63,7 @@ const imageshowss = 0
             </div>
         `;
 
-        const printContent = `
+    const printContent = `
             <html>
                 <head>
                     <title>DataGrid Table</title>
@@ -77,50 +83,13 @@ const imageshowss = 0
             </html>
         `;
 
-        doc.html(printContent, {
-            callback: () => {
-                doc.save('table.pdf');
-            }
-        });
+    doc.html(printContent, {
+      callback: () =>
+      {
+        doc.save('table.pdf');
+      }
     });
-
-const options = {
-  filename: "advanced-example.pdf",
-  method: "save",
-  resolution: Resolution.EXTREME,
-  page: {
-    margin: Margin.NONE,
-    format: "letter",
-    orientation: "landscape",
-  },
-  canvas: {
-    mimeType: "image/jpeg",
-    qualityRatio: 1,
-  },
-  overrides: {
-    pdf: {
-      compress: true,
-    },
-    canvas: {
-      useCORS: true,
-    },
-  },
-};
-
-const getTargetElement = () => document.getElementById("container");
-
-const downloadPdf = () =>
-{
-  const container = document.getElementById("container");
-  // Set background image and its properties
-  container.style.backgroundImage =
-    "url('https://i.ibb.co/pvNXhDC/Printer.png')";
-  container.style.backgroundSize = "cover";
-  container.style.backgroundRepeat = "no-repeat";
-  // Generate PDF
-  generatePDF(getTargetElement, options);
-  // Reset background image after generating PDF
-  container.style.backgroundImage = "none";
+  });
 };
 
 
@@ -160,4 +129,4 @@ const Downloads = () =>
   );
 };
 
-  export default Downloads;
+export default Downloads;
