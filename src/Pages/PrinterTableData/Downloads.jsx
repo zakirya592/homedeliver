@@ -26,7 +26,8 @@ const options = {
 
 const getTargetElement = () => document.getElementById("container");
 
-const downloadPdf = () => {
+const downloadPdf = () =>
+{
   const container = document.getElementById("container");
   // Set background image and its properties
   container.style.backgroundImage =
@@ -41,16 +42,17 @@ const downloadPdf = () => {
 
 
 
-const Downloads = () => {
+const Downloads = () =>
+{
   return (
     <div>
       <button onClick={downloadPdf}>Download PDF</button>
       <div id="container">
         <div className="mt-5">
-         <div style={{  margintop: "15% important", marginLeft: "12% !important", fontSize: "16px", fontWeight: "bold", color: "#140d0d" }}>kasjfhdjksfh</div>
+          <div style={{ margintop: "15% important", marginLeft: "12% !important", fontSize: "16px", fontWeight: "bold", color: "#140d0d" }}>kasjfhdjksfh</div>
           <div style={{ margintop: "15% important", marginright: "13% !important", fontSize: "16px", fontWeight: "bold", color: "red" }}>Date</div>
         </div>
-          
+
 
       </div>
     </div>
