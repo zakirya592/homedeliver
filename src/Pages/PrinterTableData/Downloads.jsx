@@ -50,6 +50,7 @@ const handlePrintTable2 = (tableSelectedRows) =>
 
     const tableHtml = `
       <div>
+     <p style="font-size: 0.2px; margin:0.7px">EIssa</p>
       </div>
     `;
 
