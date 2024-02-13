@@ -17,45 +17,55 @@ import { ShipmentRequestColumns } from '../../Datatablesource'
 import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
 
-function PrinterTableData() {
+function PrinterTableData()
+{
     const [getdata, setgetdata] = useState([])
     const { tableSelectedRows, setTableSelectedExportRows } =
         useContext(DataTableContext)
     const [imageshow, setimageshow] = useState()
     const navigate = useNavigate()
 
-    const getapi = () => {
-        axios.get(`/get-mirsal`).then(res => {
+    const getapi = () =>
+    {
+        axios.get(`/get-mirsal`).then(res =>
+        {
             setgetdata(res.data.data)
             console.log(res.data.data)
-        }).catch(err => {
+        }).catch(err =>
+        {
             console.log(err)
         })
     }
 
-    useEffect(() => {
+    useEffect(() =>
+    {
         getapi()
     }, [])
 
-    const handlePrintTable2 = tableSelectedRows => {
+    const handlePrintTable2 = tableSelectedRows =>
+    {
         const printWindow = window.open('', '_blank')
         const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px'
         const logsss = 'https://i.ibb.co/bPNS38G/Printer.png'
         const imageshowss = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(tableSelectedRows[0].cardno)}&size=80x80` // Replace with your second image URL
         // Create promises to load both images
-        const loadImage1 = new Promise(resolve => {
+        const loadImage1 = new Promise(resolve =>
+        {
             const img1 = new Image()
             img1.src = logsss
-            img1.onload = () => {
+            img1.onload = () =>
+            {
                 resolve(img1)
             }
         })
 
-        const loadImage2 = new Promise(resolve => {
+        const loadImage2 = new Promise(resolve =>
+        {
             if (imageshowss) {
                 const img2 = new Image()
                 img2.src = imageshowss
-                img2.onload = () => {
+                img2.onload = () =>
+                {
                     resolve(img2)
                 }
             } else {
@@ -64,7 +74,8 @@ function PrinterTableData() {
                 resolve(img2)
             }
         })
-        Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
+        Promise.all([loadImage1, loadImage2]).then(([img1, img2]) =>
+        {
             const tableHtml = `
     <div>
 <img src=${img1.src} alt='logo' width='100%' " style='height: 100%; position: relative'/>
@@ -218,7 +229,8 @@ ${tableSelectedRows[0].importer_or_owner} comment
         })
     }
 
-    const handleRowClickInParent = item => {
+    const handleRowClickInParent = item =>
+    {
         if (!item || item?.length === 0) {
             // setTableSelectedRows(data)
             setTableSelectedExportRows(item)
@@ -228,7 +240,8 @@ ${tableSelectedRows[0].importer_or_owner} comment
 
 
 
-    const handleDownloadPDF = (tableSelectedRows) => {
+    const handleDownloadPDF = (tableSelectedRows) =>
+    {
         const doc = new jsPDF({
             orientation: "landscape",
             unit: "in",
@@ -254,24 +267,24 @@ ${tableSelectedRows[0].importer_or_owner} comment
             [tableSelectedRows[0].cardno],
         ];
         doc.autoTable({
-          body: rowData,
-          // columnStyles: columnStyles,
-          // styles: styles,
+            body: rowData,
+            // columnStyles: columnStyles,
+            // styles: styles,
 
-          startY: 1,
-          margin: { top: 15 },
-          theme: "plain",
-          styles: {
-            halign: "left",
-            valign: "center",
-            fontSize: 11,
-            fillColor: null,
-            textColor: null,
-            background: null,
-            margin: "60",
-            tableWidth: 180,
-          },
-          useCss: true,
+            startY: 1,
+            margin: { top: 15 },
+            theme: "plain",
+            styles: {
+                halign: "left",
+                valign: "center",
+                fontSize: 11,
+                fillColor: null,
+                textColor: null,
+                background: null,
+                margin: "60",
+                tableWidth: 180,
+            },
+            useCss: true,
         });
 
         // Save the PDF file
@@ -280,7 +293,8 @@ ${tableSelectedRows[0].importer_or_owner} comment
 
 
 
-    const printerfuunction = (selectedRow) => {
+    const printerfuunction = (selectedRow) =>
+    {
         console.log(tableSelectedRows);
         if (tableSelectedRows.length === 1) {
             handleDownloadPDF(tableSelectedRows);
@@ -291,15 +305,18 @@ ${tableSelectedRows[0].importer_or_owner} comment
         }
     };
 
-    const handleView = row => {
+    const handleView = row =>
+    {
         navigate(`/view/VehicleCard/${row.cardno}`)
     }
 
-    const handleUpdate = row => {
+    const handleUpdate = row =>
+    {
         navigate(`/Update/VehicleCard/${row.cardno}`)
     }
 
-    const handleDelete = row => {
+    const handleDelete = row =>
+    {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success mx-2',
@@ -318,11 +335,13 @@ ${tableSelectedRows[0].importer_or_owner} comment
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
             })
-            .then(result => {
+            .then(result =>
+            {
                 if (result.isConfirmed) {
                     axios
                         .delete(`/delete-mirsal/${row.cardno}`)
-                        .then(res => {
+                        .then(res =>
+                        {
                             getapi()
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
@@ -331,7 +350,8 @@ ${tableSelectedRows[0].importer_or_owner} comment
                             )
                             getapi()
                         })
-                        .catch(err => {
+                        .catch(err =>
+                        {
                             console.log('Error deleting', err)
                             Swal.fire({
                                 icon: 'error',
@@ -344,101 +364,102 @@ ${tableSelectedRows[0].importer_or_owner} comment
     }
 
     return (
-      <>
-        <div className="bg">
-          <div className="mt-3 p-3">
-            <Box sx={{ display: "flex" }}>
-              {/* <Siderbar /> */}
-              <AppBar
-                className="fortrans locationfortrans"
-                position="fixed"
-              ></AppBar>
-              <div
-                style={{
-                  height: 450,
-                  width: "100%",
-                  background: `url("../../img/Printer.png")`,
-                  backgroundSize: "cover",
-                }}
-              >
-                <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
-                  <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
-                    vehicle List
-                  </h5>
-                  <div className=" d-flex justify-content-md-start justify-content-sm-between">
-                    <button
-                      type="button"
-                      className="rounded py-1 px-2  mx-1 color2 btnwork"
-                      onClick={() => {
-                        navigate("/Create/Createtableprint");
-                      }}
-                    >
-                      <AddCircleOutlineIcon className="me-1" />
-                      Create
-                    </button>
-                    {/* <button
+        <>
+            <div className="bg">
+                <div className="mt-3 p-3">
+                    <Box sx={{ display: "flex" }}>
+                        {/* <Siderbar /> */}
+                        <AppBar
+                            className="fortrans locationfortrans"
+                            position="fixed"
+                        ></AppBar>
+                        <div
+                            style={{
+                                height: 450,
+                                width: "100%",
+                                background: `url("../../img/Printer.png")`,
+                                backgroundSize: "cover",
+                            }}
+                        >
+                            <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
+                                <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
+                                    vehicle List
+                                </h5>
+                                <div className=" d-flex justify-content-md-start justify-content-sm-between">
+                                    <button
+                                        type="button"
+                                        className="rounded py-1 px-2  mx-1 color2 btnwork"
+                                        onClick={() =>
+                                        {
+                                            navigate("/Create/Createtableprint");
+                                        }}
+                                    >
+                                        <AddCircleOutlineIcon className="me-1" />
+                                        Create
+                                    </button>
+                                    {/* <button
                                         onClick={printerfuunction}
                                         className='rounded py-1 px-2 mx-1 color2 btnwork'
                                     >
                                         <PrintIcon className='me-1' /> Print
                                     </button> */}
-                    <button
-                      onClick={printerfuunction}
-                      className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
-                    >
-                      <PictureAsPdfIcon className="me-1" />
-                      PDF
-                    </button>
-                  </div>
+                                    <button
+                                        onClick={printerfuunction}
+                                        className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
+                                    >
+                                        <PictureAsPdfIcon className="me-1" />
+                                        PDF
+                                    </button>
+                                </div>
+                            </div>
+                            <Datatable
+                                data={getdata}
+                                columnsName={ShipmentRequestColumns}
+                                checkboxSelection
+                                disableRowSelectionOnClick
+                                disableMultipleSelection
+                                uniqueId="customerListId"
+                                handleRowClickInParent={handleRowClickInParent}
+                                dropDownOptions={[
+                                    {
+                                        label: "View",
+                                        icon: (
+                                            <VisibilityIcon
+                                                fontSize="small"
+                                                color="action"
+                                                style={{ color: "rgb(37 99 235)" }}
+                                            />
+                                        ),
+                                        action: handleView,
+                                    },
+                                    ,
+                                    {
+                                        label: "Update",
+                                        icon: (
+                                            <EditIcon
+                                                fontSize="small"
+                                                style={{ color: "rgb(37 99 235)" }}
+                                            />
+                                        ),
+                                        action: handleUpdate,
+                                    },
+                                    {
+                                        label: "Delete",
+                                        icon: (
+                                            <DeleteIcon
+                                                fontSize="small"
+                                                style={{ color: "#FF0032" }}
+                                            />
+                                        ),
+                                        action: handleDelete,
+                                    },
+                                ]}
+                            />
+                        </div>
+                    </Box>
                 </div>
-                <Datatable
-                  data={getdata}
-                  columnsName={ShipmentRequestColumns}
-                  checkboxSelection
-                  disableRowSelectionOnClick
-                  disableMultipleSelection
-                  uniqueId="customerListId"
-                  handleRowClickInParent={handleRowClickInParent}
-                  dropDownOptions={[
-                    {
-                      label: "View",
-                      icon: (
-                        <VisibilityIcon
-                          fontSize="small"
-                          color="action"
-                          style={{ color: "rgb(37 99 235)" }}
-                        />
-                      ),
-                      action: handleView,
-                    },
-                    ,
-                    {
-                      label: "Update",
-                      icon: (
-                        <EditIcon
-                          fontSize="small"
-                          style={{ color: "rgb(37 99 235)" }}
-                        />
-                      ),
-                      action: handleUpdate,
-                    },
-                    {
-                      label: "Delete",
-                      icon: (
-                        <DeleteIcon
-                          fontSize="small"
-                          style={{ color: "#FF0032" }}
-                        />
-                      ),
-                      action: handleDelete,
-                    },
-                  ]}
-                />
-              </div>
-            </Box>
-          </div>
-        </div>
-      </>
+            </div>
+        </>
     );
 }
 
