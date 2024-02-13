@@ -26,11 +26,11 @@ function PrinterTableData() {
 
     const getapi = () => {
         axios.get(`/get-mirsal`).then(res => {
-                setgetdata(res.data.data)
-                console.log(res.data.data)
-            }).catch(err => {
-                console.log(err)
-            })
+            setgetdata(res.data.data)
+            console.log(res.data.data)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     useEffect(() => {
@@ -228,77 +228,67 @@ ${tableSelectedRows[0].importer_or_owner} comment
 
 
 
-const handleDownloadPDF = (tableSelectedRows) => {
-  console.log(tableSelectedRows);
-  const doc = new jsPDF({
-    orientation: "landscape",
-    unit: "in",
-    format: [6.04, 8.26],
-  });
+    const handleDownloadPDF = (tableSelectedRows) => {
+        const doc = new jsPDF({
+            orientation: "landscape",
+            unit: "in",
+            format: [6.04, 8.26],
+        });
 
-  // Add background image
-  const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
-   doc.addImage(backgroundImage, 0, 0, 8.26, 6.04); 
- const rowData = [
-   [tableSelectedRows[0].cardno, tableSelectedRows[0].Date],
-   //    [tableSelectedRows[0].vehicltype, tableSelectedRows[0].load],
-   [tableSelectedRows[0].load, tableSelectedRows[0].vehicltype],
-   [tableSelectedRows[0].modelyear, tableSelectedRows[0].enginehp],
-   [tableSelectedRows[0].weight],
-   [tableSelectedRows[0].origin],
-   [tableSelectedRows[0].chassisno],
-   [tableSelectedRows[0].color],
-   [tableSelectedRows[0].enginno],
-   [tableSelectedRows[0].declearationno],
-   [tableSelectedRows[0].importer_or_owner],
-   [tableSelectedRows[0].comments],
-   [tableSelectedRows[0].cardno],
- ];
+        // Add background image
+        const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
+        doc.addImage(backgroundImage, 0, 0, 8.26, 6.04);
+        const rowData = [
+            [tableSelectedRows[0].cardno, tableSelectedRows[0].Date],
+            //    [tableSelectedRows[0].vehicltype, tableSelectedRows[0].load],
+            [tableSelectedRows[0].load, tableSelectedRows[0].vehicltype],
+            [tableSelectedRows[0].modelyear, tableSelectedRows[0].enginehp],
+            [tableSelectedRows[0].weight],
+            [tableSelectedRows[0].origin],
+            [tableSelectedRows[0].chassisno],
+            [tableSelectedRows[0].color],
+            [tableSelectedRows[0].enginno],
+            [tableSelectedRows[0].declearationno],
+            [tableSelectedRows[0].importer_or_owner],
+            [tableSelectedRows[0].comments],
+            [tableSelectedRows[0].cardno],
+        ];
+        doc.autoTable({
+          body: rowData,
+          // columnStyles: columnStyles,
+          // styles: styles,
 
-  const styles = {
-    fillColor: null, 
-    textColor: null, 
-    background:null
-  }; 
+          startY: 1,
+          margin: { top: 15 },
+          theme: "plain",
+          styles: {
+            halign: "left",
+            valign: "center",
+            fontSize: 11,
+            fillColor: null,
+            textColor: null,
+            background: null,
+            margin: "60",
+            tableWidth: 180,
+          },
+          useCss: true,
+        });
 
-  doc.autoTable({
-    body: rowData,
-    // columnStyles: columnStyles,
-    // styles: styles,
-    startY: 1,
-    margin: { top: 15 },
-    theme: "plain",
-    styles: {
-      //   minCellHeight: 9,
-      halign: "left",
-      valign: "center",
-      fontSize: 11,
-      fillColor: null,
-      textColor: null,
-      background: null,
-      margin: "60",
-          tableWidth: 180,
-
-    },
-        useCss: true,
-
-  });
-
-  // Save the PDF file
-  doc.save("table_data.pdf");
-};
+        // Save the PDF file
+        doc.save("table_data.pdf");
+    };
 
 
- 
+
     const printerfuunction = (selectedRow) => {
-      console.log(tableSelectedRows);
-      if (tableSelectedRows.length === 1) {
-        handleDownloadPDF(tableSelectedRows);
-      } else if (tableSelectedRows.length > 1) {
-        Swal.fire("Error!", "Select only one row to print the data", "error");
-      } else {
-        Swal.fire("Error!", `To Select the Row to Print the Data`, "error");
-      }
+        console.log(tableSelectedRows);
+        if (tableSelectedRows.length === 1) {
+            handleDownloadPDF(tableSelectedRows);
+        } else if (tableSelectedRows.length > 1) {
+            Swal.fire("Error!", "Select only one row to print the data", "error");
+        } else {
+            Swal.fire("Error!", `To Select the Row to Print the Data`, "error");
+        }
     };
 
     const handleView = row => {
@@ -354,100 +344,102 @@ const handleDownloadPDF = (tableSelectedRows) => {
     }
 
     return (
-        <>
-            <div className='bg'>
-                <div className='mt-3 p-3'>
-                    <Box sx={{ display: 'flex' }}>
-                        {/* <Siderbar /> */}
-                        <AppBar
-                            className='fortrans locationfortrans'
-                            position='fixed'
-                        ></AppBar>
-                        <div
-                            style={{
-                                height: 450,
-                                width: '100%',
-                                background: `url("../../img/Printer.png")`,
-                                backgroundSize: 'cover'
-                            }}
-                        >
-                            <div className=' justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white'>
-                                <h5 className='text-lg-start my-auto text-sm-center' >vehicle List</h5>
-                                <div className=' d-flex justify-content-md-start justify-content-sm-between'>
-                                    <button
-                                        type='button'
-                                        className='rounded py-1 px-2  mx-1 color2 btnwork'
-                                        onClick={() => {
-                                            navigate('/Create/Createtableprint')
-                                        }}
-                                    >
-                                        <AddCircleOutlineIcon className='me-1' />
-                                        Create
-                                    </button>
-                                    {/* <button
+      <>
+        <div className="bg">
+          <div className="mt-3 p-3">
+            <Box sx={{ display: "flex" }}>
+              {/* <Siderbar /> */}
+              <AppBar
+                className="fortrans locationfortrans"
+                position="fixed"
+              ></AppBar>
+              <div
+                style={{
+                  height: 450,
+                  width: "100%",
+                  background: `url("../../img/Printer.png")`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <div className=" justify-content-between my-4 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
+                  <h5 className="text-lg-start my-auto text-sm-center d-sm-none d-md-flex">
+                    vehicle List
+                  </h5>
+                  <div className=" d-flex justify-content-md-start justify-content-sm-between">
+                    <button
+                      type="button"
+                      className="rounded py-1 px-2  mx-1 color2 btnwork"
+                      onClick={() => {
+                        navigate("/Create/Createtableprint");
+                      }}
+                    >
+                      <AddCircleOutlineIcon className="me-1" />
+                      Create
+                    </button>
+                    {/* <button
                                         onClick={printerfuunction}
                                         className='rounded py-1 px-2 mx-1 color2 btnwork'
                                     >
                                         <PrintIcon className='me-1' /> Print
                                     </button> */}
-                                    <button
-                                        onClick={printerfuunction}
-                                        className='rounded py-1 px-2  mx-lg-1 color2 btnwork'
-                                    >
-                                        <PictureAsPdfIcon className='me-1' />
-                                        PDF
-                                    </button>
-                                </div>
-                            </div>
-                            <Datatable
-                                data={getdata}
-                                columnsName={ShipmentRequestColumns}
-                                checkboxSelection
-                                disableRowSelectionOnClick
-                                disableMultipleSelection
-                                uniqueId='customerListId'
-                                handleRowClickInParent={handleRowClickInParent}
-                                dropDownOptions={[
-                                    {
-                                        label: 'View',
-                                        icon: (
-                                            <VisibilityIcon
-                                                fontSize='small'
-                                                color='action'
-                                                style={{ color: 'rgb(37 99 235)' }}
-                                            />
-                                        ),
-                                        action: handleView
-                                    },
-                                    ,
-                                    {
-                                        label: 'Update',
-                                        icon: (
-                                            <EditIcon
-                                                fontSize='small'
-                                                style={{ color: 'rgb(37 99 235)' }}
-                                            />
-                                        ),
-                                        action: handleUpdate
-                                    },
-                                    {
-                                        label: 'Delete',
-                                        icon: (
-                                            <DeleteIcon
-                                                fontSize='small'
-                                                style={{ color: '#FF0032' }}
-                                            />
-                                        ),
-                                        action: handleDelete
-                                    }
-                                ]}
-                            />
-                        </div>
-                    </Box>
+                    <button
+                      onClick={printerfuunction}
+                      className="rounded py-1 px-2  mx-lg-1 color2 btnwork"
+                    >
+                      <PictureAsPdfIcon className="me-1" />
+                      PDF
+                    </button>
+                  </div>
                 </div>
-            </div>
-        </>
-    )
+                <Datatable
+                  data={getdata}
+                  columnsName={ShipmentRequestColumns}
+                  checkboxSelection
+                  disableRowSelectionOnClick
+                  disableMultipleSelection
+                  uniqueId="customerListId"
+                  handleRowClickInParent={handleRowClickInParent}
+                  dropDownOptions={[
+                    {
+                      label: "View",
+                      icon: (
+                        <VisibilityIcon
+                          fontSize="small"
+                          color="action"
+                          style={{ color: "rgb(37 99 235)" }}
+                        />
+                      ),
+                      action: handleView,
+                    },
+                    ,
+                    {
+                      label: "Update",
+                      icon: (
+                        <EditIcon
+                          fontSize="small"
+                          style={{ color: "rgb(37 99 235)" }}
+                        />
+                      ),
+                      action: handleUpdate,
+                    },
+                    {
+                      label: "Delete",
+                      icon: (
+                        <DeleteIcon
+                          fontSize="small"
+                          style={{ color: "#FF0032" }}
+                        />
+                      ),
+                      action: handleDelete,
+                    },
+                  ]}
+                />
+              </div>
+            </Box>
+          </div>
+        </div>
+      </>
+    );
 }
 
 export default PrinterTableData

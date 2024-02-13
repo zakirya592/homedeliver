@@ -7,6 +7,7 @@ import DataTableProvider from '../../Contexts/DataTableContext';
 import UpdataVehicle from '../../Pages/PrinterTableData/UpdataVehicle';
 import ViewVehicle from '../../Pages/PrinterTableData/ViewVehicle';
 import VehicleDetailsqrcode from '../../Pages/PrinterTableData/VehicleDetailsqrcode';
+import Downloads from '../../Pages/PrinterTableData/Downloads';
 
 function App() {
     return (
@@ -20,6 +21,8 @@ function App() {
                     <Route path='/view/VehicleCard/:userId' element={<ViewVehicle />} />
                     
                     <Route path='/VehicleDetail/:cardNo' element={<VehicleDetailsqrcode />} />
+                    
+                    <Route path='/Download' element={<Downloads />} />
 
             </Routes>
         </BrowserRouter>

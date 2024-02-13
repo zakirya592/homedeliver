@@ -10,7 +10,7 @@ export const ShipmentRequestColumns = [
     {
         field: 'cardno',
         headerName: 'Card No',
-        width: 280,
+        width: 150,
         headerClassName: 'header-red'
     },
     {
@@ -29,7 +29,7 @@ export const ShipmentRequestColumns = [
     {
         field: 'chassisno',
         headerName: 'Chassis No',
-        width: 280,
+        width: 200,
         headerClassName: 'header-red'
     },
     {
