@@ -42,192 +42,7 @@ function PrinterTableData()
         getapi()
     }, [])
 
-    const handlePrintTable2 = tableSelectedRows =>
-    {
-        const printWindow = window.open('', '_blank')
-        const headerStyle = 'font-weight: bold; background:#3d41cf, color:white ;padding: 5px'
-        const logsss = 'https://i.ibb.co/bPNS38G/Printer.png'
-        const imageshowss = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(tableSelectedRows[0].cardno)}&size=80x80` // Replace with your second image URL
-        // Create promises to load both images
-        const loadImage1 = new Promise(resolve =>
-        {
-            const img1 = new Image()
-            img1.src = logsss
-            img1.onload = () =>
-            {
-                resolve(img1)
-            }
-        })
-
-        const loadImage2 = new Promise(resolve =>
-        {
-            if (imageshowss) {
-                const img2 = new Image()
-                img2.src = imageshowss
-                img2.onload = () =>
-                {
-                    resolve(img2)
-                }
-            } else {
-                const img2 = new Image()
-                img2.src = null
-                resolve(img2)
-            }
-        })
-        Promise.all([loadImage1, loadImage2]).then(([img1, img2]) =>
-        {
-            const tableHtml = `
-    <div>
-<img src=${img1.src} alt='logo' width='100%' " style='height: 100%; position: relative'/>
-<p style='position: absolute;
-    top: 15%;
-    left: 9%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].cardno}
-</p>
-<p style='position: absolute;
-    top: 15%;
-    right: 13%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].Date}
-</p>
-<p style='position: absolute;
-    top: 22%;
-    right: 25%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].vehicltype}
-</p>
-<p style='position: absolute;
-    top: 24%;
-    left: 37%;
-     transform: translate(-50%, -50%);
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].load}
-</p>
-<p style='position: absolute;
-    top: 35%;
-    right: 16%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].modelyear}
-</p>
-<p style='position: absolute;
-    top: 36%;
-    left: 32%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].enginehp}
-</p>
-<p style='position: absolute;
-    top: 43%;
-    left: 32%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].weight}
-</p>
-<p style='position: absolute;
-    top: 43%;
-    right: 15%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].origin}
-</p>
-<p style='position: absolute;
-    top: 51%;
-    right: 15%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].chassisno}
-</p>
-<p style='position: absolute;
-    top: 59%;
-    right: 13%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].color}
-</p>
-<p style='position: absolute;
-    top: 66%;
-    right: 16%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].enginno}
-</p>
-<p style='position: absolute;
-    top: 79%;
-    left: 51%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].comments}
-</p>
-<p style='position: absolute;
-    top: 51%;
-    right: 67%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].declearationno}
-</p>
-<p style='position: absolute;
-    top: 59%;
-    right: 67%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-${tableSelectedRows[0].importer_or_owner} comment
-</p>
-<p style='position: absolute;
-    top: 80%;
-    left: 8%;
-    font-size: 16px;
-    font-weight: bold;
-    color: #140d0d;'>
-<img src=${img2.src} alt='logo'/>
-</p>
-
-    `
-
-            const printContent = `
-      <html>
-        <head>
-          <title>DataGrid Table</title>
-          <style>
-            @media print {
-              body {
-                padding: 0;
-                margin: 0;
-               }
-              th {
-                ${headerStyle}
-              }
-            }
-          </style>
-        </head>
-        <body >${tableHtml}</body>
-      </html>
-    `
-
-            printWindow.document.write(printContent)
-            printWindow.document.close()
-            printWindow.print()
-        })
-    }
+   
 
     const handleRowClickInParent = item =>
     {
@@ -238,6 +53,91 @@ ${tableSelectedRows[0].importer_or_owner} comment
         }
     }
 
+const handlePrintTable2 = (tableSelectedRows) => {
+  const pdfWidth = 8.26; // in inches
+  const pdfHeight = 6.04; // in inches
+
+  // Create a new jsPDF instance with custom dimensions
+  const doc = new jsPDF({
+    orientation: "landscape",
+    unit: "in",
+    format: [pdfWidth, pdfHeight],
+  });
+
+  const headerStyle =
+    "font-weight: bold; background:#3d41cf, color:white ;padding: 5px";
+  const logsss = "https://i.ibb.co/bPNS38G/Printer.png";
+  const imageshowss = 0;
+
+  const loadImage1 = new Promise((resolve) => {
+    const img1 = new Image();
+    img1.crossOrigin = "Anonymous";
+    img1.src = logsss;
+    img1.onload = () => {
+      resolve(img1);
+    };
+  });
+
+  const loadImage2 = new Promise((resolve) => {
+    if (imageshowss) {
+      const img2 = new Image();
+      img2.crossOrigin = "Anonymous";
+      img2.src = imageshowss;
+      img2.onload = () => {
+        resolve(img2);
+      };
+    } else {
+      resolve(null);
+    }
+  });
+
+  Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
+    doc.addImage(
+      img1,
+      "JPEG",
+      0,
+      0,
+      doc.internal.pageSize.getWidth(),
+      doc.internal.pageSize.getHeight()
+    );
+
+    const tableHtml = `
+   <div style='position: relative'>
+        <p style="font-size: 0.2px;  margin-top:0.2px ; margin-left:0.5px; position: absolute">${tableSelectedRows[0].cardno}</p>
+        <p style="font-size: 0.2px;width:100px;display:flex margin-top:0.4px ; margin-left:6px; position: absolute ">${tableSelectedRows[0].Date}</p>
+         <p style="font-size: 0.2px;  margin-top:0.67px ; margin-left:2.5px; position: absolute">${tableSelectedRows[0].load}</p>
+        <p style="font-size: 0.2px;  margin-top:0.7px ; margin-left:6px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
+          
+      </div>
+    `;
+
+    const printContent = `
+      <html>
+        <head>
+          <title>DataGrid Table</title>
+          <style>
+            @media print {
+              body {
+                padding: 0;
+                margin: 0;
+              }
+              th {
+                ${headerStyle}
+              }
+            }
+          </style>
+        </head>
+        <body>${tableHtml}</body>
+      </html>
+    `;
+
+    doc.html(printContent, {
+      callback: () => {
+        doc.save("table.pdf");
+      },
+    });
+  });
+};
 
 
     const handleDownloadPDF = (tableSelectedRows) =>
@@ -358,7 +258,7 @@ ${tableSelectedRows[0].importer_or_owner} comment
     {
         console.log(tableSelectedRows);
         if (tableSelectedRows.length === 1) {
-            handleDownloadPDF(tableSelectedRows);
+            handlePrintTable2(tableSelectedRows);
         } else if (tableSelectedRows.length > 1) {
             Swal.fire("Error!", "Select only one row to print the data", "error");
         } else {

@@ -49,8 +49,10 @@ const handlePrintTable2 = (tableSelectedRows) =>
     doc.addImage(img1, 'JPEG', 0, 0, doc.internal.pageSize.getWidth(), doc.internal.pageSize.getHeight());
 
     const tableHtml = `
-      <div>
-     <p style="font-size: 0.2px; margin:0.7px">EIssa</p>
+      <div style='position: relative'>
+        <p style="font-size: 0.2px;  margin-top:0.2px ; margin-left:0.5px; position: absolute">EIssa</p>
+          <p style="font-size: 0.2px;  margin-top:0.2px ; margin-left:6.4px; position: absolute">EIssa2</p>
+          
       </div>
     `;
 
