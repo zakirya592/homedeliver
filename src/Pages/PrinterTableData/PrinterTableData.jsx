@@ -287,9 +287,6 @@ ${tableSelectedRows[0].importer_or_owner} comment
             useCss: true,
         });
 
-        // Save the PDF file
-        doc.save("table_data.pdf");
-    };
 
 
 
@@ -463,4 +460,4 @@ ${tableSelectedRows[0].importer_or_owner} comment
     );
 }
 
-export default PrinterTableData
+    export default PrinterTableData;
