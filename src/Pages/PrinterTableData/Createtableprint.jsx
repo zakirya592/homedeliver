@@ -19,45 +19,51 @@ function Createtableprint() {
         Declaration: '', EngineNo: '', Comments: '',
         Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
         CarriageCapacity: '',VehicleBrandName:'',SpecificationStandardName:'',
-        VCCGenerationDate:'',DeclarationDate:'',
+        VCCGenerationDate:'',DeclarationDate:'',OwnerCode:'',
         Datetime: new Date().toISOString().split('T')[0], Load: ''
     })
 
     const addtransaction = () => {
-        axios.post(`/add-mirsal`, {
-            "cardno": value.CardNo,
-            "vehicltype": value.VehicalType,
-            "modelyear": value.ModelYear,
-            "enginehp": value.EngineHP,
-            "origin": value.Origin,
-            "Date": value.Datetime,
-            "load": value.Load,
-            "weight": value.weight,
-            "importer_or_owner": value.importerorowner,
-            "chassisno": value.chassisNo,
-            "declearationno": value.Declaration,
-            "color": value.color,
-            "enginno": value.EngineNo,
-            "comments": value.Comments,
-            "qrcode": value.CardNo
-
-        })
-            .then((res) => {
-                Swal.fire(
-                    'Created!',
-                    `vehicle Card No  ${value.CardNo} has been created successfully`,
-                    'success'
-                )
-                navigate('/')
-            })
-            .catch((err) => {
-                console.log(err);
-                Swal.fire(
-                    'Error!',
-                    `${err.response.data.message}`,
-                    'error'
-                )
-            });
+        axios
+          .post(`/add-mirsal`, {
+            cardno: value.CardNo,
+            vehicltype: value.VehicalType,
+            modelyear: value.ModelYear,
+            enginehp: value.EngineHP,
+            origin: value.Origin,
+            Date: value.Datetime,
+            load: value.Load,
+            weight: value.weight,
+            importer_or_owner: value.importerorowner,
+            chassisno: value.chassisNo,
+            declearationno: value.Declaration,
+            color: value.color,
+            enginno: value.EngineNo,
+            comments: value.Comments,
+            qrcode: value.CardNo,
+            Vehicledrive: value.Vehicledrive,
+            EngineCapacity: value.EngineCapacity,
+            PassengerCapacity: value.PassengerCapacity,
+            CarriageCapacity: value.CarriageCapacity,
+            VehicleBrandName: value.VehicleBrandName,
+            SpecificationStandardName: value.SpecificationStandardName,
+            VCCGenerationDate: value.VCCGenerationDate,
+            DeclarationDate: value.DeclarationDate,
+            OwnerCode: value.OwnerCode,
+          })
+          .then((res) => {
+            Swal.fire(
+              "Created!",
+              `vehicle Card No  ${value.CardNo} has been created successfully`,
+              "success"
+            );
+            navigate("/");
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire("Error!", `${err.response.data.message}`, "error");
+          });
 
     };
 
@@ -596,26 +602,27 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8 mb-2 text-center">
+                                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2 text-center">
                                     <div className="mb-3 text-start mt-4">
+                                        <label
+                                            htmlFor="Declaration"
+                                            className="lablesection colorblack text-start"
+                                        >
+                                            Declaration
+                                        </label>
                                         <input
-                                            className="inputsection"
+                                         className="form-control inputsection py-2"
                                             id="Declaration"
-                                            type="checkbox"
+                                            type="text"
                                             value={value.Declaration}
                                             onChange={(e) => {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
-                                                    Declaration: e.target.checked,
+                                                    Declaration: e.target.value,
                                                 }));
                                             }}
                                         />
-                                        <label
-                                            htmlFor="Declaration"
-                                            className="lablesection colorblack text-start ms-3"
-                                        >
-                                            Declaration
-                                        </label>
+                                        
                                     </div>
                                 </div>
 
