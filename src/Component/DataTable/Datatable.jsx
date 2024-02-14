@@ -4,6 +4,7 @@ import { GridToolbar } from "@mui/x-data-grid";
 import { MuiCustomTable } from "../../utils/MuiCustomTable";
 import ActionDropdown from "../../utils/ActionDropdown";
 import { DataTableContext } from "../../Contexts/DataTableContext";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Datatable = ({
     columnsName = [],
@@ -57,7 +58,7 @@ const Datatable = ({
             ),
         },
     ];
-
+const isSmallScreen = useMediaQuery("(max-width:600px)");
     return (
         <>
             <div
@@ -75,7 +76,9 @@ const Datatable = ({
                     onProcessRowUpdateError={(params, error) => {
                         console.log(error);
                     }}
-                    slots={{ toolbar: showToolbarSlot !== false ? GridToolbar : undefined }}
+                  slots={{
+                        toolbar: showToolbarSlot !== false && !isSmallScreen ? GridToolbar : undefined
+                    }}
                     rows={record}
                     columns={actionColumnVisibility !== false
                         ? [...idColumn, ...columnsName, ...actionColumn]

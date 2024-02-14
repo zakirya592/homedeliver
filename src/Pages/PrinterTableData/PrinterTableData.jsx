@@ -361,10 +361,10 @@ const handlePrintTable2 = (tableSelectedRows) => {
                                 <h5 className="text-lg-start my-auto text-sm-center d-none d-md-flex">
                                     vehicle List
                                 </h5>
-                                <div className="d-flex justify-content-md-start justify-content-sm-between">
+                                <div className="d-flex justify-content-md-start justify-content-sm-between ">
                                     <button
                                         type="button"
-                                        className="rounded py-1 px-2 mx-1 color2 btnwork"
+                                        className="rounded py-1 px-2 mx-1 color2 btnwork "
                                         onClick={() =>
                                         {
                                             navigate("/Create/Createtableprint");
