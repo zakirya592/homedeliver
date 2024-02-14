@@ -653,7 +653,7 @@ function Createtableprint() {
                             <button
                                 type="button"
                                 className="border-0 px-3  savebtn py-2"
-                                onClick={() => navigate("/PrinterTableData")}
+                                onClick={() => navigate("/")}
                             >
                                 {" "}
                                 <ArrowCircleLeftOutlinedIcon className="me-2" />
