@@ -114,8 +114,8 @@ function PrinterTableData()
 
             const tableHtml = `
    <div style='position: relative'>
-        <p style="font-size: 0.15px;  margin-top:0.2px ; width:5px; margin-left:0.3px; position: absolute">${tableSelectedRows[0].cardno}</p>
-        <p style="font-size: 0.15px;width:100px;display:flex margin-top:0.1px ; margin-left:6.3px; position: absolute ">${tableSelectedRows[0].Date}</p>
+        <p style="font-size: 0.15px;  margin-top:0.15px ; width:5px; margin-left:0.7px; position: absolute">${tableSelectedRows[0].cardno}</p>
+        <p style="font-size: 0.15px;width:100px; margin-top:0.15px ; margin-left:6.3px; position: absolute ">${tableSelectedRows[0].Date}</p>
          <p style="font-size: 0.15px;  margin-top:0.67px ; width:5px; margin-left:0.3px; position: absolute">${tableSelectedRows[0].load}</p>
         <p style="font-size: 0.15px;  margin-top:0.7px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
         <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear}</p>
@@ -127,7 +127,7 @@ function PrinterTableData()
           <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].enginehp}</p>
            <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
            <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
-           <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}</p>
+           <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}-${tableSelectedRows[0].Date}</p>
         <img style="height: 0.8px; width: 0.8px; margin-top: 5px; margin-left: 0.5px; position: absolute;" src="data:image/png;base64,${tableSelectedRows[0].qrcode}" alt="">
 
       </div>

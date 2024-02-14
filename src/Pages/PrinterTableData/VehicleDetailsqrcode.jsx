@@ -2,53 +2,58 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const VehicleDetailsqrcode = () => {
+const VehicleDetailsqrcode = () =>
+{
   let { cardNo } = useParams();
-      const [value, setvalue] = useState({
-        image: '',
-        CardNo: '', VehicalType: '', ModelYear: '',
-        EngineHP: '', Origin: '', weight: '',
-        chassisNo: '', importerorowner: '', color: '',
-        Declaration: '', EngineNo: '', Comments: '',
-        Datetime: '', Load: '', qrcode: ""
-    })
-        const getapi = () => {
-        axios.get(`/get-mirsal/${cardNo}`)
-            .then((res) => {
-              console.log(res);
-                setvalue((prevValue) => ({
-                    ...prevValue,
-                    CardNo: res.data.data.cardno || '',
-                    VehicalType: res.data.data.vehicltype || '',
-                    ModelYear: res.data.data.modelyear || '',
-                    EngineHP: res.data.data.enginehp || '',
-                    weight: res.data.data.weight || '',
-                    chassisNo: res.data.data.chassisno || '',
-                    importerorowner: res.data.data.importer_or_owner || '',
-                    color: res.data.data.color || '',
-                    Declaration: res.data.data.declearationno || '',
-                    EngineNo: res.data.data.enginno || '',
-                    Comments: res.data.data.comments || '',
-                    Datetime: res.data.data.Date || '',
-                    Load: res.data.data.load || '',
-                    Origin: res.data.data.origin || '',
-                }));
+  const [value, setvalue] = useState({
+    image: '',
+    CardNo: '', VehicalType: '', ModelYear: '',
+    EngineHP: '', Origin: '', weight: '',
+    chassisNo: '', importerorowner: '', color: '',
+    Declaration: '', EngineNo: '', Comments: '',
+    Datetime: '', Load: '', qrcode: ""
+  })
+  const getapi = () =>
+  {
+    axios.get(`/get-mirsal/${cardNo}`)
+      .then((res) =>
+      {
+        console.log(res);
+        setvalue((prevValue) => ({
+          ...prevValue,
+          CardNo: res.data.data.cardno || '',
+          VehicalType: res.data.data.vehicltype || '',
+          ModelYear: res.data.data.modelyear || '',
+          EngineHP: res.data.data.enginehp || '',
+          weight: res.data.data.weight || '',
+          chassisNo: res.data.data.chassisno || '',
+          importerorowner: res.data.data.importer_or_owner || '',
+          color: res.data.data.color || '',
+          Declaration: res.data.data.declearationno || '',
+          EngineNo: res.data.data.enginno || '',
+          Comments: res.data.data.comments || '',
+          Datetime: res.data.data.Date || '',
+          Load: res.data.data.load || '',
+          Origin: res.data.data.origin || '',
+        }));
 
-            }).catch((err) => {
-                console.log(err);
-            });
-    }
+      }).catch((err) =>
+      {
+        console.log(err);
+      });
+  }
 
-    useEffect(() => {
-        getapi()
-    }, [])
+  useEffect(() =>
+  {
+    getapi()
+  }, [])
   return (
     <div className="container text-start">
       <div className="border border-secondary mt-4 rounded bg-light">
         <p className="bg-secondary text-white text-start p-2 fw-bolder">
           View VCC Details
         </p>
-        <p className="bg-white text-danger text-start p-2 fw-bold">
+        <p className="text-danger text-start p-2 fw-bold" style={{backgroundColor:"transparat"}}>
           VCC/Vehicle Details
         </p>
         <div className="row mx-3">
@@ -60,8 +65,8 @@ const VehicleDetailsqrcode = () => {
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
-              <p className="col-6">VCC Status :</p>
-              <p className="col-6">Cancelled</p>
+              <p className="col-6" >VCC Status :</p>
+              <p className="col-6" style={{ color: "red" }}>Printed/Downloaded</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -151,13 +156,13 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Declaration Number :</p>
-              <p className="col-6">Cancelled</p>
+              <p className="col-6" style={{ color: "blue" }} >{value.Declaration}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Declaration Date :</p>
-              <p className="col-6">{value.Declaration}</p>
+              <p className="col-6">{value.Datetime}</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
@@ -175,7 +180,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">Print Remarks :</p>
-              <p className="col-6">2023</p>
+              <p className="col-6">{value.Comments}</p>
             </div>
           </div>
         </div>
