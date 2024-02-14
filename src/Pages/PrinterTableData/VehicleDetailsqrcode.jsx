@@ -4,6 +4,7 @@ import axios from "axios";
 import QRCode from "qrcode.react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import ReactDOM from "react-dom";
 
 const VehicleDetailsqrcode = () => {
   let { cardNo } = useParams();
@@ -95,11 +96,13 @@ const VehicleDetailsqrcode = () => {
          resolve(null);
        }
      });
-     const QRCodeCell = (props) => {
-       const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${value.CardNo}`;
-       return <QRCode value={url} size={100} />;
-     };
+    const QRCodeCell = (props) => {
+  const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.cardNo}`;
+  return <QRCode value={url} size={24} />;
+};
+
      Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
+      
        doc.addImage(
          img1,
          "JPEG",
@@ -125,7 +128,7 @@ const VehicleDetailsqrcode = () => {
            <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:1.6px; position: absolute ">${value.weight}</p>
            <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:1.6px; position: absolute ">${value.importerorowner}</p>
            <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:1.6px; position: absolute ">${value.Declaration}</p>
-            <p style="font-size: 0.15px;  margin-top:4.5px ;width:5px; margin-left:0.5px; position: absolute ">${<QRCodeCell/>}</p>
+            <p style="font-size: 0.15px;height: 0.5px; width: 0.5px;  margin-top:4.5px ;width:5px; margin-left:0.5px; position: absolute ">${<QRCodeCell />}</p>
        
 
       </div>
@@ -169,7 +172,7 @@ const VehicleDetailsqrcode = () => {
         <p className="text-danger text-start p-2 fw-bold" style={{ backgroundColor: "transparat" }}>
           VCC/Vehicle Details
         </p>
-        <div className="row mx-3">
+        <div className="row mx-lg-3 mx-md-3 mx-sm-2">
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6">VCC No :</p>
@@ -178,8 +181,8 @@ const VehicleDetailsqrcode = () => {
           </div>
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
-              <p className="col-6" >VCC Status :</p>
-              <p className="col-6" style={{ color: "red" }}   onClick={handlePrintTable2}>Printed/Downloaded</p>
+              <p className="col-6 " >VCC Status :</p>
+              <p className="col-6" style={{ color: "red" }} onClick={handlePrintTable2}>Printed / Downloaded</p>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">

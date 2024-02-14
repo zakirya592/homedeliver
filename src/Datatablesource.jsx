@@ -1,7 +1,7 @@
 
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
-    const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.value}`;
+    const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${props.value}`;
     return <QRCode value={url} size={40} />;
 };
 
@@ -66,6 +66,5 @@ export const ShipmentRequestColumns = [
         field: "cardnos",
         headerName: 'QR Code',
         renderCell: (params) => <QRCodeCell value={params.row.cardno} />,
-        width: 150, // Adjust this width as needed
     },
 ];
