@@ -350,7 +350,7 @@ function PrinterTableData()
     return (
         <>
             <div className="bg">
-                <div className="mt-3 p-3">
+                <div className="mt-md-3 mt-sm-1 p-lg-3 p-md-3 p-sm-1">
                     <Box sx={{ display: "flex" }}>
                         {/* <Siderbar /> */}
                         <AppBar
@@ -365,7 +365,7 @@ function PrinterTableData()
                                 backgroundSize: "cover",
                             }}
                         >
-                            <div className=" justify-content-between my-4 my-sm-2 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-4 mb-4 bg-white">
+                            <div className=" justify-content-between my-4 my-sm-2 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-lg-4 p-sm-1 mb-4 bg-white">
                                 <h5 className="text-lg-start my-auto text-sm-center d-none d-md-flex">
                                     vehicle List
                                 </h5>
@@ -389,7 +389,7 @@ function PrinterTableData()
                                     </button> */}
                                     <button
                                         onClick={printerfuunction}
-                                        className="rounded py-1 px-2 mx-lg-1 color2 btnwork"
+                                        className="rounded py-1 px-2 mx-lg-1 mx-1 color2 btnwork"
                                     >
                                         <PictureAsPdfIcon className="me-1" />
                                         PDF

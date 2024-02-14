@@ -67,8 +67,8 @@ function ViewVehicle() {
             ></AppBar>
             <div className="w-100 p-4">
               {/* <center> */}
-              <div className="d-flex justify-content-between mx-3">
-                <h6 className="fw-bolder fs-3 mb-4 text-start my-auto">View</h6>
+              <div className="d-lg-flex d-sm-grid justify-content-between mx-3">
+                <h6 className="fw-bolder fs-3 mb-4 text-start my-auto d-none d-md-flex">View</h6>
                 <QRCodeCell value={value.CardNo} />
               </div>
               {/* </center> */}

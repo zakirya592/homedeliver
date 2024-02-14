@@ -35,13 +35,13 @@ export const ShipmentRequestColumns = [
     {
         field: 'enginno',
         headerName: 'Engine No',
-        width: 220,
+        width: 200,
         headerClassName: 'header-red'
     },
     {
         field: 'color',
         headerName: 'Color',
-        width: 200,
+        width: 150,
         headerClassName: 'header-red'
     },
     {
@@ -53,13 +53,13 @@ export const ShipmentRequestColumns = [
     {
         field: 'weight',
         headerName: 'Weight',
-        width: 200,
+        width: 170,
         headerClassName: 'header-red'
     },
     {
         field: 'Date',
         headerName: 'Date',
-        width: 200,
+        width: 170,
         headerClassName: 'header-red'
     },
      {

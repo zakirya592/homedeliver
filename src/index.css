@@ -142,3 +142,8 @@ code {
   background-color: rgb(231 153 8);
   color: rgb(255, 255, 255);
 }
+@media screen and (max-width: 425px) {
+ .btnwork {
+  width: 220px;
+ }
+}
