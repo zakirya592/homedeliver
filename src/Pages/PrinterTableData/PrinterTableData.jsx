@@ -136,9 +136,7 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
         <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}</p>
-        <img style="height: 0.8px; width: 0.8px; margin-top: 5px; margin-left: 0.5px; position: absolute;" src="data:image/png;base64,${tableSelectedRows[0].qrcode}" alt="">
-
-      </div>
+       </div>
     `;
 
             const printContent = `
@@ -169,7 +167,6 @@ function PrinterTableData()
             });
         });
     };
-
 
     const handleDownloadPDF = (tableSelectedRows) =>
     {
@@ -280,10 +277,6 @@ function PrinterTableData()
         // Save the PDF file
         doc.save("table_data.pdf");
     };
-
-
-
-
 
     const printerfuunction = (selectedRow) =>
     {
