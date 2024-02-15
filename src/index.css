@@ -142,6 +142,15 @@ code {
   background-color: rgb(231 153 8);
   color: rgb(255, 255, 255);
 }
+.donloadbuton{
+  cursor: pointer;
+  border: none;
+      text-decoration: none;
+}
+.donloadbuton a {
+  border: none;
+      text-decoration: none;
+}
 @media screen and (max-width: 425px) {
  .btnwork {
   width: 220px;

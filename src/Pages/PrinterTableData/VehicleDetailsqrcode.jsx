@@ -5,6 +5,7 @@ import QRCode from "qrcode.react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactDOM from "react-dom";
+import ReactDOMServer from "react-dom/server";
 
 const VehicleDetailsqrcode = () => {
   let { cardNo } = useParams();
@@ -98,11 +99,13 @@ const VehicleDetailsqrcode = () => {
      });
     const QRCodeCell = (props) => {
   const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.cardNo}`;
-  return <QRCode value={url} size={12} />;
+  return <QRCode value={url} size={1} />;
 };
 
      Promise.all([loadImage1, loadImage2]).then(([img1, img2]) => {
-    
+     const qrCodeContainer = document.createElement("div");
+     ReactDOM.render(<QRCodeCell value={value} />, qrCodeContainer);
+     const qrCodeHtml = qrCodeContainer.innerHTML;
        doc.addImage(
          img1,
          "JPEG",
@@ -113,24 +116,26 @@ const VehicleDetailsqrcode = () => {
        );
 
        const tableHtml = `
-   <div style='position: relative'>
-        <p style="font-size: 0.15px;  margin-top:0.15px ; width:5px; margin-left:0.7px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.CardNo}</p>
-        <p style="font-size: 0.15px;width:100px; margin-top:0.15px ; margin-left:6.3px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.Datetime}</p>
-        <p style="font-size: 0.15px;  margin-top:0.67px ; width:5px; margin-left:1.9px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.Load}</p>
-        <p style="font-size: 0.15px;  margin-top:0.6px ;width:10px; margin-left:5.9px; position: absolute;font-family: Arial, Helvetica, sans-serif; ">${value.VehicalType}</p>
-        <p style="font-size: 0.15px;  margin-top:1.4px ;width:5px; margin-left:5.9px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.ModelYear}</p>
-        <p style="font-size: 0.15px; font-weight:500;width:5px; margin-top:1.8px ; margin-left:5.6px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.Origin}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:5px; margin-left:5.9px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.chassisNo}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:5.9px; position: absolute;font-family: Arial, Helvetica, sans-serif; ">${value.color}</p>
-        <p style="font-size: 0.15px;  margin-top:3.3px ;width:5px; margin-left:5.9px; position: absolute;font-family: Arial, Helvetica, sans-serif; ">${value.EngineNo}</p>
-        <p style="font-size: 0.15px;  margin-top:4px ;width:5px; width:5px; margin-left:4.3px; position: absolute;font-family: Arial, Helvetica, sans-serif; ">${value.Comments}</p>
-        <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:1.6px; position: absolute;font-family: Arial, Helvetica, sans-serif; ">${value.EngineHP}</p>
-        <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:1.6px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.weight}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:1.6px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.importerorowner}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:1.6px; position: absolute ;font-family: Arial, Helvetica, sans-serif;">${value.Declaration}</p>
-        <p style="font-size: 0.15px;height: 0.5px; width: 0.5px;  margin-top:4.5px ;width:5px; margin-left:0.5px; position: absolute ">${QRCodeCell(value.CardNo)}</p>
-       
 
+      </div>
+        <div style='position: relative;font-family: Arimo'>
+        <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${value.CardNo}</p>
+        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${value.Datetime}</p>
+         <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${value.Load}</p>
+        <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${value.VehicalType}</p>
+        <p style=" font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${value.ModelYear}</p>
+        <p style=" font-size: 0.15px; font-weight:500;width:5px; margin-top:1.8px ; margin-left:4.3px; position: absolute ">${value.Origin}</p>
+        <p style="font-size: 0.15px;  margin-top:2.3px ;width:5px; margin-left:4.3px; position: absolute ">${value.chassisNo}</p>
+        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:4.3px; position: absolute ">${value.color}</p>
+        <p style="font-size: 0.15px;  margin-top:3.2px ;width:5px; margin-left:4.3px; position: absolute ">${value.EngineNo}</p>
+        <p style="font-size: 0.15px;  margin-top:4px ;width:5px; width:5px; margin-left:4.3px; position: absolute ">${value.Comments}</p>
+        <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:0.3px; position: absolute ">${value.EngineHP}</p>
+        <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:0.3px; position: absolute ">${value.weight}</p>
+        <p style="font-size: 0.15px;  margin-top:2.1px ;width:10px; margin-left:0.3px; position: absolute ">${value.OwnerCode}</p>
+        <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:0.3px; position: absolute ">${value.importerorowner}</p>
+        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${value.Declaration}</p>
+      
+ <p style="font-size: 0.15px;height: 0.5px;   margin-top:4.9px ;width:4px; margin-left:0.5px; position: absolute ">${qrCodeHtml}</p>
       </div>
     `;
 
@@ -182,7 +187,7 @@ const VehicleDetailsqrcode = () => {
           <div className="col-md-6 col-sm-12 ">
             <div className="row">
               <p className="col-6 " >VCC Status :</p>
-              <p className="col-6" style={{ color: "red" }} onClick={handlePrintTable2}>Printed / Downloaded</p>
+              <a className="col-6 donloadbuton" style={{ color: "red" }} onClick={handlePrintTable2}>Printed / Downloaded</a>
             </div>
           </div>
           <div className="col-md-6 col-sm-12 ">
