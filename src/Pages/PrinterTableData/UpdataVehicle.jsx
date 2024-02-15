@@ -71,10 +71,10 @@ function UpdataVehicle() {
 
 
   const addtransaction = () => {
-
+console.log(value.ModelYear);
     axios.put(`/update-mirsal/${userId}`, {
       "vehicltype": value.VehicalType,
-      "modelyear": value.ModelYear,
+      modelyear: value.ModelYear,
       "enginehp": value.EngineHP,
       "origin": value.Origin,
       "Date": value.Datetime,
@@ -198,7 +198,7 @@ function UpdataVehicle() {
                       className="form-control inputsection py-2"
                       id="ModelYear"
                       placeholder="Enter Model Year"
-                      type="number"
+                      type="text"
                       value={value.ModelYear}
                       onChange={(e) => {
                         setvalue((prevValue) => ({
@@ -686,7 +686,7 @@ function UpdataVehicle() {
                     Comments
                   </label>
                   <textarea
-                    id="ModelYear"
+                    id="Comments"
                     value={value.Comments}
                     onChange={(e) => {
                       setvalue((prevValue) => ({
