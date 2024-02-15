@@ -120,7 +120,7 @@ function PrinterTableData()
          return `${day}/${month}/${year}`;
        };
             const tableHtml = `
-   <div style='position: relative;font-family: Arimo'>
+   <div style='position: relative;font-family: Arimo; color:black'>
         <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
         <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${formatDate(tableSelectedRows[0].Date)}</p>
          <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${tableSelectedRows[0].load}</p>
