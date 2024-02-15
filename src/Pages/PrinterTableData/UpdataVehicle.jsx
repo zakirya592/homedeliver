@@ -271,7 +271,7 @@ console.log(value.ModelYear);
                       className="form-control inputsection py-2"
                       id="weight"
                       placeholder="Enter Weight "
-                      type="number"
+                      type="text"
                       value={value.weight}
                       onChange={(e) => {
                         setvalue((prevValue) => ({
@@ -444,7 +444,7 @@ console.log(value.ModelYear);
                       className="form-control inputsection py-2"
                       id="EngineCapacity"
                       placeholder="Enter Engine Capacity"
-                      type="number"
+                      type="text"
                       value={value.EngineCapacity}
                       onChange={(e) => {
                         setvalue((prevValue) => ({
@@ -470,7 +470,7 @@ console.log(value.ModelYear);
                       className="form-control inputsection py-2"
                       id="PassengerCapacity"
                       placeholder="Enter Passenger Capacity"
-                      type="number"
+                      type="text"
                       value={value.PassengerCapacity}
                       onChange={(e) => {
                         setvalue((prevValue) => ({
@@ -496,7 +496,7 @@ console.log(value.ModelYear);
                       className="form-control inputsection py-2"
                       id="CarriageCapacity"
                       placeholder="Enter Passenger Capacity"
-                      type="number"
+                      type="text"
                       value={value.CarriageCapacity}
                       onChange={(e) => {
                         setvalue((prevValue) => ({

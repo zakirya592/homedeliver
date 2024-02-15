@@ -50,7 +50,7 @@ const VehicleDetailsqrcode = () => {
           DeclarationDate: res.data.data.DeclarationDate || "",
           OwnerCode: res.data.data.OwnerCode || "",
         }));
-
+console.log(res.data.data);
       }).catch((err) => {
         console.log(err);
       });
@@ -115,12 +115,21 @@ const VehicleDetailsqrcode = () => {
          doc.internal.pageSize.getHeight()
        );
 
+       const formatDate = (dateString) => {
+         if (!dateString) return ""; // Return empty string if dateString is empty
+         const date = new Date(dateString);
+         const day = date.getDate().toString().padStart(2, "0");
+         const month = (date.getMonth() + 1).toString().padStart(2, "0");
+         const year = date.getFullYear().toString();
+         return `${day}/${month}/${year}`;
+       };
+
        const tableHtml = `
 
       </div>
         <div style='position: relative;font-family: Arimo'>
         <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${value.CardNo}</p>
-        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${value.Datetime}</p>
+        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute "> ${formatDate(value.Datetime)}</p>
          <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${value.Load}</p>
         <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${value.VehicalType}</p>
         <p style=" font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${value.ModelYear}</p>
@@ -167,6 +176,14 @@ const VehicleDetailsqrcode = () => {
      });
    };
 
+const formatDate = (dateString) => {
+  if (!dateString) return ""; // Return empty string if dateString is empty
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, "0");
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const year = date.getFullYear().toString();
+  return `${day}/${month}/${year}`;
+};
 
   return (
     <div className="container text-start">
@@ -182,7 +199,7 @@ const VehicleDetailsqrcode = () => {
         </h4>
         <div className="border border-secondary rounded-top w-100 mt-2  ">
           <div className="mx-lg-3 mx-md-3 mx-sm-0 py-sm-4 py-md-0 py-md-0 py-0 bg-light my-2 mx-sm-2 ">
-            <div className="row mx-lg-3 mx-md-3 mx-sm-1 py-2 mx-2 text_lable">
+            <div className="row mx-lg-3 mx-md-3 mx-sm-1 py-2 mx-1 text_lable">
               <div className="col-md-6 col-sm-12 ">
                 <div className="row my-2">
                   <p className="col-6 ">VCC No :</p>
@@ -205,7 +222,7 @@ const VehicleDetailsqrcode = () => {
                 <div className="row">
                   <p className="col-6">VCC Generation Date:</p>
                   <p className="col-6 lablevaluecolor">
-                    {value.VCCGenerationDate}
+                    {formatDate(value.VCCGenerationDate)}
                   </p>
                 </div>
               </div>
@@ -312,7 +329,7 @@ const VehicleDetailsqrcode = () => {
                 <div className="row">
                   <p className="col-6">Declaration Date :</p>
                   <p className="col-6 lablevaluecolor">
-                    {value.DeclarationDate}
+                    {formatDate(value.DeclarationDate)}
                   </p>
                 </div>
               </div>

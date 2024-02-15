@@ -111,11 +111,18 @@ function PrinterTableData()
                 doc.internal.pageSize.getWidth(),
                 doc.internal.pageSize.getHeight()
             );
-
+  const formatDate = (dateString) => {
+         if (!dateString) return ""; // Return empty string if dateString is empty
+         const date = new Date(dateString);
+         const day = date.getDate().toString().padStart(2, "0");
+         const month = (date.getMonth() + 1).toString().padStart(2, "0");
+         const year = date.getFullYear().toString();
+         return `${day}/${month}/${year}`;
+       };
             const tableHtml = `
    <div style='position: relative;font-family: Arimo'>
         <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
-        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${tableSelectedRows[0].Date}</p>
+        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${formatDate(tableSelectedRows[0].Date)}</p>
          <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${tableSelectedRows[0].load}</p>
         <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
         <p style=" font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear}</p>
@@ -128,7 +135,7 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}-${tableSelectedRows[0].Date}</p>
+        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}</p>
         <img style="height: 0.8px; width: 0.8px; margin-top: 5px; margin-left: 0.5px; position: absolute;" src="data:image/png;base64,${tableSelectedRows[0].qrcode}" alt="">
 
       </div>

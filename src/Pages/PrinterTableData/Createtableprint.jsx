@@ -20,7 +20,7 @@ function Createtableprint()
         Declaration: '', EngineNo: '', Comments: '',
         Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
         CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
-        VCCGenerationDate: '', DeclarationDate: '', OwnerCode: '',
+        VCCGenerationDate: new Date().toISOString().split('T')[0], DeclarationDate: '', OwnerCode: '',
         Datetime: new Date().toISOString().split('T')[0], Load: ''
     })
 
@@ -151,7 +151,7 @@ function Createtableprint()
                                             className="form-control inputsection py-2"
                                             id="ModelYear"
                                             placeholder="Enter Model Year"
-                                            type="number"
+                                            type="text"
                                             value={value.ModelYear}
                                             onChange={(e) =>
                                             {
@@ -227,7 +227,7 @@ function Createtableprint()
                                             className="form-control inputsection py-2"
                                             id="weight"
                                             placeholder="Enter Weight "
-                                            type="number"
+                                            type="text"
                                             value={value.weight}
                                             onChange={(e) =>
                                             {
@@ -407,7 +407,7 @@ function Createtableprint()
                                             className="form-control inputsection py-2"
                                             id="EngineCapacity"
                                             placeholder="Enter Engine Capacity"
-                                            type="number"
+                                            type="text"
                                             value={value.EngineCapacity}
                                             onChange={(e) =>
                                             {
@@ -434,7 +434,7 @@ function Createtableprint()
                                             className="form-control inputsection py-2"
                                             id="PassengerCapacity"
                                             placeholder="Enter Passenger Capacity"
-                                            type="number"
+                                            type="text"
                                             value={value.PassengerCapacity}
                                             onChange={(e) =>
                                             {
@@ -461,7 +461,7 @@ function Createtableprint()
                                             className="form-control inputsection py-2"
                                             id="CarriageCapacity"
                                             placeholder="Enter Passenger Capacity"
-                                            type="number"
+                                            type="text"
                                             value={value.CarriageCapacity}
                                             onChange={(e) =>
                                             {
