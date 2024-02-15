@@ -8,7 +8,8 @@ import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutl
 import SaveIcon from '@mui/icons-material/Save';
 import Swal from "sweetalert2";
 
-function Createtableprint() {
+function Createtableprint()
+{
 
     const navigate = useNavigate();
     const [value, setvalue] = useState({
@@ -18,52 +19,55 @@ function Createtableprint() {
         chassisNo: '', importerorowner: '', color: '',
         Declaration: '', EngineNo: '', Comments: '',
         Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
-        CarriageCapacity: '',VehicleBrandName:'',SpecificationStandardName:'',
-        VCCGenerationDate:'',DeclarationDate:'',OwnerCode:'',
+        CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
+        VCCGenerationDate: '', DeclarationDate: '', OwnerCode: '',
         Datetime: new Date().toISOString().split('T')[0], Load: ''
     })
 
-    const addtransaction = () => {
+    const addtransaction = () =>
+    {
         axios
-          .post(`/add-mirsal`, {
-            cardno: value.CardNo,
-            vehicltype: value.VehicalType,
-            modelyear: value.ModelYear,
-            enginehp: value.EngineHP,
-            origin: value.Origin,
-            Date: value.Datetime,
-            load: value.Load,
-            weight: value.weight,
-            importer_or_owner: value.importerorowner,
-            chassisno: value.chassisNo,
-            declearationno: value.Declaration,
-            color: value.color,
-            enginno: value.EngineNo,
-            comments: value.Comments,
-            qrcode: value.CardNo,
-            Vehicledrive: value.Vehicledrive,
-            EngineCapacity: value.EngineCapacity,
-            PassengerCapacity: value.PassengerCapacity,
-            CarriageCapacity: value.CarriageCapacity,
-            VehicleBrandName: value.VehicleBrandName,
-            SpecificationStandardName: value.SpecificationStandardName,
-            VCCGenerationDate: value.VCCGenerationDate,
-            DeclarationDate: value.DeclarationDate,
-            OwnerCode: value.OwnerCode,
-          })
-          .then((res) => {
-            Swal.fire(
-              "Created!",
-              `vehicle Card No  ${value.CardNo} has been created successfully`,
-              "success"
-            );
-            navigate("/");
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.log(err);
-            Swal.fire("Error!", `${err.response.data.message}`, "error");
-          });
+            .post(`/add-mirsal`, {
+                cardno: value.CardNo,
+                vehicltype: value.VehicalType,
+                modelyear: value.ModelYear,
+                enginehp: value.EngineHP,
+                origin: value.Origin,
+                Date: value.Datetime,
+                load: value.Load,
+                weight: value.weight,
+                importer_or_owner: value.importerorowner,
+                chassisno: value.chassisNo,
+                declearationno: value.Declaration,
+                color: value.color,
+                enginno: value.EngineNo,
+                comments: value.Comments,
+                qrcode: value.CardNo,
+                Vehicledrive: value.Vehicledrive,
+                EngineCapacity: value.EngineCapacity,
+                PassengerCapacity: value.PassengerCapacity,
+                CarriageCapacity: value.CarriageCapacity,
+                VehicleBrandName: value.VehicleBrandName,
+                SpecificationStandardName: value.SpecificationStandardName,
+                VCCGenerationDate: value.VCCGenerationDate,
+                DeclarationDate: value.DeclarationDate,
+                OwnerCode: value.OwnerCode,
+            })
+            .then((res) =>
+            {
+                Swal.fire(
+                    "Created!",
+                    `vehicle Card No  ${value.CardNo} has been created successfully`,
+                    "success"
+                );
+                navigate("/");
+                console.log(res.data);
+            })
+            .catch((err) =>
+            {
+                console.log(err);
+                Swal.fire("Error!", `${err.response.data.message}`, "error");
+            });
 
     };
 
@@ -98,7 +102,8 @@ function Createtableprint() {
                                             placeholder="Card No"
                                             type="number"
                                             value={value.CardNo}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     CardNo: e.target.value,
@@ -122,7 +127,8 @@ function Createtableprint() {
                                             placeholder="Enter Vehical Type"
                                             type="text"
                                             value={value.VehicalType}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     VehicalType: e.target.value,
@@ -147,7 +153,8 @@ function Createtableprint() {
                                             placeholder="Enter Model Year"
                                             type="number"
                                             value={value.ModelYear}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     ModelYear: e.target.value,
@@ -171,7 +178,8 @@ function Createtableprint() {
                                             placeholder="Enter EngineHP"
                                             type="text"
                                             value={value.EngineHP}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     EngineHP: e.target.value,
@@ -195,7 +203,8 @@ function Createtableprint() {
                                             placeholder="Enter Origin"
                                             type="text"
                                             value={value.Origin}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     Origin: e.target.value,
@@ -220,7 +229,8 @@ function Createtableprint() {
                                             placeholder="Enter Weight "
                                             type="number"
                                             value={value.weight}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     weight: e.target.value,
@@ -244,7 +254,8 @@ function Createtableprint() {
                                             placeholder="Enter Chassis No"
                                             type="text"
                                             value={value.chassisNo}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     chassisNo: e.target.value,
@@ -268,7 +279,8 @@ function Createtableprint() {
                                             placeholder="Enter Importer Or Owner"
                                             type="text"
                                             value={value.importerorowner}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     importerorowner: e.target.value,
@@ -293,7 +305,8 @@ function Createtableprint() {
                                             placeholder="Enter color "
                                             type="text"
                                             value={value.color}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     color: e.target.value,
@@ -318,7 +331,8 @@ function Createtableprint() {
                                             placeholder="Enter Engine No "
                                             type="text"
                                             value={value.EngineNo}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     EngineNo: e.target.value,
@@ -343,7 +357,8 @@ function Createtableprint() {
                                             placeholder="Enter Load "
                                             type="text"
                                             value={value.Load}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     Load: e.target.value,
@@ -368,7 +383,8 @@ function Createtableprint() {
                                             placeholder="Enter Vehicle Drive"
                                             type="text"
                                             value={value.Vehicledrive}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     Vehicledrive: e.target.value,
@@ -393,7 +409,8 @@ function Createtableprint() {
                                             placeholder="Enter Engine Capacity"
                                             type="number"
                                             value={value.EngineCapacity}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     EngineCapacity: e.target.value,
@@ -419,7 +436,8 @@ function Createtableprint() {
                                             placeholder="Enter Passenger Capacity"
                                             type="number"
                                             value={value.PassengerCapacity}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     PassengerCapacity: e.target.value,
@@ -445,7 +463,8 @@ function Createtableprint() {
                                             placeholder="Enter Passenger Capacity"
                                             type="number"
                                             value={value.CarriageCapacity}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     CarriageCapacity: e.target.value,
@@ -455,13 +474,13 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                  <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
                                             htmlFor="VehicleBrandName"
                                             className="lablesection colorblack text-start mb-1"
                                         >
-                                         Vehicle Brand Name
+                                            Vehicle Brand Name
                                         </label>
 
                                         <input
@@ -470,7 +489,8 @@ function Createtableprint() {
                                             placeholder="Enter Vehicle Brand Name"
                                             type="text"
                                             value={value.VehicleBrandName}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     VehicleBrandName: e.target.value,
@@ -480,13 +500,13 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
                                             htmlFor="SpecificationStandardName"
                                             className="lablesection colorblack text-start mb-1"
                                         >
-                                        Specification Standard Name
+                                            Specification Standard Name
                                         </label>
 
                                         <input
@@ -495,7 +515,8 @@ function Createtableprint() {
                                             placeholder="Enter Specification Standard Name"
                                             type="text"
                                             value={value.SpecificationStandardName}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     SpecificationStandardName: e.target.value,
@@ -505,13 +526,13 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                  <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
                                             htmlFor="OwnerCode"
                                             className="lablesection colorblack text-start mb-1"
                                         >
-                                        Owner Code
+                                            Owner Code
                                         </label>
 
                                         <input
@@ -520,7 +541,8 @@ function Createtableprint() {
                                             placeholder="Enter Owner Code"
                                             type="text"
                                             value={value.OwnerCode}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     OwnerCode: e.target.value,
@@ -544,7 +566,8 @@ function Createtableprint() {
                                             id="Datetime"
                                             type="date"
                                             value={value.Datetime}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     Datetime: e.target.value,
@@ -554,7 +577,7 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
                                             htmlFor="VCCGenerationDate"
@@ -568,7 +591,8 @@ function Createtableprint() {
                                             id="VCCGenerationDate"
                                             type="date"
                                             value={value.VCCGenerationDate}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     VCCGenerationDate: e.target.value,
@@ -578,7 +602,7 @@ function Createtableprint() {
                                     </div>
                                 </div>
 
-                                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
                                             htmlFor="DeclarationDate"
@@ -592,7 +616,8 @@ function Createtableprint() {
                                             id="DeclarationDate"
                                             type="date"
                                             value={value.DeclarationDate}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     DeclarationDate: e.target.value,
@@ -611,18 +636,19 @@ function Createtableprint() {
                                             Declaration
                                         </label>
                                         <input
-                                         className="form-control inputsection py-2"
+                                            className="form-control inputsection py-2"
                                             id="Declaration"
                                             type="text"
                                             value={value.Declaration}
-                                            onChange={(e) => {
+                                            onChange={(e) =>
+                                            {
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     Declaration: e.target.value,
                                                 }));
                                             }}
                                         />
-                                        
+
                                     </div>
                                 </div>
 
@@ -636,7 +662,8 @@ function Createtableprint() {
                                     <textarea
                                         id="ModelYear"
                                         value={value.Comments}
-                                        onChange={(e) => {
+                                        onChange={(e) =>
+                                        {
                                             setvalue((prevValue) => ({
                                                 ...prevValue,
                                                 Comments: e.target.value,
