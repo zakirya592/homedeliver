@@ -113,13 +113,13 @@ function PrinterTableData()
             );
 
             const tableHtml = `
-   <div style='position: relative'>
-        <p style="font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
+   <div style='position: relative;font-family: Arimo'>
+        <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
         <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${tableSelectedRows[0].Date}</p>
          <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${tableSelectedRows[0].load}</p>
-        <p style="font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
-        <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear}</p>
-        <p style="font-size: 0.15px; font-weight:500;width:5px; margin-top:1.8px ; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].origin}</p>
+        <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
+        <p style=" font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear}</p>
+        <p style=" font-size: 0.15px; font-weight:500;width:5px; margin-top:1.8px ; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].origin}</p>
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].chassisno}</p>
         <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].color}</p>
         <p style="font-size: 0.15px;  margin-top:3.2px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].enginno}</p>
