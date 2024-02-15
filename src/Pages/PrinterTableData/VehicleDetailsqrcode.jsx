@@ -170,138 +170,172 @@ const VehicleDetailsqrcode = () => {
 
   return (
     <div className="container text-start">
-      <div className="border border-secondary mt-4 rounded bg-light">
-        <p className="bg-secondary text-white text-start p-2 fw-bolder">
+      <div className="border border-secondary mt-4 ">
+        <p className="bg-custom text-white text-start py-lg-3 py-md-3 py-sm-2 py-2 px-3 fw-bolder">
           View VCC Details
         </p>
-        <p className="text-danger text-start p-2 fw-bold" style={{ backgroundColor: "transparat" }}>
+        <h4
+          className="toperheading text-start mx-3 fw-bold"
+          style={{ backgroundColor: "white" }}
+        >
           VCC/Vehicle Details
-        </p>
-        <div className="row mx-lg-3 mx-md-3 mx-sm-2">
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">VCC No :</p>
-              <p className="col-6">{value.CardNo}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6 " >VCC Status :</p>
-              <a className="col-6 donloadbuton" style={{ color: "red" }} onClick={handlePrintTable2}>Printed / Downloaded</a>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">VCC Generation Date:</p>
-              <p className="col-6">{value.VCCGenerationDate}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Chassis No:</p>
-              <p className="col-6">{value.chassisNo}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Engine Number:</p>
-              <p className="col-6">{value.EngineNo}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Years of Build:</p>
-              <p className="col-6">{value.ModelYear}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Vehicle Drive:</p>
-              <p className="col-6">{value.Vehicledrive}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Country of Origin:</p>
-              <p className="col-6">{value.Origin}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Engine Capacity:</p>
-              <p className="col-6">{value.EngineCapacity}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Carriage Capacity:</p>
-              <p className="col-6">{value.CarriageCapacity}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Passenger Capacity :</p>
-              <p className="col-6">{value.PassengerCapacity}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Vehicle Model :</p>
-              <p className="col-6">{value.ModelYear}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Vehicle Brand Name :</p>
-              <p className="col-6">{value.VehicleBrandName}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Vehicle Type :</p>
-              <p className="col-6">{value.VehicalType}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Vehicle Color :</p>
-              <p className="col-6">{value.color}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Specification Standard Name :</p>
-              <p className="col-6">{value.SpecificationStandardName}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Declaration Number :</p>
-              <p className="col-6" style={{ color: "blue" }} >{value.Declaration}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Declaration Date :</p>
-              <p className="col-6">{value.DeclarationDate}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Owner Code :</p>
-              <p className="col-6">{value.OwnerCode}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Owner Name :</p>
-              <p className="col-6">{value.importerorowner}</p>
-            </div>
-          </div>
-          <div className="col-md-6 col-sm-12 ">
-            <div className="row">
-              <p className="col-6">Print Remarks :</p>
-              <p className="col-6">{value.Comments}</p>
+        </h4>
+        <div className="border border-secondary rounded-top w-100 mt-2  ">
+          <div className="mx-lg-3 mx-md-3 mx-sm-0 py-sm-4 py-md-0 py-md-0 py-0 bg-light my-2 mx-sm-2 ">
+            <div className="row mx-lg-3 mx-md-3 mx-sm-1 py-2 mx-2 text_lable">
+              <div className="col-md-6 col-sm-12 ">
+                <div className="row my-2">
+                  <p className="col-6 ">VCC No :</p>
+                  <p className="col-6 lablevaluecolor">{value.CardNo}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1">
+                <div className="row">
+                  <p className="col-6 ">VCC Status :</p>
+                  <a
+                    className="col-6 donloadbuton lablevaluecolor"
+                    style={{ color: "red" }}
+                    onClick={handlePrintTable2}
+                  >
+                    Printed / Downloaded
+                  </a>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1 ">
+                <div className="row">
+                  <p className="col-6">VCC Generation Date:</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.VCCGenerationDate}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Chassis No:</p>
+                  <p className="col-6 lablevaluecolor">{value.chassisNo}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Engine Number:</p>
+                  <p className="col-6 lablevaluecolor">{value.EngineNo}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Years of Build:</p>
+                  <p className="col-6 lablevaluecolor">{value.ModelYear}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Vehicle Drive:</p>
+                  <p className="col-6 lablevaluecolor">{value.Vehicledrive}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Country of Origin:</p>
+                  <p className="col-6 lablevaluecolor">{value.Origin}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Engine Capacity:</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.EngineCapacity}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Carriage Capacity:</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.CarriageCapacity}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Passenger Capacity :</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.PassengerCapacity}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Vehicle Model :</p>
+                  <p className="col-6 lablevaluecolor">{value.ModelYear}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Vehicle Brand Name :</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.VehicleBrandName}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Vehicle Type :</p>
+                  <p className="col-6 lablevaluecolor">{value.VehicalType}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Vehicle Color :</p>
+                  <p className="col-6 lablevaluecolor">{value.color}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Specification Standard Name :</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.SpecificationStandardName}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12  mt-1">
+                <div className="row">
+                  <p className="col-6">Declaration Number :</p>
+                  <p
+                    className="col-6 lablevaluecolor"
+                    style={{ color: "blue" }}
+                  >
+                    {value.Declaration}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Declaration Date :</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.DeclarationDate}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Owner Code :</p>
+                  <p className="col-6 lablevaluecolor">{value.OwnerCode}</p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Owner Name :</p>
+                  <p className="col-6 lablevaluecolor">
+                    {value.importerorowner}
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-6 col-sm-12 mt-1 ">
+                <div className="row">
+                  <p className="col-6">Print Remarks :</p>
+                  <p className="col-6 lablevaluecolor">{value.Comments}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
