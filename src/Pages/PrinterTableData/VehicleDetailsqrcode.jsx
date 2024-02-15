@@ -193,7 +193,7 @@ const VehicleDetailsqrcode = () => {
                 <div className="row">
                   <p className="col-6 ">VCC Status :</p>
                   <a
-                    className="col-6 donloadbuton lablevaluecolor"
+                    className="col-6 donloadbuton"
                     style={{ color: "red" }}
                     onClick={handlePrintTable2}
                   >
