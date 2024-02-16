@@ -20,7 +20,7 @@ function Createtableprint()
         Declaration: '', EngineNo: '', Comments: '',
         Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
         CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
-        VCCGenerationDate: new Date().toISOString().split('T')[0], DeclarationDate: '', OwnerCode: '',
+        VCCGenerationDate: new Date().toISOString().split('T')[0], DeclarationDate:new Date().toISOString().split('T')[0], OwnerCode: '',
         Datetime: new Date().toISOString().split('T')[0], Load: ''
     })
 
