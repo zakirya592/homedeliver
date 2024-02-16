@@ -17,7 +17,7 @@ import { ShipmentRequestColumns } from '../../Datatablesource'
 import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
 import QRCode from "qrcode.react";
-import iimageeee  from "../../img/tempp.png"
+import iimageeee from "../../img/tempp.png"
 
 function PrinterTableData()
 {
@@ -112,6 +112,7 @@ function PrinterTableData()
                 doc.internal.pageSize.getWidth(),
                 doc.internal.pageSize.getHeight()
             );
+
             const formatDate = (dateString) =>
             {
                 if (!dateString) return ""; // Return empty string if dateString is empty
