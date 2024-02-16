@@ -214,7 +214,7 @@ const formatDate = (dateString) => {
                     style={{ color: "red" }}
                     onClick={handlePrintTable2}
                   >
-                    Printed / Downloaded
+                    Printed/Downloaded
                   </a>
                 </div>
               </div>
@@ -318,7 +318,7 @@ const formatDate = (dateString) => {
                 <div className="row">
                   <p className="col-6">Declaration Number :</p>
                   <p
-                    className="col-6 lablevaluecolor"
+                    className="col-6"
                     style={{ color: "blue" }}
                   >
                     {value.Declaration}
