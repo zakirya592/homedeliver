@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Siderbar from '../../Component/Sidbar/Siderbar'
@@ -18,6 +18,8 @@ import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
 import QRCode from "qrcode.react";
 import iimageeee from "../../img/tempp.png"
+import { saveAs } from "file-saver";
+import QRCodeStyling from "qr-code-styling";
 
 function PrinterTableData()
 {
@@ -281,11 +283,53 @@ function PrinterTableData()
         doc.save("table_data.pdf");
     };
 
+
+
+
+const downloadQRCodeAsPNG = async (tableSelectedRows) => {
+
+  const cardNumber = tableSelectedRows[0].cardno;
+  const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${cardNumber}`;
+
+  try {
+    const qrCode = new QRCodeStyling({
+      width: 200,
+      height: 200,
+      data: url,
+    //   image: "../../img/tempp.png", // Replace with your logo image URL
+      imageOptions: {
+        crossOrigin: "anonymous", // Ensure cross-origin for the logo
+        margin: 10,
+      },
+    });
+
+    // Create a canvas element to render the QR code
+    const canvas = document.createElement("canvas");
+    qrCode.append(canvas);
+console.log(canvas);
+    // Wait for a short delay to ensure the QR code is rendered
+    await new Promise((resolve) => {
+      qrCode.download({
+        name: `qrcode_${cardNumber}`,
+        extension: "png",
+      });
+      setTimeout(resolve, 500);
+    });
+  } catch (error) {
+    console.error("Error generating QR code:", error);
+  }
+};
+
+
+
+
+
     const printerfuunction = (selectedRow) =>
     {
         console.log(tableSelectedRows);
         if (tableSelectedRows.length === 1) {
             handlePrintTable2(tableSelectedRows);
+            downloadQRCodeAsPNG(tableSelectedRows);
         } else if (tableSelectedRows.length > 1) {
             Swal.fire("Error!", "Select only one row to print the data", "error");
         } else {
@@ -385,6 +429,7 @@ function PrinterTableData()
                                         <AddCircleOutlineIcon className="me-1" />
                                         Create
                                     </button>
+
                                     {/* <button
                                         onClick={printerfuunction}
                                         className='rounded py-1 px-2 mx-1 color2 btnwork'
