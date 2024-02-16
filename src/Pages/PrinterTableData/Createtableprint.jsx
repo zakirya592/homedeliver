@@ -21,7 +21,8 @@ function Createtableprint()
         Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
         CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
         VCCGenerationDate: new Date().toISOString().split('T')[0], DeclarationDate:new Date().toISOString().split('T')[0], OwnerCode: '',
-        Datetime: new Date().toISOString().split('T')[0], Load: ''
+        Datetime: new Date().toISOString().split('T')[0], Load: '',
+        Vehiclemodel:'',
     })
 
     const addtransaction = () =>
@@ -52,6 +53,7 @@ function Createtableprint()
                 VCCGenerationDate: value.VCCGenerationDate,
                 DeclarationDate: value.DeclarationDate,
                 OwnerCode: value.OwnerCode,
+                Vehiclemodel:value.Vehiclemodel
             })
             .then((res) =>
             {
@@ -158,6 +160,31 @@ function Createtableprint()
                                                 setvalue((prevValue) => ({
                                                     ...prevValue,
                                                     ModelYear: e.target.value,
+                                                }));
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                                    <div className="mb-3 text-start">
+                                        <label
+                                            htmlFor="Vehiclemodel"
+                                            className="lablesection colorblack text-start mb-1"
+                                        >
+                                          Vehicle Model
+                                        </label>
+
+                                        <input
+                                            className="form-control inputsection py-2"
+                                            id="Vehiclemodel"
+                                            placeholder="Enter Vehicle Model"
+                                            type="text"
+                                            value={value.Vehiclemodel}
+                                            onChange={(e) =>
+                                            {
+                                                setvalue((prevValue) => ({
+                                                    ...prevValue,
+                                                    Vehiclemodel: e.target.value,
                                                 }));
                                             }}
                                         />
@@ -552,6 +579,32 @@ function Createtableprint()
                                     </div>
                                 </div>
 
+                                
+                                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2 my-2">
+                                    <div className="mb-3 text-start">
+                                        <label
+                                            htmlFor="Declaration"
+                                            className="lablesection colorblack text-start"
+                                        >
+                                            Declaration
+                                        </label>
+                                        <input
+                                            className="form-control inputsection py-2"
+                                            id="Declaration"
+                                            type="text"
+                                            value={value.Declaration}
+                                            onChange={(e) =>
+                                            {
+                                                setvalue((prevValue) => ({
+                                                    ...prevValue,
+                                                    Declaration: e.target.value,
+                                                }));
+                                            }}
+                                        />
+
+                                    </div>
+                                </div>
+
                                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                                     <div className="mb-3 text-start">
                                         <label
@@ -627,30 +680,6 @@ function Createtableprint()
                                     </div>
                                 </div>
 
-                                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2 text-center">
-                                    <div className="mb-3 text-start mt-4">
-                                        <label
-                                            htmlFor="Declaration"
-                                            className="lablesection colorblack text-start"
-                                        >
-                                            Declaration
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Declaration"
-                                            type="text"
-                                            value={value.Declaration}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Declaration: e.target.value,
-                                                }));
-                                            }}
-                                        />
-
-                                    </div>
-                                </div>
 
                                 <div className="emailsection position-relative d-grid my-2">
                                     <label

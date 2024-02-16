@@ -19,6 +19,7 @@ const VehicleDetailsqrcode = () => {
     Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
     CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
     VCCGenerationDate: '', DeclarationDate: '', OwnerCode: '',
+    Vehiclemodel:'',
   })
   const getapi = () => {
     axios.get(`/get-mirsal/${cardNo}`)
@@ -49,8 +50,8 @@ const VehicleDetailsqrcode = () => {
           VCCGenerationDate: res.data.data.VCCGenerationDate || "",
           DeclarationDate: res.data.data.DeclarationDate || "",
           OwnerCode: res.data.data.OwnerCode || "",
+          Vehiclemodel:res.data.data.Vehiclemodel || ""
         }));
-console.log(res.data.data);
       }).catch((err) => {
         console.log(err);
       });
@@ -283,7 +284,7 @@ const formatDate = (dateString) => {
               <div className="col-md-6 col-sm-12  mt-1">
                 <div className="row">
                   <p className="col-6">Vehicle Model :</p>
-                  <p className="col-6 lablevaluecolor">{value.ModelYear}</p>
+                  <p className="col-6 lablevaluecolor">{value.Vehiclemodel}</p>
                 </div>
               </div>
               <div className="col-md-6 col-sm-12  mt-1">
@@ -317,10 +318,7 @@ const formatDate = (dateString) => {
               <div className="col-md-6 col-sm-12  mt-1">
                 <div className="row">
                   <p className="col-6">Declaration Number :</p>
-                  <p
-                    className="col-6"
-                    style={{ color: "blue" }}
-                  >
+                  <p className="col-6" style={{ color: "blue" }}>
                     {value.Declaration}
                   </p>
                 </div>

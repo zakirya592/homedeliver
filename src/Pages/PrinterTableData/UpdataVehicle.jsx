@@ -22,7 +22,7 @@ function UpdataVehicle() {
     Datetime: '', Load: '', qrcode: "",
     Vehicledrive: '', EngineCapacity: '', PassengerCapacity: '',
     CarriageCapacity: '', VehicleBrandName: '', SpecificationStandardName: '',
-    VCCGenerationDate: '', DeclarationDate: '', OwnerCode: '',
+    VCCGenerationDate: '', DeclarationDate: '', OwnerCode: '', Vehiclemodel: '',
   })
 
   const getapi = () => {
@@ -54,6 +54,7 @@ function UpdataVehicle() {
           VCCGenerationDate: res.data.data.VCCGenerationDate || "",
           DeclarationDate: res.data.data.DeclarationDate || "",
           OwnerCode: res.data.data.OwnerCode || "",
+          Vehiclemodel: res.data.data.Vehiclemodel || "",
         }));
 
       }).catch((err) => {
@@ -71,7 +72,7 @@ function UpdataVehicle() {
 
 
   const addtransaction = () => {
-console.log(value.ModelYear);
+    console.log(value.ModelYear);
     axios.put(`/update-mirsal/${userId}`, {
       "vehicltype": value.VehicalType,
       modelyear: value.ModelYear,
@@ -96,6 +97,7 @@ console.log(value.ModelYear);
       "VCCGenerationDate": value.VCCGenerationDate,
       "DeclarationDate": value.DeclarationDate,
       "OwnerCode": value.OwnerCode,
+      "Vehiclemodel": value.Vehiclemodel
     })
       .then((res) => {
         Swal.fire(
@@ -204,6 +206,31 @@ console.log(value.ModelYear);
                         setvalue((prevValue) => ({
                           ...prevValue,
                           ModelYear: e.target.value,
+                        }));
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
+                  <div className="mb-3 text-start">
+                    <label
+                      htmlFor="Vehiclemodel"
+                      className="lablesection colorblack text-start mb-1"
+                    >
+                      Vehicle Model
+                    </label>
+
+                    <input
+                      className="form-control inputsection py-2"
+                      id="Vehiclemodel"
+                      placeholder="Enter Vehicle Model"
+                      type="text"
+                      value={value.Vehiclemodel}
+                      onChange={(e) => {
+                        setvalue((prevValue) => ({
+                          ...prevValue,
+                          Vehiclemodel: e.target.value,
                         }));
                       }}
                     />
@@ -583,6 +610,29 @@ console.log(value.ModelYear);
                   </div>
                 </div>
 
+                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4  my-2">
+                  <div className="mb-3 text-start mt-4">
+                    <label
+                      htmlFor="Declaration"
+                      className="lablesection colorblack"
+                    >
+                      Declaration
+                    </label>
+                    <input
+                      className="form-control inputsection py-2"
+                      id="Declaration"
+                      type="text"
+                      value={value.Declaration}
+                      onChange={(e) => {
+                        setvalue((prevValue) => ({
+                          ...prevValue,
+                          Declaration: e.target.value,
+                        }));
+                      }}
+                    />
+                  </div>
+                </div>
+
                 <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
                   <div className="mb-3 text-start">
                     <label
@@ -649,29 +699,6 @@ console.log(value.ModelYear);
                         setvalue((prevValue) => ({
                           ...prevValue,
                           DeclarationDate: e.target.value,
-                        }));
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2 text-center">
-                  <div className="mb-3 text-start mt-4">
-                    <label
-                      htmlFor="Declaration"
-                      className="lablesection colorblack text-start"
-                    >
-                      Declaration
-                    </label>
-                    <input
-                      className="form-control inputsection py-2"
-                      id="Declaration"
-                      type="text"
-                      value={value.Declaration}
-                      onChange={(e) => {
-                        setvalue((prevValue) => ({
-                          ...prevValue,
-                          Declaration: e.target.value,
                         }));
                       }}
                     />
