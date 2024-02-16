@@ -167,7 +167,7 @@ function PrinterTableData()
             doc.html(printContent, {
                 callback: () =>
                 {
-                    doc.save("table.pdf");
+                    doc.save("VCCReport.pdf");
                 },
             });
         });
