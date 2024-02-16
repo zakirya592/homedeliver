@@ -17,6 +17,7 @@ import { ShipmentRequestColumns } from '../../Datatablesource'
 import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
 import QRCode from "qrcode.react";
+import iimageeee  from "../../img/tempp.png"
 
 function PrinterTableData()
 {
@@ -68,7 +69,7 @@ function PrinterTableData()
 
         const headerStyle =
             "font-weight: bold; background:#3d41cf, color:white ;padding: 5px";
-        const logsss = "https://i.ibb.co/bPNS38G/Printer.png";
+        const logsss = iimageeee;
         const imageshowss = 0;
 
         const loadImage1 = new Promise((resolve) =>
@@ -111,14 +112,15 @@ function PrinterTableData()
                 doc.internal.pageSize.getWidth(),
                 doc.internal.pageSize.getHeight()
             );
-  const formatDate = (dateString) => {
-         if (!dateString) return ""; // Return empty string if dateString is empty
-         const date = new Date(dateString);
-         const day = date.getDate().toString().padStart(2, "0");
-         const month = (date.getMonth() + 1).toString().padStart(2, "0");
-         const year = date.getFullYear().toString();
-         return `${day}/${month}/${year}`;
-       };
+            const formatDate = (dateString) =>
+            {
+                if (!dateString) return ""; // Return empty string if dateString is empty
+                const date = new Date(dateString);
+                const day = date.getDate().toString().padStart(2, "0");
+                const month = (date.getMonth() + 1).toString().padStart(2, "0");
+                const year = date.getFullYear().toString();
+                return `${day}/${month}/${year}`;
+            };
             const tableHtml = `
    <div style='position: relative;font-family: Arimo; color:black'>
         <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
