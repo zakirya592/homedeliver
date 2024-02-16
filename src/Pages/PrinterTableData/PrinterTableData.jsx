@@ -129,7 +129,7 @@ function PrinterTableData()
         <p style=" font-size: 0.15px;  margin-top:0.1px ; width:5px; margin-left:0.8px; position: absolute">${tableSelectedRows[0].cardno}</p>
         <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${formatDate(tableSelectedRows[0].Date)}</p>
          <p style="font-size: 0.15px;  margin-top:0.55px ; width:5px; margin-left:3px; position: absolute">${tableSelectedRows[0].load}</p>
-        <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].vehicltype}</p>
+        <p style=" font-size: 0.15px;  margin-top:0.5px ;width:10px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].VehicleBrandName} - ${tableSelectedRows[0].Vehiclemodel}(${tableSelectedRows[0].vehicltype})</p>
         <p style=" font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear}</p>
         <p style=" font-size: 0.15px; font-weight:500;width:5px; margin-top:1.8px ; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].origin}</p>
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].chassisno}</p>
@@ -139,8 +139,8 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].enginehp}</p>
         <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}</p>
+        <p style="font-size: 0.15px;  margin-top:2.3px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
+        <p style="font-size: 0.15px;  margin-top:2.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno}  - ${formatDate(tableSelectedRows[0].DeclarationDate)}</p>
        </div>
     `;
 
