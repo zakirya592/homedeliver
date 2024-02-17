@@ -300,39 +300,41 @@ function PrinterTableData()
 
 
 
-const downloadQRCodeAsPNG = async (tableSelectedRows) => {
+    const downloadQRCodeAsPNG = async (tableSelectedRows) =>
+    {
 
-  const cardNumber = tableSelectedRows[0].cardno;
-  const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${cardNumber}`;
+        const cardNumber = tableSelectedRows[0].cardno;
+        const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${cardNumber}`;
 
-  try {
-    const qrCode = new QRCodeStyling({
-      width: 200,
-      height: 200,
-      data: url,
-    //   image: "../../img/tempp.png", // Replace with your logo image URL
-      imageOptions: {
-        crossOrigin: "anonymous", // Ensure cross-origin for the logo
-        margin: 10,
-      },
-    });
+        try {
+            const qrCode = new QRCodeStyling({
+                width: 200,
+                height: 200,
+                data: url,
+                //   image: "../../img/tempp.png", // Replace with your logo image URL
+                imageOptions: {
+                    crossOrigin: "anonymous", // Ensure cross-origin for the logo
+                    margin: 10,
+                },
+            });
 
-    // Create a canvas element to render the QR code
-    const canvas = document.createElement("canvas");
-    qrCode.append(canvas);
-console.log(canvas);
-    // Wait for a short delay to ensure the QR code is rendered
-    await new Promise((resolve) => {
-      qrCode.download({
-        name: `qrcode_${cardNumber}`,
-        extension: "png",
-      });
-      setTimeout(resolve, 500);
-    });
-  } catch (error) {
-    console.error("Error generating QR code:", error);
-  }
-};
+            // Create a canvas element to render the QR code
+            const canvas = document.createElement("canvas");
+            qrCode.append(canvas);
+            console.log(canvas);
+            // Wait for a short delay to ensure the QR code is rendered
+            await new Promise((resolve) =>
+            {
+                qrCode.download({
+                    name: `qrcode_${cardNumber}`,
+                    extension: "png",
+                });
+                setTimeout(resolve, 500);
+            });
+        } catch (error) {
+            console.error("Error generating QR code:", error);
+        }
+    };
 
 
 
