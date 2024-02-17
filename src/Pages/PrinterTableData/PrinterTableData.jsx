@@ -153,7 +153,7 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:1.3px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].enginehp}</p>
         <p style="font-size: 0.15px;  margin-top:1.8px ;width:5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
+        <p style="font-size: 0.15px;  margin-top:2.3px ;width:2.5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
         <p style="font-size: 0.15px;  margin-top:2.8px ;width:10px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno} - ${formatDate(tableSelectedRows[0].DeclarationDate)}</p>
        </div>
     `;
