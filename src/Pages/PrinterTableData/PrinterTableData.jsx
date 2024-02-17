@@ -181,7 +181,7 @@ function PrinterTableData()
             doc.html(printContent, {
                 callback: () =>
                 {
-                    doc.save("VCCReport_.pdf");
+                    doc.save(`VCCReport_${tableSelectedRows[0].cardno}.pdf`);
                 },
             });
         });
