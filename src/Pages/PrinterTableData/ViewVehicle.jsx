@@ -708,7 +708,7 @@ function ViewVehicle() {
               <button
                 type="button"
                 class="border-0 px-3  savebtn py-2"
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/Table")}
               >
                 {" "}
                 <ArrowCircleLeftOutlinedIcon className="me-2" />

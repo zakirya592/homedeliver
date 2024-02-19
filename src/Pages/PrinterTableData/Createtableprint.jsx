@@ -62,7 +62,7 @@ function Createtableprint()
                     `vehicle Card No  ${value.CardNo} has been created successfully`,
                     "success"
                 );
-                navigate("/");
+                navigate("/Table");
                 console.log(res.data);
             })
             .catch((err) =>
@@ -709,7 +709,7 @@ function Createtableprint()
                             <button
                                 type="button"
                                 className="border-0 px-3  savebtn py-2"
-                                onClick={() => navigate("/")}
+                                onClick={() => navigate("/Table")}
                             >
                                 {" "}
                                 <ArrowCircleLeftOutlinedIcon className="me-2" />
