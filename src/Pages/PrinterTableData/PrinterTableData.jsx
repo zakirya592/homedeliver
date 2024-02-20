@@ -154,8 +154,7 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:1.8px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:2.5px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno} - ${formatDate(tableSelectedRows[0].DeclarationDate)}</p>
-       </div>
+<p style="font-size: 0.15px;  margin-top:2.8px ;width:3px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno} - ${formatDate(tableSelectedRows[0].DeclarationDate)}</p>       </div>
     `;
 
             const printContent = `
@@ -186,119 +185,6 @@ function PrinterTableData()
             });
         });
     };
-
-    const handleDownloadPDF = (tableSelectedRows) =>
-    {
-        const doc = new jsPDF({
-            orientation: "landscape",
-            unit: "in",
-            format: [6.04, 8.26],
-        });
-
-        // Add background image
-        const backgroundImage = "https://i.ibb.co/pvNXhDC/Printer.png";
-        doc.addImage(backgroundImage, 0, 0, 8.26, 6.04);
-
-        const htmlss = [
-            [
-                tableSelectedRows[0].load,
-                "       ",
-                "       ",
-                "       ",
-                "       ",
-                "       ",
-                tableSelectedRows[0].Date,
-            ],
-            { height: 20 },
-            [
-                "  ",
-                "  ",
-                tableSelectedRows[0].load,
-                "   ",
-                "   ",
-                "   ",
-                tableSelectedRows[0].vehicltype,
-                "",
-            ],
-            [],
-            [
-                "  ",
-                "  ",
-                tableSelectedRows[0].enginehp,
-                "   ",
-                "   ",
-                "   ",
-                tableSelectedRows[0].modelyear,
-                "",
-            ],
-            [],
-            [
-                "  ",
-                "  ",
-                tableSelectedRows[0].weight,
-                "   ",
-                "   ",
-                "   ",
-                tableSelectedRows[0].origin,
-                "",
-            ],
-            [
-                " ",
-                tableSelectedRows[0].importer_or_owner,
-                "   ",
-                "   ",
-                "   ",
-                tableSelectedRows[0].chassisno,
-                "",
-            ],
-            [],
-            [
-                "  ",
-                tableSelectedRows[0].declearationno,
-                "   ",
-                "   ",
-                "   ",
-                "   ",
-                tableSelectedRows[0].color,
-                "",
-            ],
-            ["  ", "   ", "   ", "   ", "   ", "   ", tableSelectedRows[0].enginno, ""],
-            [],
-            [],
-        ];
-
-        doc.autoTable({
-            body: htmlss,
-            startY: 1,
-            margin: { top: 12 },
-            theme: "plain",
-            styles: {
-                halign: "left",
-                valign: "middle",
-                fontSize: 11,
-                fillColor: null,
-                textColor: null,
-                background: null,
-                tableWidth: "auto",
-            },
-            didParseCell: function (data)
-            {
-                if (data.row.index === 2) {
-                    // Adjust margin-top for the third row
-                    data.cell.styles.cellMargin = { top: -50 }; // Adjust margin-top as needed
-                    console.log('to check it', data.cell.styles);
-                }
-            },
-            useCss: true,
-            useHtml: true,
-        });
-
-        // Save the PDF file
-        doc.save("table_data.pdf");
-    };
-
-
-
 
     const downloadQRCodeAsPNG = async (tableSelectedRows) =>
     {

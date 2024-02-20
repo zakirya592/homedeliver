@@ -105,7 +105,7 @@ function UpdataVehicle() {
           `vehicle Card No  ${value.CardNo} has been Update successfully`,
           'success'
         )
-        navigate('/')
+        navigate("/Table");
       })
       .catch((err) => {
         console.log(err);
