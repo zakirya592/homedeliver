@@ -149,7 +149,7 @@ function PrinterTableData()
         <p style="font-size: 0.15px;  margin-top:2.3px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].chassisno}</p>
         <p style="font-size: 0.15px;  margin-top:2.8px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].color}</p>
         <p style="font-size: 0.15px;  margin-top:3.2px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].enginno}</p>
-        <p style="font-size: 0.15px;  margin-top:3.95px ;width:2px; width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].comments}</p>
+        <p style="font-size: 0.15px;  margin-top:3.9px ;width:2px; width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].comments}</p>
         <p style="font-size: 0.15px;  margin-top:1.3px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].enginehp}</p>
         <p style="font-size: 0.15px;  margin-top:1.8px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
         <p style="font-size: 0.15px;  margin-top:2.1px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
