@@ -9,6 +9,7 @@ import ViewVehicle from '../../Pages/PrinterTableData/ViewVehicle';
 import VehicleDetailsqrcode from '../../Pages/PrinterTableData/VehicleDetailsqrcode';
 import Downloads from '../../Pages/PrinterTableData/Downloads';
 import Login from '../../Pages/Login/Login';
+import ChangePasswordForm from '../../Pages/Setting/PasswordChange/ChangePasswordForm';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                     
                     <Route path='/VehicleDetail/:cardNo' element={<VehicleDetailsqrcode />} />
                     
+                    <Route path='/Change/password' element={<ChangePasswordForm />} />
                     <Route path='/Download' element={<Downloads />} />
 
             </Routes>

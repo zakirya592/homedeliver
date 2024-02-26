@@ -27,6 +27,8 @@ function Login() {
 
         if (res.status === 200) {
           navigate("/Table");
+          localStorage.setItem("emailget", email);
+          localStorage.setItem("passwordget", password);
           console.log(res);
         } else {
           setError("Invalid Username or Password!");

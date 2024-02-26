@@ -57,6 +57,10 @@
     left: 95%;
     top: -10%;
 }
+.showpassiconchage{
+     left: 95%;
+     top: 10%;
+}
 
 .Forgetpassword {
     font-family: 'Cera Pro';
@@ -123,6 +127,10 @@
     .showpassicon {
         left: 100%;
         top: -3%;
+    }
+    .showpassiconchage{
+         left: 100%;
+         top: 3%;
     }
 
     .headinglogin {

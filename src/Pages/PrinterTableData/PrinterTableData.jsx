@@ -20,6 +20,7 @@ import QRCode from "qrcode.react";
 import iimageeee from "../../img/tempp.png"
 import { saveAs } from "file-saver";
 import QRCodeStyling from "qr-code-styling";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 function PrinterTableData()
 {
@@ -248,7 +249,9 @@ function PrinterTableData()
     {
         navigate(`/Update/VehicleCard/${row.cardno}`)
     }
-
+  const handleClick = () => {
+        navigate(`/Change/password`);
+  };
     const handleDelete = row =>
     {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -315,6 +318,10 @@ function PrinterTableData()
                                 backgroundSize: "cover",
                             }}
                         >
+                            <div className='d-flex justify-content-end me-3'>
+
+<SettingsIcon style={{ cursor: 'pointer' }} onClick={handleClick}/>
+                            </div>
                             <div className=" justify-content-between my-4 my-sm-2 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-lg-4 p-sm-1 mb-4 bg-white">
                                 <h5 className="text-lg-start my-auto text-sm-center d-none d-md-flex">
                                     vehicle List
