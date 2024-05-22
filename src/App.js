@@ -4,7 +4,7 @@ import Pagerounter from './Component/Rounter/Pagerounter';
 import axios from "axios";
 import { ToastProvider } from './Contexts/ToastContext';
 
-axios.defaults.baseURL = "https://161.97.139.96:3030/";
+axios.defaults.baseURL = "https://mirsal.vercel.app/";
 function App() {
   return (
     <>
