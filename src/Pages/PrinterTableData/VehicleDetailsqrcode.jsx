@@ -213,7 +213,7 @@ const formatDate = (dateString) => {
                   <a
                     className="col-6 donloadbuton"
                     style={{ color: "red" }}
-                    onClick={handlePrintTable2}
+                    // onClick={handlePrintTable2}
                   >
                     Printed/Downloaded
                   </a>
